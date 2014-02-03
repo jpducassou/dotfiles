@@ -1,0 +1,9 @@
+-b    # make backup and replace inline
+-i=2  # indentation in code blocks
+-en=2 # entab result
+-pt=2 # tight parens
+-ci=2 # Continuation Indentation
+-bar  # Opening Braces Right
+-ce   # Cuddled Else
+-nsbl # Opening Sub Braces
+

@@ -1,0 +1,13 @@
+severity  = 3
+theme     = (pbp || security) && bugs
+include   = NamingConventions ClassHierarchies
+exclude   = Variables  Modules::RequirePackage  Subroutines::RequireArgUnpacking  Subroutines::ProhibitBuiltinHomonyms
+color     = 1
+
+# ============================================================================
+[TestingAndDebugging::RequireUseStrict]
+severity = 5
+
+[TestingAndDebugging::RequireUseWarnings]
+severity = 5
+

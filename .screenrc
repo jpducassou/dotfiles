@@ -1,0 +1,30 @@
+# General config
+startup_message off
+vbell off
+altscreen on
+defutf8 on
+
+# bindings
+bind 'q' quit
+bind ',' prev
+bind '.' next
+
+# Set 256 on screen
+attrcolor b ".I"
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+defbce "on"
+
+# Statusline
+sorendition gK
+hardstatus  alwayslastline
+hardstatus  string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{W} %D %Y-%m-%d %{W}%C %{g}]'
+
+# special commands
+bind L screen -t 'htop' htop
+
+# Start windows and panes at 1, not 0
+bind c screen 1
+bind ^c screen 1
+bind 0 select 10
+screen 1
+
