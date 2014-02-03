@@ -1,0 +1,23 @@
+# Temp files
+*.[oa]
+*~
+*.swp
+*.cache
+*.bak
+*.tmp
+*.old
+*.new
+
+# log files
+*.log
+
+# Compressed files
+*.gz
+*.tar.gz
+*.tar.bz2
+*.zip
+*.rar
+
+# Proyect files
+*.komodoproject
+

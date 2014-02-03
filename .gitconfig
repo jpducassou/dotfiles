@@ -1,0 +1,73 @@
+[core]
+	compression = 9
+	editor = vim
+	pager = less
+	autocrlf = false
+	eol = lf
+	excludesfile = ~/.gitexclude
+	whitespace = trailing-space,space-before--tab,indent-with-non-tab,tabwidth=2
+
+[color]
+	blanch = auto
+	status = auto
+	diff = auto
+
+[color "diff"]
+	whitespace = red reverse
+
+[mergetool]
+	keepBackup = false
+
+[alias]
+	co = checkout
+	st = status
+	ci = commit
+	br = branch
+
+	# git remote verbose
+	rl = remote -v
+
+	# Pull and push in a single command
+	pp = !git pull && git push
+
+	# Show diff uncollapsed
+	xx = difftool -y --tool=vimdiff -U99999
+
+	# Show files ignored by git:
+	ls  = ls-files
+	ign = ls-files -o -i --exclude-standard
+
+	# Pretify log messeges:
+	lg = log --branches --tags --date=short --pretty=format:'%Cred%h%Creset - %Cgreen[%ad]%Creset%C(bold yellow)%d%Creset %s'
+	# --decorate      -> show commit references
+	# --abbrev-commit -> abbreviated commit IDs
+	# --date=relative -> dates relative to now
+
+	# Show history tree
+	tree = log --graph --decorate --pretty=oneline --abbrev-commit --all
+
+	# Show ranking of contributors by commit count
+	rank = shortlog -s -n --no-merges
+
+	diverge = "!f() { git log -p $(git merge-base HEAD $1)..$1; }; f"
+
+	# Git join new changes without fast-fordward
+	join = merge --no-ff -Xtheirs
+
+	# To see what new commits have been created by the last command (typically after a "git pull")
+	new = !sh -c 'git lg $1@{1}..$1@{0} "$@"'
+
+	# Log what changed
+	ll = log --oneline --name-only
+
+[push]
+	default = current
+
+[url "ssh://git@github.com/"]
+	insteadOf = "gh://"
+	pushInsteadOf = "gh://"
+
+[url "ssh://git@bitbucket.org/"]
+	insteadOf = "bb://"
+	pushInsteadOf = "bb://"
+
