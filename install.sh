@@ -3,6 +3,9 @@
 # ============================================================================
 # Dotfiles install script
 # ============================================================================
-set -x
-echo "PLACEHOLDER"
+
+for file in $(find bin -mindepth 1 -type f)
+do
+    echo $file
+done
 
