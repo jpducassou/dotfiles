@@ -3,6 +3,7 @@ startup_message off
 vbell off
 altscreen on
 defutf8 on
+term xterm
 
 # bindings
 bind 'q' quit
