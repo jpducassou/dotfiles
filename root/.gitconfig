@@ -10,7 +10,7 @@
 [color]
 	blanch = auto
 	status = auto
-	diff = auto
+	diff   = auto
 
 [color "diff"]
 	whitespace = red reverse
@@ -25,7 +25,7 @@
 	br = branch
 
 	# git remote verbose
-	rl = remote -v
+	remote = remote -v
 
 	# Pull and push in a single command
 	pp = !git pull && git push
