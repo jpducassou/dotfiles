@@ -60,6 +60,43 @@ endfunction
 map <F3> :call ToggleParen()<CR>
 
 " ============================================================================
+" Searching
+" ============================================================================
+"Usually I don't care about case when searching
+set ignorecase
+
+"Only ignore case when we type lower case when searching
+set smartcase
+
+" Press F4 to toggle highlighting on/off, and show current value.
+noremap <F4> :set hlsearch! hlsearch?<CR>
+
+" ============================================================================
+" Wildmenu
+" ============================================================================
+"Show menu with possible tab completions
+set wildmenu
+set wildmode=list:longest,full
+
+"Make the completion menus readable
+highlight Pmenu ctermfg=0 ctermbg=3
+highlight PmenuSel ctermfg=0 ctermbg=7
+
+" ============================================================================
+" Visual aid
+" ============================================================================
+" Create a highlight group for ws:
+highlight ExtraWhitespace ctermbg=red guibg=red
+
+" Show trailing whitepace and spaces before a tab:
+autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/ containedin=ALL
+
+" ============================================================================
+" Set configuration file to apache style
+" ============================================================================
+autocmd BufNewFile,BufRead *.conf if empty(&syntax) | set filetype=apache | endif
+
+" ============================================================================
 " Perl
 " ============================================================================
 " show line numbers
@@ -96,45 +133,10 @@ vnoremap <silent> _T :!perltidy  -q<Enter>
 " ============================================================================
 " Java & XML
 " ============================================================================
-autocmd FileType java,xml,xhtml set makeprg=mvn
+autocmd FileType java,xml,xhtml set number
+autocmd FileType java,xml,xhtml set makeprg=mvn\ package
 autocmd FileType java,xml,xhtml set tabstop=4
 autocmd FileType java,xml,xhtml set shiftwidth=4
 autocmd FileType java,xml,xhtml set expandtab
-
-" ============================================================================
-" Searching
-" ============================================================================
-"Usually I don't care about case when searching
-set ignorecase
-
-"Only ignore case when we type lower case when searching
-set smartcase
-
-" Press F4 to toggle highlighting on/off, and show current value.
-noremap <F4> :set hlsearch! hlsearch?<CR>
-
-" ============================================================================
-" Wildmenu
-" ============================================================================
-"Show menu with possible tab completions
-set wildmenu
-set wildmode=list:longest,full
-
-"Make the completion menus readable
-highlight Pmenu ctermfg=0 ctermbg=3
-highlight PmenuSel ctermfg=0 ctermbg=7
-
-" ============================================================================
-" Visual aid
-" ============================================================================
-" Create a highlight group for ws:
-highlight ExtraWhitespace ctermbg=red guibg=red
-
-" Show trailing whitepace and spaces before a tab:
-autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/ containedin=ALL
-
-" ============================================================================
-" ============================================================================
-" Set configuration file to apache style
-autocmd BufNewFile,BufRead *.conf if empty(&syntax) | set filetype=apache | endif
+autocmd FileType java,xml,xhtml set shiftround
 
