@@ -10,7 +10,7 @@
 [color]
 	blanch = auto
 	status = auto
-	diff = auto
+	diff   = auto
 
 [color "diff"]
 	whitespace = red reverse
@@ -25,7 +25,7 @@
 	br = branch
 
 	# git remote verbose
-	rl = remote -v
+	remote = remote -v
 
 	# Pull and push in a single command
 	pp = !git pull && git push
@@ -38,7 +38,7 @@
 	ign = ls-files -o -i --exclude-standard
 
 	# Pretify log messeges:
-	lg = log --branches --tags --date=short --pretty=format:'%Cred%h%Creset - %Cgreen[%ad]%Creset%C(bold yellow)%d%Creset %s'
+	lg = log --branches --tags --date=short --pretty=format:'%Cred%h%Creset - %ae - %Cgreen[%ad]%Creset%C(bold yellow)%d%Creset %s'
 	# --decorate      -> show commit references
 	# --abbrev-commit -> abbreviated commit IDs
 	# --date=relative -> dates relative to now
