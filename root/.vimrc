@@ -16,6 +16,10 @@ syntax on
 set tabstop=2
 set shiftwidth=2
 
+" Retain visual selection after < or >
+vnoremap > >gv
+vnoremap < <gv
+
 " Show title in console title bar
 set title
 
