@@ -2,6 +2,8 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+export EDITOR=/usr/bin/vim
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
@@ -29,14 +31,14 @@ shopt -s checkwinsize
 # Prompt customization
 # ============================================================================
 if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-		# We have color support; assume it's compliant with Ecma-48
-		# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-		# a case would tend to support setf rather than setaf.)
-		C_RESET='\[\e[0m\]'
-		C_LINE='\[\e[1;33m\]'
-		C_PATH='\[\e[1;35m\]'
-		C_HOST="\[\e[1;$((31 + $(hostname | cksum | cut -c1-3) % 6))m\]"
-    PS1="$C_LINE[\u at $C_HOST\h $C_PATH\w$C_LINE]\n\$$C_RESET "
+	# We have color support; assume it's compliant with Ecma-48
+	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+	# a case would tend to support setf rather than setaf.)
+	C_RESET='\[\e[0m\]'
+	C_LINE='\[\e[1;33m\]'
+	C_PATH='\[\e[1;35m\]'
+	C_HOST="\[\e[1;$((31 + $(hostname | cksum | cut -c1-3) % 6))m\]"
+	PS1="$C_LINE[\u at $C_HOST\h $C_PATH\w$C_LINE]\n\$$C_RESET "
 fi
 
 # If this is an xterm set the title
@@ -46,11 +48,11 @@ fi
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
+	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+	alias ls='ls --color=auto'
+	alias grep='grep --color=auto'
+	alias fgrep='fgrep --color=auto'
+	alias egrep='egrep --color=auto'
 fi
 
 # Add an "alert" alias for long running commands.  Use like so:
@@ -65,7 +67,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
 if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+	. ~/.bash_aliases
 fi
 
 # ============================================================================
@@ -75,7 +77,7 @@ fi
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
+	. /etc/bash_completion
 fi
 
 # ============================================================================
@@ -104,4 +106,5 @@ fi
 # ============================================================================
 # END
 # ============================================================================
+umask 027
 
