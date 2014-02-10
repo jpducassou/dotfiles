@@ -97,11 +97,18 @@ autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/ containedin=ALL
 autocmd BufNewFile,BufRead *.conf if empty(&syntax) | set filetype=apache | endif
 
 " ============================================================================
-" Perl
+" Programming
 " ============================================================================
 " show line numbers
-autocmd FileType perl set number
+autocmd FileType c,cpp,perl,php,java set number
 
+autocmd Syntax c,cpp,vim,xml,html,xhtml setlocal foldmethod=syntax
+autocmd Syntax c,cpp,vim,xml,html,xhtml setlocal foldnestmax=1
+autocmd Syntax c,cpp,vim,xml,html,xhtml,perl normal zR
+
+" ============================================================================
+" Perl
+" ============================================================================
 " syntax color complex things like @{${"foo"}}
 autocmd FileType perl let perl_extended_vars = 1
 
@@ -110,10 +117,6 @@ autocmd FileType perl let perl_include_pod = 1
 
 " Folding for perl
 let perl_fold=1
-
-autocmd Syntax c,cpp,vim,xml,html,xhtml setlocal foldmethod=syntax
-autocmd Syntax c,cpp,vim,xml,html,xhtml setlocal foldnestmax=1
-autocmd Syntax c,cpp,vim,xml,html,xhtml,perl normal zR
 
 " check perl code with :make
 autocmd FileType perl set makeprg=perl\ -c\ %\ $*
@@ -129,14 +132,4 @@ nmap _v :!clear && clear && prove -vw %
 " Tidy select lines (or entire file) with _t
 nnoremap <silent> _t :%!perltidy -q<Enter>
 vnoremap <silent> _T :!perltidy  -q<Enter>
-
-" ============================================================================
-" Java & XML
-" ============================================================================
-autocmd FileType java,xml,xhtml set number
-autocmd FileType java,xml,xhtml set makeprg=mvn\ package
-autocmd FileType java,xml,xhtml set tabstop=4
-autocmd FileType java,xml,xhtml set shiftwidth=4
-autocmd FileType java,xml,xhtml set expandtab
-autocmd FileType java,xml,xhtml set shiftround
 
