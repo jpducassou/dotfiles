@@ -35,8 +35,8 @@ if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
 	C_RESET='\[\e[0m\]'
 	C_PATH='\[\e[1;35m\]'
 	if test "$UID" -eq 0; then
-		C_ROOT='\[\e[1;24m\]'
-		PS1="$C_ROOT[\u at \h $C_PATH\w$C_ROOT]\n\#$C_RESET "
+		C_ROOT='\[\e[1;31m\]'
+		PS1="$C_ROOT[\u at \h $C_PATH\w$C_ROOT]\n#$C_RESET "
 	else
 		C_HOST="\[\e[1;$((31 + $(hostname | cksum | cut -c1-3) % 6))m\]"
 		C_LINE='\[\e[1;33m\]'
