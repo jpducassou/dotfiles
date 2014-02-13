@@ -104,6 +104,11 @@ autocmd Syntax c,cpp,vim,xml,html,xhtml setlocal foldnestmax=1
 autocmd Syntax c,cpp,vim,xml,html,xhtml,perl normal zR
 
 " ============================================================================
+" C
+" ============================================================================
+autocmd FileType c,cpp nmap <F5> :w<CR> :!gcc -Wall -o %:p:r %<CR> :!%:p:r<CR>
+
+" ============================================================================
 " Perl
 " ============================================================================
 " syntax color complex things like @{${"foo"}}
