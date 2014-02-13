@@ -42,9 +42,6 @@ map Q :q
 " Toggle line numbers on/off
 map <F2> :set number!<CR>
 
-" Toggle line numbers on/off
-map <F5> :set list!<CR>
-
 " Toggle paren match
 :hi MatchParen ctermbg=blue guibg=lightblue
 let g:MatchParen = 0
@@ -59,6 +56,9 @@ function! ToggleParen()
 endfunction
 map <F3> :call ToggleParen()<CR>
 
+" Toggle line numbers on/off
+map <F4> :set list!<CR>
+
 " ============================================================================
 " Searching
 " ============================================================================
@@ -67,9 +67,6 @@ set ignorecase
 
 "Only ignore case when we type lower case when searching
 set smartcase
-
-" Press F4 to toggle highlighting on/off, and show current value.
-noremap <F4> :set hlsearch! hlsearch?<CR>
 
 " ============================================================================
 " Wildmenu
@@ -127,7 +124,7 @@ vmap _c :s/^/#/gi<Enter>
 vmap _C :s/^#//gi<Enter>
 
 " run current file as a test
-nmap _v :w<CR> :!clear && clear && prove -vw %<CR>
+autocmd FileType perl nmap <F5> :w<CR> :!clear && clear && prove -vw %<CR>
 
 " Tidy select lines (or entire file) with _t
 nnoremap <silent> _t :%!perltidy -q<Enter>
