@@ -127,7 +127,7 @@ vmap _c :s/^/#/gi<Enter>
 vmap _C :s/^#//gi<Enter>
 
 " run current file as a test
-nmap _v :!clear && clear && prove -vw %
+nmap _v :w<CR> :!clear && clear && prove -vw %<CR>
 
 " Tidy select lines (or entire file) with _t
 nnoremap <silent> _t :%!perltidy -q<Enter>
