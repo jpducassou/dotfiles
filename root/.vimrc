@@ -119,7 +119,7 @@ autocmd FileType perl let perl_include_pod = 1
 let perl_fold=1
 
 " check perl code with :make
-autocmd FileType perl set makeprg=perl\ -c\ %\ $*
+autocmd FileType perl set makeprg=perl\ -Wc\ %\ $*
 autocmd FileType perl set errorformat=%f:%l:%m
 
 " comment/uncomment blocks of code (in vmode)
