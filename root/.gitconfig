@@ -1,3 +1,6 @@
+[user]
+	name = Jean Pierre Ducassou
+
 [core]
 	compression = 9
 	editor = vim
