@@ -25,7 +25,7 @@
 	br = branch
 
 	# git remote verbose
-	remote = remote -v
+	re = remote -v
 
 	# Pull and push in a single command
 	pp = !git pull && git push
