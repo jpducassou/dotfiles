@@ -1,10 +1,10 @@
+verbose   = 8
 severity  = 3
 theme     = (pbp || security) && bugs
 include   = NamingConventions ClassHierarchies
-exclude   = Variables  Modules::RequirePackage  Subroutines::RequireArgUnpacking  Subroutines::ProhibitBuiltinHomonyms
+exclude   = Variables  Modules::RequirePackage  Subroutines::RequireArgUnpacking  Subroutines::ProhibitBuiltinHomonyms NamingConventions::Capitalization
 color     = 1
 
-# ============================================================================
 [TestingAndDebugging::RequireUseStrict]
 severity = 5
 
