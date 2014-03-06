@@ -3,7 +3,7 @@
 # ============================================================================
 # This script replaces the shebang line so as to use "env"
 # ============================================================================
-find -name '*.pl' | xargs perl -pi -e "s{^#!/usr/bin/perl}{#!/usr/bin/env perl}"
+find -name '*.pl' | xargs perl -pi -e 's{^#!/usr(?:/local)?/bin/perl}{#!/usr/bin/env perl}'
 
 # ============================================================================
 
