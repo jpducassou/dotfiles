@@ -3,6 +3,9 @@
 # ============================================================================
 # Personal backup script
 # ============================================================================
+#  -u: skips files that are newer at the destination
+#  --modify-window=1: this is ESSENTIAL for NTFS.
+EXT_HD='/media/JP'
 
-rsync -a --progress ~/Music /media/JP/Music
+rsync -a -u --delete --progress --modify-window=1 ~/Music "$EXT_HD/Music"
 
