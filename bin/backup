@@ -6,6 +6,10 @@
 #  -u: skips files that are newer at the destination
 #  --modify-window=1: this is ESSENTIAL for NTFS.
 EXT_HD='/media/JP'
+BKP_DIRs=('Music')
 
-rsync -a -u --delete --progress --modify-window=1 ~/Music "$EXT_HD/Music"
+for bkp_dir in "${BKP_DIRs[@]}"
+do
+	rsync -a -u --delete --progress --modify-window=1 "~/$bkp_dir" "$EXT_HD/$bkp_dir"
+done
 
