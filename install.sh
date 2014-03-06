@@ -3,19 +3,20 @@
 # ============================================================================
 # Dotfiles install script
 # ============================================================================
-
 PWD=$(pwd)
 
 function linkall() {
-	local DIR=$1
 
-	for file in $(find "$PWD/$DIR" -mindepth 1 -maxdepth 1)
+	local SRC_DIR=$1
+	local DES_DIR=$2
+
+	for file in $(find "$PWD/$SRC_DIR" -mindepth 1 -maxdepth 1)
 	do
-			echo "linking $file..."
-			ln -sv "$file" "$HOME/"
+			ln --symbolic --verbose --force --target-directory="$HOME/$DES_DIR" "$file"
 	done
 
 }
 
-linkall "root"
+linkall 'root' ''
+linkall 'bin'  'bin'
 
