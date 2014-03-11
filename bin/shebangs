@@ -3,7 +3,8 @@
 # ============================================================================
 # This script replaces the shebang line so as to use "env"
 # ============================================================================
-find -name '*.pl' | xargs perl -pi -e 's{^#!/usr(?:/local)?/bin/perl}{#!/usr/bin/env perl}'
+# TODO: Add warnings and taint mode flags
+find . -regextype posix-extended -regex '.*\.(pl|cgi|t)$' | xargs perl -pi -e 's{^#!/usr(?:/local)?/bin/perl}{#!/usr/bin/env perl}'
 
 # ============================================================================
 
