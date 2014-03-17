@@ -121,15 +121,18 @@ autocmd FileType perl let perl_include_pod = 1
 let perl_fold=1
 
 " check perl code with :make
-autocmd FileType perl set makeprg=perl\ -Wc\ %\ $*
+autocmd FileType perl set makeprg=perl\ -wc\ %\ $*
 autocmd FileType perl set errorformat=%f:%l:%m
 
 " comment/uncomment blocks of code (in vmode)
 vmap _c :s/^/#/gi<Enter>
 vmap _C :s/^#//gi<Enter>
 
+" Try to compile current file
+autocmd FileType perl nmap <F5> :w<CR> :!clear && clear && perl  -cw %<CR>
+
 " run current file as a test
-autocmd FileType perl nmap <F5> :w<CR> :!clear && clear && prove -vw %<CR>
+autocmd FileType perl nmap <F6> :w<CR> :!clear && clear && prove -vw %<CR>
 
 " Tidy select lines (or entire file) with _t
 nnoremap <silent> _t :%!perltidy -q<Enter>
