@@ -106,7 +106,7 @@ autocmd Syntax c,cpp,vim,xml,html,xhtml,perl normal zR
 " ============================================================================
 " C
 " ============================================================================
-autocmd FileType c,cpp nmap <F5> :w<CR> :!gcc -Wall -o %:p:r %<CR> :!%:p:r<CR>
+autocmd FileType c,cpp nmap <F5> :w<CR> :!clear && clear && gcc -Wall -o /dev/null %<CR>
 
 " ============================================================================
 " Perl
