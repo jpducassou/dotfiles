@@ -119,7 +119,7 @@ map <F5> :make<CR>
 " ============================================================================
 " C
 " ============================================================================
-autocmd FileType c set makeprg=gcc\ -c\ -Wall\ -o\ /dev/null\ %\ $*
+autocmd FileType c set makeprg=gcc\ -c\ -Wall\ -Wextra\ -o\ /dev/null\ %
 autocmd FileType c set autowrite
 
 " ============================================================================
@@ -135,7 +135,7 @@ autocmd FileType perl let perl_include_pod = 1
 let perl_fold=1
 
 " check perl code with :make
-autocmd FileType perl set makeprg=perl\ -wc\ %\ $*
+autocmd FileType perl set makeprg=perl\ -wc\ %
 autocmd FileType perl set errorformat=%f:%l:%m
 autocmd FileType perl set autowrite
 
