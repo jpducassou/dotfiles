@@ -16,4 +16,4 @@ alias pt="perltidy -i=2 -et=2 -ce -wls=\"= + - / * > <\" -wrs=\"= + - / * > <\" 
 alias valgrind="valgrind -v --leak-check=full --track-origins=yes --log-file=/tmp/valgrind.out"
 alias pb=perlbrew
 alias vg=vagrant
-
+alias httpdump="curl --head --location"
