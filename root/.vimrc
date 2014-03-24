@@ -16,10 +16,6 @@ syntax on
 set tabstop=2
 set shiftwidth=2
 
-" Retain visual selection after < or >
-vnoremap > >gv
-vnoremap < <gv
-
 " Show title in console title bar
 set title
 
@@ -58,6 +54,21 @@ map <F3> :call ToggleParen()<CR>
 
 " Toggle line numbers on/off
 map <F4> :set list!<CR>
+
+" ============================================================================
+" Indentation
+" ============================================================================
+" Retain visual selection after < or >
+vnoremap > >gv
+vnoremap < <gv
+
+" make tab in v mode ident code
+vmap <tab>   >gv
+vmap <s-tab> <gv
+
+" make tab in normal mode ident code
+nmap <tab>   I<tab><esc>
+nmap <s-tab> ^i<bs><esc>
 
 " ============================================================================
 " Searching
@@ -123,16 +134,17 @@ let perl_fold=1
 " check perl code with :make
 autocmd FileType perl set makeprg=perl\ -wc\ %\ $*
 autocmd FileType perl set errorformat=%f:%l:%m
+autocmd FileType perl set autowrite
 
 " comment/uncomment blocks of code (in vmode)
 vmap _c :s/^/#/gi<Enter>
 vmap _C :s/^#//gi<Enter>
 
 " Try to compile current file
-autocmd FileType perl nmap <F5> :w<CR> :!clear && clear && perl  -cw %<CR>
+" autocmd FileType perl nmap <F5> :w<CR> :!clear && clear && perl  -cw %<CR>
 
 " run current file as a test
-autocmd FileType perl nmap <F6> :w<CR> :!clear && clear && prove -vw %<CR>
+" autocmd FileType perl nmap <F6> :w<CR> :!clear && clear && prove -vw %<CR>
 
 " Tidy select lines (or entire file) with _t
 nnoremap <silent> _t :%!perltidy -q<Enter>
