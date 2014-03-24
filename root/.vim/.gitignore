@@ -1,1 +1,8 @@
 /.netrwhist
+
+# vimdebug - ignored as it is not available everywhere
+/autoload/savemap.vim
+/doc/VimDebug.txt
+/doc/savemap.txt
+/plugin/VimDebug.vim
+
