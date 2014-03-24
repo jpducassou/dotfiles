@@ -114,10 +114,13 @@ autocmd Syntax c,cpp,vim,xml,html,xhtml setlocal foldmethod=syntax
 autocmd Syntax c,cpp,vim,xml,html,xhtml setlocal foldnestmax=1
 autocmd Syntax c,cpp,vim,xml,html,xhtml,perl normal zR
 
+map <F5> :make<CR>
+
 " ============================================================================
 " C
 " ============================================================================
-autocmd FileType c,cpp nmap <F5> :w<CR> :!clear && clear && gcc -Wall -o /dev/null %<CR>
+autocmd FileType c set makeprg=gcc\ -c\ -Wall\ -o\ /dev/null\ %\ $*
+autocmd FileType c set autowrite
 
 " ============================================================================
 " Perl
@@ -139,12 +142,6 @@ autocmd FileType perl set autowrite
 " comment/uncomment blocks of code (in vmode)
 vmap _c :s/^/#/gi<Enter>
 vmap _C :s/^#//gi<Enter>
-
-" Try to compile current file
-" autocmd FileType perl nmap <F5> :w<CR> :!clear && clear && perl  -cw %<CR>
-
-" run current file as a test
-" autocmd FileType perl nmap <F6> :w<CR> :!clear && clear && prove -vw %<CR>
 
 " Tidy select lines (or entire file) with _t
 nnoremap <silent> _t :%!perltidy -q<Enter>
