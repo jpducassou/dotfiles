@@ -39,6 +39,7 @@
 	# Show files ignored by git:
 	ls  = ls-files
 	ign = ls-files -o -i --exclude-standard
+	lsa = !git status --porcelain --untracked-files=all | grep '^??' | cut -c 4-
 
 	# Pretify log messeges:
 	lg = log --branches --tags --date=short --pretty=format:'%Cred%h%Creset - %ae - %Cgreen[%ad]%Creset%C(bold yellow)%d%Creset %s'
