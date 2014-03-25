@@ -114,6 +114,7 @@ fi
 # ============================================================================
 # Load environment
 # ============================================================================
+# See: http://cweiske.de/tagebuch/carry-git-settings.htm
 if [ -f ~/.bash_environment ]; then
 	. ~/.bash_environment
 fi
