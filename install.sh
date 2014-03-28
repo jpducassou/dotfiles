@@ -14,7 +14,7 @@ function linkall() {
 
 	for file in $(find "$PWD/$SRC_DIR" -mindepth 1 -maxdepth 1)
 	do
-			ln --symbolic --verbose --force --target-directory="$HOME/$DES_DIR" "$file"
+			ln --symbolic --verbose --target-directory="$HOME/$DES_DIR" "$file"
 	done
 
 }
