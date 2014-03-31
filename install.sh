@@ -12,9 +12,17 @@ function linkall() {
 
 	mkdir --parents "$HOME/$DES_DIR"
 
-	for file in $(find "$PWD/$SRC_DIR" -mindepth 1 -maxdepth 1)
+	for file in $(find "$SRC_DIR" -mindepth 1 -maxdepth 1)
 	do
-			ln --symbolic --verbose --target-directory="$HOME/$DES_DIR" "$file"
+		basename=$(basename $file)
+		if [ -a "$HOME/$DES_DIR/$basename" ]; then
+			link=$(readlink "$HOME/$DES_DIR/$basename")
+			if [ ! "$PWD/$file" == "$link" ]; then
+				echo "Must delete '$HOME/$DES_DIR/$basename' !"
+			fi
+		else
+			ln --symbolic --verbose --target-directory="$HOME/$DES_DIR" "$PWD/$file"
+		fi
 	done
 
 }
