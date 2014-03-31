@@ -3,13 +3,19 @@
 # ============================================================================
 # Personal backup script
 # ============================================================================
-#  -u: skips files that are newer at the destination
-#  --modify-window=1: this is ESSENTIAL for NTFS.
-EXT_HD='/media/JP'
-BKP_DIRs=('Music')
 
-for bkp_dir in "${BKP_DIRs[@]}"
-do
-	rsync -a -u --delete --progress --modify-window=1 "~/$bkp_dir" "$EXT_HD/$bkp_dir"
-done
+# -v, --verbose               increase verbosity
+# -a, --archive               archive mode; equals -rlptgoD (no -H,-A,-X)
+# -u, --update                skip files that are newer on the receiver
+# -n, --dry-run               perform a trial run with no changes made
+#     --delete                delete extraneous files from dest dirs
+#     --modify-window=NUM     compare mod-times with reduced accuracy
+#     --modify-window=1: this is ESSENTIAL for NTFS.
+#     --progress              show progress during transfer
+
+SRC_DIR='/data/mp3/'
+DST_DIR='/media/JP/Music/'
+
+rsync -vrut --modify-window=1 "$SRC_DIR" "$DST_DIR"
+rsync -vrut --modify-window=1 "$DST_DIR" "$SRC_DIR"
 
