@@ -19,6 +19,8 @@ function linkall() {
 			link=$(readlink "$HOME/$DES_DIR/$basename")
 			if [ ! "$PWD/$file" == "$link" ]; then
 				echo "Must delete '$HOME/$DES_DIR/$basename' !"
+			else
+				echo "[OK] $DES_DIR/$basename"
 			fi
 		else
 			ln --symbolic --verbose --target-directory="$HOME/$DES_DIR" "$PWD/$file"
