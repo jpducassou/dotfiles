@@ -120,6 +120,7 @@ map <F5> :make<CR>
 " Markdown
 " ============================================================================
 autocmd FileType markdown set makeprg=markdown\ %\ >%<.html
+autocmd FileType markdown set autowrite
 
 " ============================================================================
 " C
@@ -152,4 +153,10 @@ vmap _C :s/^#//gi<Enter>
 " Tidy select lines (or entire file) with _t
 nnoremap <silent> _t :%!perltidy -q<Enter>
 vnoremap <silent> _T :!perltidy  -q<Enter>
+
+" ============================================================================
+" PHP
+" ============================================================================
+autocmd FileType perl set makeprg=php\ -l\ %
+autocmd FileType perl set autowrite
 
