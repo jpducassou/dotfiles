@@ -1,0 +1,10 @@
+make
+gcc
+manpages-dev
+manpages-posix
+manpages-posix-dev
+ltrace
+strace
+poedit
+discount
+yui-compressor
