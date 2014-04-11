@@ -1,3 +1,5 @@
+--backup-and-modify-in-place
+--backup-file-extension='bak'
 --maximum-line-length=140
 --indent-columns=4               # indentation in code blocks
 --entab-leading-whitespace=4     # entab result
@@ -14,6 +16,6 @@
 --paren-tightness=1
 --square-bracket-tightness=2
 # FIXME: perltidy removes spaces at '->' sides
---want-left-space="->"
---want-right-space="<-"
+--want-left-space='->'
+--want-right-space='->'
 
