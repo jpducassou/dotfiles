@@ -2,7 +2,7 @@ firmware-linux
 firmware-realtek
 firmware-atheros
 firmware-ralink
-vim
+vim-nox
 zip
 gzip
 bzip2
