@@ -1,9 +1,19 @@
--b    # make backup and replace inline
--i=2  # indentation in code blocks
--en=2 # entab result
--pt=2 # tight parens
--ci=2 # Continuation Indentation
--bar  # Opening Braces Right
--ce   # Cuddled Else
--nsbl # Opening Sub Braces
+--maximum-line-length=140
+--indent-columns=4               # indentation in code blocks
+--entab-leading-whitespace=4     # entab result
+--tabs                           # one leading tab character to be inserted for each level of indentation
+--continuation-indentation=4     # Continuation Indentation
+--nospace-terminal-semicolon
+--add-whitespace
+--opening-brace-always-on-right  # Opening Braces Right - K&R style
+--cuddled-else                   # Cuddled elses - } else {
+# FIXME: perltidy increases indent level when stacking but should not
+--stack-opening-tokens
+--stack-closing-tokens
+--no-opening-sub-brace-on-new-line
+--paren-tightness=1
+--square-bracket-tightness=2
+# FIXME: perltidy removes spaces at '->' sides
+--want-left-space="->"
+--want-right-space="<-"
 
