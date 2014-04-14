@@ -1,0 +1,44 @@
+# =============================================================================
+# deb cdrom:[Debian GNU/Linux 6.0.3 _Squeeze_ - Official amd64 NETINST Binary-1 20111008-19:52]/ squeeze main
+# =============================================================================
+
+# =============================================================================
+# Main repositories:
+# =============================================================================
+deb http://ftp.us.debian.org/debian/ squeeze main non-free contrib
+
+# Security updates
+deb http://security.debian.org/ squeeze/updates main contrib non-free
+
+# squeeze-updates, previously known as 'volatile'
+deb http://ftp.us.debian.org/debian/ squeeze-updates main contrib non-free
+
+# =============================================================================
+# Backports repository
+# =============================================================================
+deb http://backports.debian.org/debian-backports squeeze-backports main
+
+# =============================================================================
+# Virtual box repo
+# =============================================================================
+# to add gpg key:
+# wget -O- -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc | apt-key add -
+deb http://download.virtualbox.org/virtualbox/debian squeeze contrib
+
+# =============================================================================
+# Iceweasel repo
+# =============================================================================
+# to add gpg key:
+# wget -O- -q http://mozilla.debian.net/archive.asc | apt-key add -
+# deb http://mozilla.debian.net/ squeeze-backports iceweasel-release
+# deb http://mozilla.debian.net/ squeeze-backports icedove-release
+
+# =============================================================================
+# Multimedia repo
+# =============================================================================
+# to add gpg key:
+# sudo apt-get install deb-multimedia-keyring
+deb http://www.deb-multimedia.org squeeze main
+
+# =============================================================================
+
