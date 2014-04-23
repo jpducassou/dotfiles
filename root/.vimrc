@@ -8,9 +8,12 @@ set nocompatible
 set ls=2
 
 " syntax highlighting
+syntax on
+
+" set color scheme
+colorscheme molokai
 set bg=dark
 set t_Co=256 " para que use todos los colores de la consola
-syntax on
 
 " Chuck Norris programing
 set tabstop=2
@@ -19,18 +22,17 @@ set shiftwidth=2
 " Show title in console title bar
 set title
 
-" turn off visual bell
-set visualbell t_vb=
+" No annoying sound on errors
+set noerrorbells
 set novisualbell
+set t_vb=
+set tm=500
 
 " do not keep a backup file
 set nobackup
 
 " NoMatchParen
 au vimEnter * NoMatchParen
-
-" set color scheme
-colorscheme molokai
 
 " dont use Q for Ex mode
 map Q :q
@@ -85,6 +87,7 @@ set smartcase
 "Show menu with possible tab completions
 set wildmenu
 set wildmode=list:longest,full
+set wildignore=*.o,*~,*.pyc
 
 "Make the completion menus readable
 highlight Pmenu ctermfg=0 ctermbg=3
