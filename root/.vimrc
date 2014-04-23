@@ -13,7 +13,11 @@ syntax on
 " set color scheme
 colorscheme molokai
 set bg=dark
-set t_Co=256 " para que use todos los colores de la consola
+" set t_Co=256 " para que use todos los colores de la consola
+
+if &term == "xterm"
+	set t_Co=256
+endif
 
 " Chuck Norris programing
 set tabstop=2
