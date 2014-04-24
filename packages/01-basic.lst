@@ -2,7 +2,7 @@ firmware-linux
 firmware-realtek
 firmware-atheros
 firmware-ralink
-vim-nox
+vim
 zip
 gzip
 bzip2
@@ -18,13 +18,11 @@ mpg321
 htop
 nmon
 sysstat
-git
-git-doc
+git-core
 curl
 wget
 lynx
 w3m
-gparted
 hdparm
 testdisk
 smartmontools
