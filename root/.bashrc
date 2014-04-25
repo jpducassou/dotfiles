@@ -94,9 +94,18 @@ fi
 # ============================================================================
 # Perlbrew
 # ============================================================================
-export PERLBREW_ROOT=~/perl5/perlbrew
-if [ -f $PERLBREW_ROOT/etc/bashrc ]; then
-	. $PERLBREW_ROOT/etc/bashrc
+if [ -d "/opt/perlbrew" ]; then
+	export PERLBREW_ROOT="/opt/perlbrew"
+	if [ -f $PERLBREW_ROOT/etc/bashrc ]; then
+		. $PERLBREW_ROOT/etc/bashrc
+	fi
+fi
+
+if [ -d "$HOME/perl5/perlbrew" ]; then
+	export PERLBREW_ROOT="$HOME/perl5/perlbrew"
+	if [ -f $PERLBREW_ROOT/etc/bashrc ]; then
+		. $PERLBREW_ROOT/etc/bashrc
+	fi
 fi
 
 # ============================================================================
