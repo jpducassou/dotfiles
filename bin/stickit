@@ -1,0 +1,10 @@
+#!/bin/sh
+
+: ${1:='.'}
+
+set -x
+
+chgrp -R www-data $1
+chmod -R g+rX     $1
+find   $1 -type d -exec chmod g+s {} \;
+
