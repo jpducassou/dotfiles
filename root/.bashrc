@@ -2,6 +2,11 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+	PATH="$HOME/bin:$PATH"
+fi
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
