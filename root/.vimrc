@@ -164,6 +164,6 @@ vnoremap <silent> _T :!perltidy  -q<Enter>
 " ============================================================================
 " PHP
 " ============================================================================
-autocmd FileType perl set makeprg=php\ -l\ %
-autocmd FileType perl set autowrite
+autocmd FileType php set makeprg=php\ -l\ %
+autocmd FileType php set autowrite
 
