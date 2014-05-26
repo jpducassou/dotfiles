@@ -55,8 +55,11 @@
 
 	diverge = "!f() { git log -p $(git merge-base HEAD $1)..$1; }; f"
 
-	# Git join new changes without fast-fordward
+	# join new changes without fast-forward
 	join = merge --no-ff -Xtheirs
+
+	# merge only with fast-forward
+	ff = merge --ff-only
 
 	# To see what new commits have been created by the last command (typically after a "git pull")
 	new = !sh -c 'git lg $1@{1}..$1@{0} "$@"'
