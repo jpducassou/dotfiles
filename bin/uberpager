@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ "$TERM" == 'xterm' ]] && [ -x /usr/bin/grcat ]; then
+if [[ "$TERM" == 'xterm' ]] && [ $(which grcat) ]; then
 	grcat ~/.grc/mysql
 else
 	cat
