@@ -2,7 +2,7 @@
 
 # Wrapper function for Maven's mvn command.
 mvn-color() {
-	mvn $@ | grcat "$HOME/.grc/maven.conf"
+	mvn $@ | grcat "$HOME/.grc/conf.maven"
 }
 
 if [[ "$TERM" == 'xterm' ]] && [ $(which grcat) ]; then
