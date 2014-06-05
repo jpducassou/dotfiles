@@ -1,0 +1,21 @@
+# this configuration file is suitable for displaying kernel log files
+
+# this is date
+regexp=^\[\w{3} \w{3} \d{2} \d{2}:\d{2}:\d{2} \d{4}\]
+colours=cyan
+count=once
+======
+# error
+regexp=\[error\]
+colours=red
+count=more
+======
+# client + ip number
+regexp=\[client (\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\]
+colours=white,magenta
+count=more
+======
+# this is probably a pathname
+regexp=at (/[\w/\.]+) line (\d+)
+colours=white,green,green
+count=once
