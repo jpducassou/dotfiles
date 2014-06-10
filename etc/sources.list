@@ -1,7 +1,6 @@
 # =============================================================================
 # Main repositories:
 # =============================================================================
-# Uupdates, previously known as 'volatile'
 deb http://ftp.debian.org/debian/                  wheezy-updates main contrib non-free
 
 # Security updates
