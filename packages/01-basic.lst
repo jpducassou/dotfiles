@@ -19,6 +19,7 @@ htop
 nmon
 sysstat
 git-core
+git-stuff
 curl
 wget
 lynx
