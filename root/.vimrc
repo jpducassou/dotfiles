@@ -167,3 +167,8 @@ vnoremap <silent> _T :!perltidy  -q<Enter>
 autocmd FileType php set makeprg=php\ -l\ %
 autocmd FileType php set autowrite
 
+" ============================================================================
+" Load plugin bunbles with pathogen
+" ============================================================================
+execute pathogen#infect()
+

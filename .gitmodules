@@ -1,0 +1,6 @@
+[submodule "root/.vim/bundle/markdown"]
+	path = root/.vim/bundle/markdown
+	url = https://github.com/tpope/vim-markdown
+[submodule "root/.vim/bundle/nerdtree"]
+	path = root/.vim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree
