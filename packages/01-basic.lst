@@ -1,13 +1,10 @@
-firmware-linux
-firmware-realtek
-firmware-atheros
-firmware-ralink
 vim
 zip
 gzip
 bzip2
 unrar
 unzip
+pv
 dos2unix
 tofrodos
 ack-grep
