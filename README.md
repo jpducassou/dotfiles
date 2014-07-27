@@ -17,3 +17,12 @@ The is a lot of info out there about dotfiles, just check:
 * [Using Git and Github to Manage Your Dotfiles](http://blog.smalleycreative.com/tutorials/using-git-and-github-to-manage-your-dotfiles/)
 
 
+Author
+------------------------------------------------------------------------------
+
+Jean Pierre Ducassou
+
+License
+------------------------------------------------------------------------------
+See LICENSE file
+
