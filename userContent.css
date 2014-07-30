@@ -1,0 +1,15 @@
+
+/**
+	This file goes in:
+	~/.mozilla/firefox/xxxxxxxx.default/chrome/
+ */
+
+/* Enable image placeholders */
+@-moz-document url-prefix(http), url-prefix(file) {
+	img:-moz-broken{
+		-moz-force-broken-image-icon:1;
+		width:24px;
+		height:24px;
+	}
+}
+
