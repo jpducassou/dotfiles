@@ -4,7 +4,7 @@
 [core]
 	compression = 9
 	editor = vim
-	pager = less
+	pager = less -MIR
 	autocrlf = false
 	eol = lf
 	excludesfile = ~/.gitexclude
