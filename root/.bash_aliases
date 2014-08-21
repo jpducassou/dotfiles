@@ -15,6 +15,7 @@ alias pt="perltidy -i=2 -et=2 -ce -wls=\"= + - / * > <\" -wrs=\"= + - / * > <\" 
 alias valgrind="valgrind -v --leak-check=full --track-origins=yes --log-file=/tmp/valgrind.out"
 alias pb=perlbrew
 alias vg=vagrant
+alias pd="perldoc -MPod::Text::Color::Delight"
 alias httpdump="curl --head --location"
 if [ $(which memstat &> /dev/null) ]; then
 	alias memcstat="watch 'memstat  --servers=127.0.0.1:11211'"

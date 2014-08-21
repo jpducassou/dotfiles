@@ -11,6 +11,7 @@ fi
 [ -z "$PS1" ] && return
 
 export EDITOR=/usr/bin/vim
+export PAGER="less -MIR"
 
 # ============================================================================
 # Bash history management
