@@ -4,3 +4,12 @@
 [submodule "root/.vim/bundle/nerdtree"]
 	path = root/.vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree
+[submodule "root/.vim/bundle/molokai"]
+	path = root/.vim/bundle/molokai
+	url = https://github.com/tomasr/molokai
+[submodule "root/.vim/bundle/mirodark"]
+	path = root/.vim/bundle/mirodark
+	url = https://github.com/djjcast/mirodark
+[submodule "root/.vim/bundle/badwolf"]
+	path = root/.vim/bundle/badwolf
+	url = https://github.com/sjl/badwolf

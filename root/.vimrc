@@ -10,9 +10,6 @@ set ls=2
 " syntax highlighting
 syntax on
 
-" set color scheme
-colorscheme molokai
-
 " Set color palette
 if &term == "xterm"
 	set t_Co=256
@@ -170,4 +167,9 @@ autocmd FileType php set autowrite
 " Load plugin bunbles with pathogen
 " ============================================================================
 execute pathogen#infect()
+
+" ============================================================================
+" set color scheme
+" ============================================================================
+colorscheme molokai
 
