@@ -1,0 +1,7 @@
+#!/bin/bash
+
+temp_file=$(mktemp --tmpdir=/tmp XXXXXXXXXXXX.html) || exit
+perldoc -o html -T -w index $@ > "$temp_file"
+firefox "$temp_file"
+rm -f "$temp_file"
+
