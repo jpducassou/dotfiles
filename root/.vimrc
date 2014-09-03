@@ -11,7 +11,7 @@ set ls=2
 syntax on
 
 " Enable omnifunc
-filetype plugin indent on
+filetype plugin on
 
 " Set color palette
 if &term == "xterm"
