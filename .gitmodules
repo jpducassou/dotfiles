@@ -7,3 +7,6 @@
 [submodule "root/.vim/bundle/molokai"]
 	path = root/.vim/bundle/molokai
 	url = https://github.com/tomasr/molokai
+[submodule "root/.vim/bundle/vim-less"]
+	path = root/.vim/bundle/vim-less
+	url = https://github.com/groenewege/vim-less.git
