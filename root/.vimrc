@@ -10,6 +10,9 @@ set ls=2
 " syntax highlighting
 syntax on
 
+" Enable omnifunc
+filetype plugin indent on
+
 " Set color palette
 if &term == "xterm"
 	set t_Co=256
