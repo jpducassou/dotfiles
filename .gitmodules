@@ -10,3 +10,6 @@
 [submodule "root/.vim/bundle/vim-less"]
 	path = root/.vim/bundle/vim-less
 	url = https://github.com/groenewege/vim-less.git
+[submodule "root/.vim/bundle/perlomni"]
+	path = root/.vim/bundle/perlomni
+	url = https://github.com/c9s/perlomni.vim.git
