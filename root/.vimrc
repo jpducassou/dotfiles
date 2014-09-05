@@ -4,14 +4,6 @@
 " use vim defaults
 set nocompatible
 
-" allways show status line
-set ls=2
-
-" airline
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-
 " syntax highlighting
 syntax on
 
@@ -38,6 +30,15 @@ set tm=500
 
 " do not keep a backup file
 set nobackup
+
+" allways show status line
+set ls=2
+
+" airline
+let g:airline_powerline_fonts = 1
+
+" To override statusline theme
+" let g:airline_theme='molokai'
 
 " NoMatchParen
 au vimEnter * NoMatchParen
