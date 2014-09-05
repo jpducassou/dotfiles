@@ -57,7 +57,7 @@ function! ToggleParen()
 endfunction
 map <F3> :call ToggleParen()<CR>
 
-" Toggle line numbers on/off
+" Toggle display tabs & spaces on/off
 map <F4> :set list!<CR>
 
 " ============================================================================
