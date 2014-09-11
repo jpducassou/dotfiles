@@ -1,6 +1,9 @@
+alias cd..="cd .."
 alias ..="cd .."
 alias ...="cd ../.."
-alias cd..="cd .."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ~="cd ~" # `cd` is probably faster to type though
 alias l="ls -lhA --color=auto"
 alias lg="ls -lAh --color=auto | g"
 alias cls="clear"
@@ -22,3 +25,5 @@ if [ $(which memstat &> /dev/null) ]; then
 else
 	alias memcstat="watch 'memcstat --servers=127.0.0.1:11211'"
 fi
+alias c='pygmentize -O style=monokai -f console256 -g'
+
