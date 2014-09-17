@@ -84,6 +84,11 @@ vmap <s-tab> <gv
 nmap <tab>   I<tab><esc>
 nmap <s-tab> ^i<bs><esc>
 
+" Insert spaces in block mode
+vnoremap <space> I<space><esc>gv
+" FIXME:
+" vnoremap <bs>    :s/^.//<esc>gv
+
 " ============================================================================
 " Searching
 " ============================================================================
