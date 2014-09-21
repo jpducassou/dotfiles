@@ -111,15 +111,6 @@ highlight Pmenu ctermfg=0 ctermbg=3
 highlight PmenuSel ctermfg=0 ctermbg=7
 
 " ============================================================================
-" Visual aid
-" ============================================================================
-" Create a highlight group for ws:
-highlight ExtraWhitespace ctermbg=red guibg=red
-
-" Show trailing whitepace and spaces before a tab:
-autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/ containedin=ALL
-
-" ============================================================================
 " Set configuration file to apache style
 " ============================================================================
 autocmd BufNewFile,BufRead *.conf if empty(&syntax) | set filetype=apache | endif
@@ -189,4 +180,13 @@ execute pathogen#infect()
 " set color scheme
 " ============================================================================
 colorscheme molokai
+
+" ============================================================================
+" Visual aid
+" ============================================================================
+" Create a highlight group for ws:
+highlight ExtraWhitespace ctermbg=red guibg=red
+
+" Show trailing whitepace and spaces before a tab:
+autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/ containedin=ALL
 
