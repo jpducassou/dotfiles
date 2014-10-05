@@ -1,12 +1,18 @@
-#!/bin/sh
+#!/bin/bash
 
-DIRECTORY=$1
-OUTPUT=$2
+DIRECTORY="$1"
+OUTPUT=${2:-"./installer.sh"}
+
+if [ -z $DIRECTORY ]; then
+	echo "DIRECTORY not set. Exiting."
+	exit 1
+fi
 
 TEMPLATE=`awk '/^__TEMPLATE__/ {print NR + 1; exit 0; }' $0`
 
-tail -n+$TEMPLATE $0      > "$OUTPUT"
+tail -n+$TEMPLATE $0 > "$OUTPUT"
 tar -cvzf - "$DIRECTORY" >> "$OUTPUT"
+chmod +x "$OUTPUT"
 
 echo "done."
 exit 0
