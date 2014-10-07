@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# This scripts creates an annotated tag based on a lightweight tag
+
+# Based on: http://stackoverflow.com/questions/5002555/can-a-lightweight-tag-be-converted-to-an-annotated-tag
+# FIXME: default to last tag
+# FIXME: allow massive retagging
+# FIXME: Add message automatically
+
+tag=$1
+date="$(git show $tag --format=%aD | head -1)"
+GIT_COMMITTER_DATE="$date" git tag -a -f $tag $tag
