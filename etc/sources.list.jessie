@@ -1,7 +1,7 @@
 # =============================================================================
 # Main repositories:
 # =============================================================================
-deb http://ftp.ccc.uba.ar/pub/linux/debian/debian/ jessie main contrib non-free
+# deb http://ftp.ccc.uba.ar/pub/linux/debian/debian/ jessie main contrib non-free
 deb http://mirrors.dcarsat.com.ar/debian/          jessie main contrib non-free
 deb http://http.debian.net/debian                  jessie main contrib non-free
 
