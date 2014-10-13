@@ -44,7 +44,7 @@ let g:airline_right_sep=''
 let g:airline_theme='lucius'
 
 " NoMatchParen
-au vimEnter * NoMatchParen
+" au vimEnter * NoMatchParen
 
 " dont use Q for Ex mode
 map Q :q
