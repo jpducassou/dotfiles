@@ -1,4 +1,3 @@
-vim
 zip
 gzip
 bzip2
@@ -11,16 +10,12 @@ ack-grep
 less
 tree
 screen
-mpg321
 htop
 nmon
 sysstat
-git-core
 curl
 wget
 lynx
 w3m
 hdparm
-testdisk
 smartmontools
-grc
