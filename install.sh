@@ -10,7 +10,7 @@ function linkall() {
 	local SRC_DIR=$1
 	local DES_DIR=$2
 
-	mkdir --parents "$HOME/$DES_DIR"
+	mkdir -p "$HOME/$DES_DIR"
 
 	for file in $(find "$SRC_DIR" -mindepth 1 -maxdepth 1)
 	do
@@ -23,7 +23,7 @@ function linkall() {
 				echo "[OK] $DES_DIR/$basename"
 			fi
 		else
-			ln --symbolic --verbose --target-directory="$HOME/$DES_DIR" "$PWD/$file"
+			ln -vs "$PWD/$file" "$HOME/$DES_DIR"
 		fi
 	done
 
