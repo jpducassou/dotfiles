@@ -127,6 +127,9 @@ autocmd Syntax c,cpp,vim,xml,html,xhtml,perl normal zR
 
 map <F5> :make<CR>
 
+" Ctrl + space turns on omni completion
+inoremap <C-@> <C-x><C-o>
+
 " ============================================================================
 " Markdown
 " ============================================================================
