@@ -131,6 +131,21 @@ map <F5> :make<CR>
 inoremap <C-@> <C-x><C-o>
 
 " ============================================================================
+" Comments
+" ============================================================================
+autocmd FileType c,cpp,java,scala let b:comment_leader = '// '
+autocmd FileType sh,ruby,python   let b:comment_leader = '# '
+autocmd FileType conf,fstab       let b:comment_leader = '# '
+autocmd FileType vim              let b:comment_leader = '" '
+
+noremap <silent> cc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
+noremap <silent> cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
+
+" comment/uncomment blocks of code (in vmode)
+vmap _c :s/^/#/gi<Enter>
+vmap _C :s/^#//gi<Enter>
+
+" ============================================================================
 " Markdown
 " ============================================================================
 autocmd FileType markdown set makeprg=markdown\ %\ >%<.html
@@ -159,10 +174,6 @@ autocmd FileType perl set makeprg=perl\ -wc\ %
 autocmd FileType perl set errorformat+=%m\ at\ %f\ line\ %l\.
 autocmd FileType perl set errorformat+=%m\ at\ %f\ line\ %l
 autocmd FileType perl set autowrite
-
-" comment/uncomment blocks of code (in vmode)
-vmap _c :s/^/#/gi<Enter>
-vmap _C :s/^#//gi<Enter>
 
 " Tidy select lines (or entire file) with _t
 nnoremap <silent> _t :%!perltidy -q<Enter>
