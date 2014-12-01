@@ -15,7 +15,7 @@ function linkall() {
 	for file in $(find "$SRC_DIR" -mindepth 1 -maxdepth 1)
 	do
 		basename=$(basename $file)
-		if [ -a "$HOME/$DES_DIR/$basename" ]; then
+		if [ -e "$HOME/$DES_DIR/$basename" ]; then
 			link=$(readlink "$HOME/$DES_DIR/$basename")
 			if [ ! "$PWD/$file" == "$link" ]; then
 				echo "Must delete '$HOME/$DES_DIR/$basename' !"
@@ -25,6 +25,13 @@ function linkall() {
 		else
 			ln -vs "$PWD/$file" "$HOME/$DES_DIR"
 		fi
+	done
+
+	for file in $(find "$HOME/$DES_DIR" -mindepth 1 -maxdepth 1 -type l -xtype l)
+	do
+		basename=$(basename $file)
+		echo "[INFO] deleting broken link '$basename'"
+		rm "$HOME/$DES_DIR/$basename"
 	done
 
 }
