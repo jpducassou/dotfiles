@@ -68,6 +68,9 @@
 	# Log what changed
 	ll = log --oneline --name-only
 
+	amend = commit --amend -C HEAD
+	undo  = reset  --soft
+
 [push]
 	default = current
 
