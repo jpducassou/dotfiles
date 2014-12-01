@@ -1,5 +1,7 @@
 audacious
 keepass2
+#command line keepass
+kpcli
 filezilla
 vlc
 dia
