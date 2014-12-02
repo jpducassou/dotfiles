@@ -36,9 +36,25 @@ function linkall() {
 
 }
 
+function install_hooks() {
+
+	hook_names=(post-checkout post-merge)
+	script_path="../../$(basename $0)"
+
+	for hook in "${hook_names[@]}"; do
+		if [ ! -h ".git/hooks/$hook" ]; then
+			echo "[INFO] linking .git/hooks/$hook -> $0"
+			ln -vs "$script_path" ".git/hooks/$hook"
+		fi
+	done
+
+}
+
 linkall 'root' ''
 linkall 'bin'  'bin'
 
 git submodule init
 git submodule update
+
+install_hooks
 
