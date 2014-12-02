@@ -39,3 +39,6 @@ function linkall() {
 linkall 'root' ''
 linkall 'bin'  'bin'
 
+git submodule init
+git submodule update
+
