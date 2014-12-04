@@ -5,7 +5,7 @@ mvn-color() {
 	mvn $@ | grcat "$HOME/.grc/conf.maven"
 }
 
-if [[ "$TERM" == 'xterm' ]] && [ $(which grcat &> /dev/null) ]; then
+if [[ "$TERM" == 'xterm' ]] && [ $(command -v grcat) ]; then
 	# Override the mvn command with the colorized one.
 	alias mvn="mvn-color"
 fi
