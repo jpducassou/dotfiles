@@ -1,0 +1,8 @@
+make
+gcc
+gdb
+manpages-dev
+manpages-posix
+manpages-posix-dev
+ltrace
+strace

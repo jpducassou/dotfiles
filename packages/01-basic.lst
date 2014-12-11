@@ -6,7 +6,7 @@ unzip
 pv
 dos2unix
 tofrodos
-ack-grep
+silversearcher-ag
 less
 tree
 screen
@@ -16,7 +16,5 @@ sysstat
 curl
 wget
 lynx
-w3m
 hdparm
 smartmontools
-silversearcher-ag

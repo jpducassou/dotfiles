@@ -1,16 +1,6 @@
-make
-gcc
-manpages-dev
-manpages-posix
-manpages-posix-dev
 git-core
 git-gui
 git-doc
 git-man
-github-backup
 gitk
-ltrace
-strace
 poedit
-discount
-yui-compressor
