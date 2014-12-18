@@ -2,4 +2,6 @@
 
 * PS1 with git branch/status and perl version. Switchable
 * vim paste mode switch
+* gnu screen enable shift + arroy and mouse scrolling
+* gnu screen fix movement shortcuts
 
