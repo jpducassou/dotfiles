@@ -45,6 +45,7 @@ let g:airline_theme='lucius'
 
 " NoMatchParen
 " au vimEnter * NoMatchParen
+set paste
 
 " dont use Q for Ex mode
 map Q :q
@@ -92,21 +93,21 @@ vnoremap <space> I<space><esc>gv
 " ============================================================================
 " Searching
 " ============================================================================
-"Usually I don't care about case when searching
+" Usually I don't care about case when searching
 set ignorecase
 
-"Only ignore case when we type lower case when searching
+" Only ignore case when we type lower case when searching
 set smartcase
 
 " ============================================================================
 " Wildmenu
 " ============================================================================
-"Show menu with possible tab completions
+" Show menu with possible tab completions
 set wildmenu
 set wildmode=list:longest,full
 set wildignore=*.o,*~,*.pyc
 
-"Make the completion menus readable
+" Make the completion menus readable
 highlight Pmenu ctermfg=0 ctermbg=3
 highlight PmenuSel ctermfg=0 ctermbg=7
 
