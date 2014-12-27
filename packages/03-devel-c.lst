@@ -1,6 +1,9 @@
+build-essential
 make
 gcc
+gcc-doc
 gdb
+gdb-doc
 manpages-dev
 manpages-posix
 manpages-posix-dev
