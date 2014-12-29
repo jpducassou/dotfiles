@@ -18,6 +18,10 @@
 *.zip
 *.rar
 
+# patch/diff files
+*.diff
+*.patch
+
 # Proyect files
 *.komodoproject
 
