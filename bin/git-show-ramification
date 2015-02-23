@@ -6,5 +6,5 @@
 FORMAT='%C(bold red)%h%Creset %Cgreen[%ad]%Creset %C(bold yellow)%d%Creset %s %C(bold blue)[%an]%Creset'
 NOT=$(git for-each-ref --format='%(refname)' refs/heads/ | grep -v "refs/heads/$BRANCH")
 
-git log --graph --date=short --abbrev-commit --all --decorate --pretty="format:$FORMAT" "$BRANCH" --not $NOT
+git log --graph --date=short --abbrev-commit --all --decorate --pretty="format:$FORMAT" "$BRANCH" --not "$NOT" $@
 
