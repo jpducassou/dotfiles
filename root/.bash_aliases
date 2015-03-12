@@ -5,6 +5,7 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ~="cd ~" # `cd` is probably faster to type though
 alias l='ls -lhA'
+alias ll='ls -lhA --color | less -R'
 alias lg='ls -lAh | g'
 alias cls="clear"
 alias vi="vim"
