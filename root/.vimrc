@@ -199,6 +199,10 @@ colorscheme molokai
 " ============================================================================
 " Visual aid
 " ============================================================================
+" Make the 81st column stand out
+highlight ColorColumn ctermbg=magenta
+call matchadd('ColorColumn', '\%81v', 100)
+
 " Create a highlight group for ws:
 highlight ExtraWhitespace ctermbg=red guibg=red
 
