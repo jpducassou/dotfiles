@@ -68,6 +68,8 @@
 	amend = commit --amend -C HEAD
 	undo  = reset  --soft
 
+	meld  = difftool -y -d --tool=meld
+
 [push]
 	default = current
 
