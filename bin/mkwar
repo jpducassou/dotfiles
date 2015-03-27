@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# This script uses maven archetypes to create a jar project
+# Gets the full namespace as parameter like: com.mycompany.myproject
+
+namespace="$1"
+
+if [ -z "$namespace" ]; then
+	echo "namespace not supplied!";
+	exit 1;
+fi
+
+groupid=${namespace%.*}
+artifactid=${namespace##*.}
+
+echo $groupid
+echo $artifactid
+
+mvn archetype:generate -DgroupId="$groupid" -DartifactId="$artifactid" \
+  -DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=false
+
