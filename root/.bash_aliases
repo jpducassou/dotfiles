@@ -27,4 +27,4 @@ else
 	alias memcstat="watch 'memcstat --servers=127.0.0.1:11211'"
 fi
 alias c='pygmentize -O style=monokai -f console256 -g'
-
+alias agl="ag --pager 'less -R'"
