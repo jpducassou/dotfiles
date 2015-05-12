@@ -172,7 +172,7 @@ let perl_fold=1
 
 " check perl code with :make
 autocmd FileType perl set makeprg=perl\ -wc\ %
-autocmd FileType perl set errorformat+=%m\ at\ %f\ line\ %l\.
+autocmd FileType perl set equalprg=perltidy
 autocmd FileType perl set errorformat+=%m\ at\ %f\ line\ %l
 autocmd FileType perl set autowrite
 
