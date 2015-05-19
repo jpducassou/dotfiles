@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# A mp4 h264
+# ls *.mov | sed 's/\(.*\).mov/avconv -i \1.mov -vcodec libx264 \1.mp4/' | sh
+
+# A mpg
+# ls *.mov | sed 's/\(.*\).mov/avconv -i \1.mov -target pal-vcd \1.mpg/' | sh
+
+# A divx
+ls *.mov | sed 's/\(.*\).mov/avconv -i \1.mov -c:v libxvid \1.mpg/' | sh
+
