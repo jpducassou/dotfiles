@@ -187,6 +187,12 @@ autocmd FileType php set makeprg=php\ -l\ %
 autocmd FileType php set autowrite
 
 " ============================================================================
+" jflex and cup
+" ============================================================================
+autocmd BufNewFile,BufRead *.jflex  setf jflex
+autocmd BufNewFile,BufRead *.cup    setf cup
+
+" ============================================================================
 " Load plugin bunbles with pathogen
 " ============================================================================
 execute pathogen#infect()
