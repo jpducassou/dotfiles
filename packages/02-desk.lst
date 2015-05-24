@@ -1,6 +1,5 @@
 audacious
 keepass2
-#command line keepass
 kpcli
 filezilla
 vlc
@@ -9,3 +8,4 @@ inkscape
 gimp
 mupdf
 xpdf
+libreoffice-pdfimport
