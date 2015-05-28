@@ -7,10 +7,10 @@ if [ -f $1 ] ; then
 		*.tar.bz2)    tar -xvjf    "$1"         ;;
 		*.tar.xz)     tar -xvJf    "$1"         ;;
 		*.bz2)        bunzip2      "$1"         ;;
-		*.rar)        unrar   e    "$1"         ;;
+		*.rar)        unrar  x -o- "$1"         ;;
 		*.gz)         gunzip -vk   "$1"         ;;
 		*.zip)        unzip        "$1"         ;;
-		*.7z)         7z      x    "$1"         ;;
+		*.7z)         7z     x     "$1"         ;;
 		*) echo "'$1' unknow extension to extract!" ;;
 	esac
 else
