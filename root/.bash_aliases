@@ -28,4 +28,3 @@ else
 fi
 alias c='pygmentize -O style=monokai -f console256 -g'
 alias agl="ag --pager 'less -R'"
-alias screen="screen -Rd"
