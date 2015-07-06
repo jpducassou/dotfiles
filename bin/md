@@ -1,0 +1,6 @@
+#!/bin/bash
+
+INPUT="$1"
+OUTPUT="${INPUT%.*}.html"
+pandoc --standalone --from markdown_github --to html --output "$OUTPUT" "$INPUT"
+
