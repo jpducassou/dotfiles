@@ -3,7 +3,7 @@
 DIRECTORY="$1"
 OUTPUT=${2:-"./installer.sh"}
 
-if [ -z $DIRECTORY ]; then
+if [ -z "$DIRECTORY" ]; then
 	echo "DIRECTORY not set. Exiting."
 	exit 1
 fi
