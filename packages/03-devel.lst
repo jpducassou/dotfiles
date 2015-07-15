@@ -2,5 +2,7 @@ git-core
 git-gui
 git-doc
 git-man
-gitk
 poedit
+discount
+pandoc
+texlive
