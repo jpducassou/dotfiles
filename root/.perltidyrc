@@ -1,21 +1,27 @@
---backup-and-modify-in-place
---backup-file-extension='bak'
---maximum-line-length=140
+--maximum-line-length=160
 --indent-columns=4               # indentation in code blocks
 --entab-leading-whitespace=4     # entab result
 --tabs                           # one leading tab character to be inserted for each level of indentation
 --continuation-indentation=4     # Continuation Indentation
 --nospace-terminal-semicolon
---add-whitespace
+--add-whitespace                 # -aws
 --opening-brace-always-on-right  # Opening Braces Right - K&R style
 --cuddled-else                   # Cuddled elses - } else {
 # FIXME: perltidy increases indent level when stacking but should not
 --stack-opening-tokens
 --stack-closing-tokens
 --no-opening-sub-brace-on-new-line
---paren-tightness=1
+--paren-tightness=2
 --square-bracket-tightness=2
 # FIXME: perltidy removes spaces at '->' sides
 --want-left-space='->'
 --want-right-space='->'
+--maximum-consecutive-blank-lines=2
+--want-break-before="% + - * / x != == >= <= =~ < > | & **= += *= &= <<= &&= -= /= |= >>= ||= .= %= ^= x=" # -wbb
+-bbs # --blank-before-sub
+
+#----------  Options concerning Perltidy's input and ouput files  -----------
+--backup-and-modify-in-place
+--backup-file-extension='bak'
+-se                             # Write errors to STDERR
 
