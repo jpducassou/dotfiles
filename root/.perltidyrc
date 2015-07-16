@@ -1,27 +1,44 @@
---maximum-line-length=160
---indent-columns=4               # indentation in code blocks
---entab-leading-whitespace=4     # entab result
---tabs                           # one leading tab character to be inserted for each level of indentation
---continuation-indentation=4     # Continuation Indentation
---nospace-terminal-semicolon
---add-whitespace                 # -aws
---opening-brace-always-on-right  # Opening Braces Right - K&R style
---cuddled-else                   # Cuddled elses - } else {
-# FIXME: perltidy increases indent level when stacking but should not
---stack-opening-tokens
---stack-closing-tokens
---no-opening-sub-brace-on-new-line
---paren-tightness=2
---square-bracket-tightness=2
-# FIXME: perltidy removes spaces at '->' sides
---want-left-space='->'
---want-right-space='->'
---maximum-consecutive-blank-lines=2
---want-break-before="% + - * / x != == >= <= =~ < > | & **= += *= &= <<= &&= -= /= |= >>= ||= .= %= ^= x=" # -wbb
--bbs # --blank-before-sub
-
-#----------  Options concerning Perltidy's input and ouput files  -----------
+#----------  I/O control -----------
+-se                             # Write errors to STDERR
 --backup-and-modify-in-place
 --backup-file-extension='bak'
--se                             # Write errors to STDERR
+
+#---------- Basic Options -----------
+--indent-columns=4               # indentation in code blocks
+--maximum-line-length=160
+--entab-leading-whitespace=4     # entab result
+--tabs                           # one leading tab character to be inserted for each level of indentation
+--default-tabsize=4
+
+#---------- Code Indentation Control -----------
+--continuation-indentation=4     # Continuation Indentation
+
+#---------- Whitespace Control -----------
+--paren-tightness=2             # -pt=n
+--square-bracket-tightness=2    # -sbt=n
+--nospace-terminal-semicolon    # -nsts   (default)
+--nospace-for-semicolon         # -nsfs
+--add-semicolons                # -asc
+--add-whitespace                # -aws
+--nodelete-old-whitespace       # -ndws
+--want-left-space='->'          # perltidy removes spaces at '->' sides
+--want-right-space='->'
+
+#---------- Line Break Control -----------
+--cuddled-else                   # Cuddled elses - } else {
+--no-opening-sub-brace-on-new-line
+--opening-brace-always-on-right  # Opening Braces Right - K&R style
+--opening-token-right            # -otr
+--stack-opening-tokens           # -sot
+--stack-closing-tokens           # -sct
+--want-break-before="% + - * / x != == >= <= =~ < > | & **= += *= &= <<= &&= -= /= |= >>= ||= .= %= ^= x=" # -wbb
+
+#---------- Controlling List Formatting -----------
+
+#---------- Retaining or Ignoring Existing Line Breaks -----------
+
+#---------- Blank Line Control -----------
+--blank-lines-before-subs=1      # -blbs=n
+--maximum-consecutive-blank-lines=2
+--keep-old-blank-lines=1         # -kbl=n
 
