@@ -34,6 +34,9 @@ set nobackup
 " allways show status line
 set ls=2
 
+" Allow pattern matching with special characters (ie: newline)
+set magic
+
 " airline
 let g:airline_powerline_fonts = 1
 let g:airline_left_sep=''
