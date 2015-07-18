@@ -19,6 +19,9 @@ endif
 set tabstop=2
 set shiftwidth=2
 
+" turn on 4-space
+map <F8> :set tabstop=4 shiftwidth=4 expandtab<CR>
+
 " Show title in console title bar
 set title
 
