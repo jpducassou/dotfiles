@@ -137,6 +137,9 @@ map <F5> :make<CR>
 " Ctrl + space turns on omni completion
 inoremap <C-@> <C-x><C-o>
 
+" Template toolkit 2 config
+let b:tt2_syn_tags = '\[% %] <!-- -->'
+
 " ============================================================================
 " Comments
 " ============================================================================
