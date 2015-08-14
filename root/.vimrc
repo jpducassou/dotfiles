@@ -137,9 +137,6 @@ map <F5> :make<CR>
 " Ctrl + space turns on omni completion
 inoremap <C-@> <C-x><C-o>
 
-" Template toolkit 2 config
-let b:tt2_syn_tags = '\[% %] <!-- -->'
-
 " ============================================================================
 " Comments
 " ============================================================================
@@ -188,6 +185,10 @@ autocmd FileType perl set autowrite
 " Tidy select lines (or entire file) with _t
 nnoremap <silent> _t :%!perltidy -q<Enter>
 vnoremap <silent> _T :!perltidy  -q<Enter>
+
+" Template toolkit 2 config
+" au BufNewFile,BufRead *.tmpl.html setf tt2html
+let b:tt2_syn_tags = '\[% %] <!-- -->'
 
 " ============================================================================
 " PHP
