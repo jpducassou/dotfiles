@@ -19,3 +19,6 @@
 [submodule "root/.vim/bundle/vim-perl"]
 	path = root/.vim/bundle/vim-perl
 	url = https://github.com/vim-perl/vim-perl
+[submodule "root/.vim/bundle/eyapp"]
+	path = root/.vim/bundle/eyapp
+	url = https://github.com/vim-scripts/eyapp.git
