@@ -12,12 +12,8 @@ tree
 screen
 htop
 nmon
-sysstat
 curl
 wget
-lynx
 aria2
-hdparm
-smartmontools
 dnsutils
 nethogs
