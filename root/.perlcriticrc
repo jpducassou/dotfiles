@@ -11,3 +11,6 @@ severity = 5
 [TestingAndDebugging::RequireUseWarnings]
 severity = 5
 
+[Bangs::ProhibitCommentedOutCode]
+[Bangs::ProhibitFlagComments]
+
