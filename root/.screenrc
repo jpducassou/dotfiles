@@ -5,6 +5,9 @@ altscreen on
 defutf8 on
 term xterm
 
+# detach on hangup
+autodetach on
+
 # bindings
 bind 'q' quit
 bind ',' prev
