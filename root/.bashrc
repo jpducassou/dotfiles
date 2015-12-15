@@ -51,14 +51,15 @@ if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
 	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
 	# a case would tend to support setf rather than setaf.)
 	C_RESET='\[\e[0m\]'
-	C_PATH='\[\e[1;35m\]'
-	C_HOST='\[\e[1;34m\]'
+
+	: ${C_HOST:='\[\e[1;34m\]'}
+	: ${C_PATH:='\[\e[1;35m\]'}
 
 	if test "$UID" -eq 0; then
 		C_ROOT='\[\e[1;31m\]'
 		PS1="$C_ROOT[\u at $C_HOST\h $C_PATH\w$C_ROOT]\n#$C_RESET "
 	else
-		C_LINE='\[\e[1;33m\]'
+		: ${C_LINE:='\[\e[1;33m\]'}
 		PS1="$C_LINE[\u at $C_HOST\h $C_PATH\w$C_LINE]\n\$$C_RESET "
 	fi
 fi
