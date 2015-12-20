@@ -32,5 +32,6 @@ alias pp_json="python -mjson.tool"
 alias mysql="mysql --pager=uberpager"
 
 # Candidates:
-# cpanm --installdeps --skip-satisfied .
+# alias cx="cpanm --installdeps --skip-satisfied ."
+# alias cx="cpanm --installdeps --skip-satisfied --with-develop ."
 
