@@ -10,7 +10,7 @@ alias lg='ls -lAh | g'
 alias cls="clear"
 alias vi="vim"
 alias df="df -h"
-alias pse="ps -ef"
+alias psx="ps -ef"
 alias dux="du -chx --max-depth=1"
 alias rank="du -cmx --max-depth=1 | sort -nr | head -20"
 alias home='cd ~'
