@@ -30,8 +30,8 @@ alias c='pygmentize -O style=monokai -f console256 -g'
 alias agl="ag --pager 'less -R'"
 alias pp_json="python -mjson.tool"
 alias mysql="mysql --pager=uberpager"
+alias mirror="wget --mirror --no-parent --page-requisites --adjust-extension --convert-links"
 
 # Candidates:
 # alias cx="cpanm --installdeps --skip-satisfied ."
 # alias cx="cpanm --installdeps --skip-satisfied --with-develop ."
-
