@@ -1,5 +1,7 @@
 --recurse=yes
 --tag-relative=yes
+--exclude=.svn
 --exclude=.git
 --exclude=*.min.js
+--exclude=*.sql
 -f .tags
