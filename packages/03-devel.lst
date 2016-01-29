@@ -3,6 +3,7 @@ git-gui
 git-doc
 git-man
 poedit
+colordiff
 discount
 pandoc
 texlive
