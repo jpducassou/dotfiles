@@ -46,11 +46,13 @@ let g:airline_left_sep  = ''
 let g:airline_right_sep = ''
 
 " To override statusline theme
-" let g:airline_theme='molokai'
 let g:airline_theme = 'lucius'
 
 " NoMatchParen
-" au vimEnter * NoMatchParen
+au vimEnter * NoMatchParen
+
+" Vim paste mode to avoid destruction of pasted text
+" set pastetoggle=<F2>
 set paste
 
 " dont use Q for Ex mode
