@@ -1,0 +1,6 @@
+#!/bin/sh
+
+if  [ $(command -v colordiff) ]; then
+	colordiff -u -L "${3}" -L "${5}" "${6}" "${7}" | less -FRSX
+fi
+
