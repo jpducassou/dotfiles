@@ -24,6 +24,9 @@
 
 # Proyect files
 *.komodoproject
+*.iml
+.idea
+nb-configuration.xml
 
 # Ctags file
 .tags
