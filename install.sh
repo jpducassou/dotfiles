@@ -14,6 +14,16 @@ while getopts "v" options; do
 done
 
 # ============================================================================
+# Color setup
+# ============================================================================
+if test -t 1 && test -n $(tput colors); then
+	normal="$(tput sgr0)"
+	red="$(tput setaf 1)"
+	green="$(tput setaf 2)"
+	yellow="$(tput setaf 3)"
+fi
+
+# ============================================================================
 # This function links the files of a given directory into another
 # ============================================================================
 function linkall() {
@@ -31,16 +41,16 @@ function linkall() {
 		if [ -e "${dst_path}" ]; then
 			local link=$(readlink "${dst_path}")
 			if [ ! "${PWD}/${src_path}" == "${link}" ]; then
-				echo "[WARN] Must delete '${dst_path}'."
+				echo "${yellow}[WARN]${normal} Must delete '${dst_path}'."
 			else
-				[ "${verbose}" -eq "1" ] && echo "[OK] ${dst_dir}/${file_name}."
+				[ "${verbose}" -eq "1" ] && echo "${green}[OK]${normal} ${dst_dir}/${file_name}."
 			fi
 		else
 			ln -s "${PWD}/${src_path}" "${dst_path}"
 			if [ $? -ne 0 ]; then
 				echo "[ERROR] linking '${PWD}/${src_path}' -> '${dst_path}'"
 			else
-				echo "[OK] linking '${PWD}/${src_path}' -> '${dst_path}'"
+				echo "${green}[OK]${normal} linking '${PWD}/${src_path}' -> '${dst_path}'"
 			fi
 		fi
 	done
@@ -48,7 +58,7 @@ function linkall() {
 	for src_path in $(find "${HOME}/${dst_dir}" -mindepth 1 -maxdepth 1 -type l -xtype l)
 	do
 		local file_name=$(basename "${src_path}")
-		echo "[INFO] deleting broken link '${file_name}'"
+		echo "${green}[INFO]${normal} deleting broken link '${file_name}'"
 		rm "${HOME}/${dst_dir}/${file_name}"
 	done
 
@@ -66,8 +76,8 @@ function install_hooks() {
 	for hook_name in "${hook_names[@]}"; do
 		local hook_path=".git/hooks/${hook_name}"
 		if [ ! -h "${hook_path}" ]; then
-			echo "[INFO] linking ${hook_path} -> ${0}"
-			ln -vs "${script_path}" "${hook_path}"
+			echo "${green}[INFO]${normal} linking '${hook_path}' -> '${0}'"
+			ln -v "${script_path}" "${hook_path}"
 		fi
 	done
 
