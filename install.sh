@@ -46,7 +46,7 @@ function linkall() {
 			if [ ! "${PWD}/${src_path}" == "${link}" ]; then
 				echo "${warn} Must delete '${dst_path}'."
 			else
-				[ "${verbose}" -eq "1" ] && echo "${info} ${dst_dir}/${file_name}."
+				[ "${verbose}" -eq "1" ] && echo "${info} '${dst_dir}/${file_name}' OK."
 			fi
 		else
 			ln -s "${PWD}/${src_path}" "${dst_path}"
@@ -79,8 +79,12 @@ function install_hooks() {
 	for hook_name in "${hook_names[@]}"; do
 		local hook_path=".git/hooks/${hook_name}"
 		if [ ! -h "${hook_path}" ]; then
-			echo "${info} linking '${hook_path}' -> '${0}'"
 			ln -s "${script_path}" "${hook_path}"
+			if [ $? -ne 0 ]; then
+				echo "${error} linking '${hook_path}' -> '${0}'"
+			else
+				echo "${info} linking '${hook_path}' -> '${0}'"
+			fi
 		fi
 	done
 
