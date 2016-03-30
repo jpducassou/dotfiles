@@ -20,12 +20,12 @@ function linkall() {
 		if [ -e "${dst_path}" ]; then
 			local link=$(readlink "${dst_path}")
 			if [ ! "${PWD}/${file}" == "${link}" ]; then
-				echo "Must delete '${dst_path}' !"
+				echo "[WARN] Must delete '${dst_path}'."
 			else
-				echo "[OK] ${dst_dir}/${file_name}"
+				echo "[OK] ${dst_dir}/${file_name}."
 			fi
 		else
-			ln -vs "${PWD}/${file}" "${HOME}/${dst_dir}"
+			ln -vs "${PWD}/${file}" "${dst_path}"
 		fi
 	done
 
