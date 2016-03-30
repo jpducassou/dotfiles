@@ -8,31 +8,31 @@ PWD=$(pwd)
 function linkall() {
 
 	local src_dir="${1}"
-	local des_dir="${2}"
+	local dst_dir="${2}"
 	local file
 
-	mkdir -p "${HOME}/${des_dir}"
+	mkdir -p "${HOME}/${dst_dir}"
 
 	for file in $(find "${src_dir}" -mindepth 1 -maxdepth 1)
 	do
-		local basename=$(basename "${file}")
-		if [ -e "${HOME}/${des_dir}/${basename}" ]; then
-			local link=$(readlink "${HOME}/${des_dir}/$basename")
+		local file_name=$(basename "${file}")
+		if [ -e "${HOME}/${dst_dir}/${file_name}" ]; then
+			local link=$(readlink "${HOME}/${dst_dir}/$file_name")
 			if [ ! "${PWD}/${file}" == "${link}" ]; then
-				echo "Must delete '${HOME}/${des_dir}/${basename}' !"
+				echo "Must delete '${HOME}/${dst_dir}/${file_name}' !"
 			else
-				echo "[OK] ${des_dir}/${basename}"
+				echo "[OK] ${dst_dir}/${file_name}"
 			fi
 		else
-			ln -vs "${PWD}/${file}" "${HOME}/${des_dir}"
+			ln -vs "${PWD}/${file}" "${HOME}/${dst_dir}"
 		fi
 	done
 
-	for file in $(find "${HOME}/${des_dir}" -mindepth 1 -maxdepth 1 -type l -xtype l)
+	for file in $(find "${HOME}/${dst_dir}" -mindepth 1 -maxdepth 1 -type l -xtype l)
 	do
-		local basename=$(basename "${file}")
-		echo "[INFO] deleting broken link '${basename}'"
-		rm "${HOME}/${des_dir}/${basename}"
+		local file_name=$(basename "${file}")
+		echo "[INFO] deleting broken link '${file_name}'"
+		rm "${HOME}/${dst_dir}/${file_name}"
 	done
 
 }
