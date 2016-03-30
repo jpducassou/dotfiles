@@ -13,25 +13,25 @@ function linkall() {
 
 	mkdir -p "${HOME}/${dst_dir}"
 
-	for file in $(find "${src_dir}" -mindepth 1 -maxdepth 1)
+	for src_path in $(find "${src_dir}" -mindepth 1 -maxdepth 1)
 	do
-		local file_name=$(basename "${file}")
+		local file_name=$(basename "${src_path}")
 		local dst_path="${HOME}/${dst_dir}/${file_name}"
 		if [ -e "${dst_path}" ]; then
 			local link=$(readlink "${dst_path}")
-			if [ ! "${PWD}/${file}" == "${link}" ]; then
+			if [ ! "${PWD}/${src_path}" == "${link}" ]; then
 				echo "[WARN] Must delete '${dst_path}'."
 			else
 				echo "[OK] ${dst_dir}/${file_name}."
 			fi
 		else
-			ln -vs "${PWD}/${file}" "${dst_path}"
+			ln -vs "${PWD}/${src_path}" "${dst_path}"
 		fi
 	done
 
-	for file in $(find "${HOME}/${dst_dir}" -mindepth 1 -maxdepth 1 -type l -xtype l)
+	for src_path in $(find "${HOME}/${dst_dir}" -mindepth 1 -maxdepth 1 -type l -xtype l)
 	do
-		local file_name=$(basename "${file}")
+		local file_name=$(basename "${src_path}")
 		echo "[INFO] deleting broken link '${file_name}'"
 		rm "${HOME}/${dst_dir}/${file_name}"
 	done
