@@ -25,7 +25,12 @@ function linkall() {
 				echo "[OK] ${dst_dir}/${file_name}."
 			fi
 		else
-			ln -vs "${PWD}/${src_path}" "${dst_path}"
+			ln -s "${PWD}/${src_path}" "${dst_path}"
+			if [ $? -ne 0 ]; then
+				echo "[ERROR] linking '${PWD}/${src_path}' -> '${dst_path}'"
+			else
+				echo "[OK] linking '${PWD}/${src_path}' -> '${dst_path}'"
+			fi
 		fi
 	done
 
