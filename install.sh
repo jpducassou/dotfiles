@@ -4,7 +4,18 @@
 # Dotfiles install script
 # ============================================================================
 PWD=$(pwd)
+verbose=0
+while getopts "v" options; do
+	case "${options}" in
+		v)
+			verbose=1
+		;;
+	esac
+done
 
+# ============================================================================
+# This function links the files of a given directory into another
+# ============================================================================
 function linkall() {
 
 	local src_dir="${1}"
@@ -22,7 +33,7 @@ function linkall() {
 			if [ ! "${PWD}/${src_path}" == "${link}" ]; then
 				echo "[WARN] Must delete '${dst_path}'."
 			else
-				echo "[OK] ${dst_dir}/${file_name}."
+				[ "${verbose}" -eq "1" ] && echo "[OK] ${dst_dir}/${file_name}."
 			fi
 		else
 			ln -s "${PWD}/${src_path}" "${dst_path}"
@@ -43,6 +54,9 @@ function linkall() {
 
 }
 
+# ============================================================================
+# This function install this script as several git hooks
+# ============================================================================
 function install_hooks() {
 
 	local hook_names=(post-checkout post-merge)
