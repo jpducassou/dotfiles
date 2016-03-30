@@ -16,10 +16,11 @@ function linkall() {
 	for file in $(find "${src_dir}" -mindepth 1 -maxdepth 1)
 	do
 		local file_name=$(basename "${file}")
-		if [ -e "${HOME}/${dst_dir}/${file_name}" ]; then
-			local link=$(readlink "${HOME}/${dst_dir}/$file_name")
+		local dst_path="${HOME}/${dst_dir}/${file_name}"
+		if [ -e "${dst_path}" ]; then
+			local link=$(readlink "${dst_path}")
 			if [ ! "${PWD}/${file}" == "${link}" ]; then
-				echo "Must delete '${HOME}/${dst_dir}/${file_name}' !"
+				echo "Must delete '${$dst_path}' !"
 			else
 				echo "[OK] ${dst_dir}/${file_name}"
 			fi
