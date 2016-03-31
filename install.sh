@@ -33,7 +33,7 @@ function linkall() {
 
 	local src_dir="${1}"
 	local dst_dir="${2}"
-	local file
+	local src_path
 
 	mkdir -p "${HOME}/${dst_dir}"
 
