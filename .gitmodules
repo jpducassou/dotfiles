@@ -22,3 +22,6 @@
 [submodule "root/.vim/bundle/eyapp"]
 	path = root/.vim/bundle/eyapp
 	url = https://github.com/vim-scripts/eyapp.git
+[submodule "root/.vim/bundle/planuml"]
+	path = root/.vim/bundle/planuml
+	url = https://github.com/aklt/plantuml-syntax
