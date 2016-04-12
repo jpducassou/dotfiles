@@ -17,8 +17,6 @@ alias home='cd ~'
 alias g="grep --color=auto"
 alias pt="perltidy -i=2 -et=2 -ce -wls=\"= + - / * > <\" -wrs=\"= + - / * > <\" "
 alias valgrind="valgrind -v --leak-check=full --track-origins=yes --log-file=/tmp/valgrind.out"
-alias pb=perlbrew
-alias vg=vagrant
 alias pd="perldoc -MPod::Text::Color::Delight"
 alias httpdump="curl --head --location"
 if [ $(which memstat &> /dev/null) ]; then
@@ -32,6 +30,7 @@ alias pp_json="python -mjson.tool"
 alias mysql="mysql --pager=uberpager"
 alias mirror="wget --mirror --no-parent --page-requisites --adjust-extension --convert-links"
 alias mvndoc="mvn dependency:resolve -Dclassifier=javadoc"
+alias perltags="ctags --exclude=blib --extra=q --languages=Perl --langmap=Perl:+.t"
 
 # Candidates:
 # alias cx="cpanm --installdeps --skip-satisfied ."
