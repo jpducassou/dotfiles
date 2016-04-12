@@ -2,6 +2,7 @@
 
 if [ -f "${1}" ] ; then
 	case "${1}" in
+		*.a)          ar  -xv      "${1}"         ;;
 		*.tgz)        tar -xvzf    "${1}"         ;;
 		*.tar.gz)     tar -xvzf    "${1}"         ;;
 		*.tar.bz2)    tar -xvjf    "${1}"         ;;
