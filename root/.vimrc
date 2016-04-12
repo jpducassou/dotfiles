@@ -73,7 +73,8 @@ function! ToggleParen()
         DoMatchParen
     endif
 endfunction
-map <F3> :call ToggleParen()<CR>
+" map <F3> :call ToggleParen()<CR>
+noremap <F3> :TagbarToggle <CR>
 
 " Toggle display tabs & spaces on/off
 map <F4> :set list!<CR>
