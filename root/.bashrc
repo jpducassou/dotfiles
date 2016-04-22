@@ -12,7 +12,7 @@ fi
 # ============================================================================
 # If not running interactively, don't do anything
 # ============================================================================
-[ -z "$PS1" ] && return
+[ -z "${PS1}" ] && return
 
 # ============================================================================
 # Load environment
@@ -55,7 +55,7 @@ if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
 	: ${C_HOST:='\[\e[1;34m\]'}
 	: ${C_PATH:='\[\e[1;35m\]'}
 
-	if test "$UID" -eq 0; then
+	if test "${UID}" -eq 0; then
 		C_ROOT='\[\e[1;31m\]'
 		PS1="$C_ROOT[\u at $C_HOST\h $C_PATH\w$C_ROOT]\n#$C_RESET "
 	else
@@ -65,7 +65,7 @@ if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
 fi
 
 # If this is an xterm set the title
-if [[ "$TERM" == 'xterm' ]]; then
+if [[ "${TERM}" == 'xterm' ]]; then
     PS1="\[\e]0;\u@\h: \w\a\]$PS1"
 fi
 
@@ -107,23 +107,23 @@ fi
 # Vagrant
 # ============================================================================
 VAGRANT_PATH=/opt/vagrant/bin
-if [ -d $VAGRANT_PATH ]; then
-	PATH=$PATH:$VAGRANT_PATH
+if [ -d "${VAGRANT_PATH}" ]; then
+	PATH="${PATH}:${VAGRANT_PATH}"
 fi
 
 # ============================================================================
 # Perlbrew
 # ============================================================================
-if [ -d "$HOME/perl5/perlbrew" ]; then
-	export PERLBREW_ROOT="$HOME/perl5/perlbrew"
-	if [ -f $PERLBREW_ROOT/etc/bashrc ]; then
-		. $PERLBREW_ROOT/etc/bashrc
+if [ -d "${HOME}/perl5/perlbrew" ]; then
+	export PERLBREW_ROOT="${HOME}/perl5/perlbrew"
+	if [ -f "${PERLBREW_ROOT}/etc/bashrc" ]; then
+		. "${PERLBREW_ROOT}/etc/bashrc"
 	fi
 else
 	if [ -d "/opt/perlbrew" ]; then
 		export PERLBREW_ROOT="/opt/perlbrew"
-		if [ -f $PERLBREW_ROOT/etc/bashrc ]; then
-			. $PERLBREW_ROOT/etc/bashrc
+		if [ -f "${PERLBREW_ROOT}/etc/bashrc" ]; then
+			. "${PERLBREW_ROOT}/etc/bashrc"
 		fi
 	fi
 fi
@@ -144,7 +144,7 @@ lazy_source nvm "${NVM_DIR}/nvm.sh"
 # ============================================================================
 # MySQL
 # ============================================================================
-export MYSQL_PS1="\u@$HOST [\d] > "
+export MYSQL_PS1="[\u@\h] \d> "
 
 # ============================================================================
 # Maven
