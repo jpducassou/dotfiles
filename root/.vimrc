@@ -107,6 +107,9 @@ set ignorecase
 " Only ignore case when we type lower case when searching
 set smartcase
 
+" shortcut for :%s///g
+nmap S :%s//g<LEFT><LEFT>
+
 " ============================================================================
 " Wildmenu
 " ============================================================================
