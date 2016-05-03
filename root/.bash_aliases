@@ -1,3 +1,5 @@
+#!/bin/bash
+
 alias cd..="cd .."
 alias ..="cd .."
 alias ...="cd ../.."
@@ -36,6 +38,10 @@ alias perltags="ctags --exclude=blib --extra=q --languages=Perl --langmap=Perl:+
 alias 7up="svn update --ignore-externals"
 alias 7log="svn log --diff --diff-cmd=svn-diff -l5"
 alias 7lg="svn log -l100 | svn-short_log | less"
+# alias 7diff="svn diff | colordiff | less -R"
+7diff () {
+	svn diff "${@}" | colordiff | less -R
+}
 
 # Candidates:
 # alias cx="cpanm --installdeps --skip-satisfied ."
