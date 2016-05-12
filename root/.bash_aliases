@@ -34,7 +34,9 @@ alias mirror="wget --mirror --no-parent --page-requisites --adjust-extension --c
 alias mvndoc="mvn dependency:resolve -Dclassifier=javadoc"
 alias perltags="ctags --exclude=blib --extra=q --languages=Perl --langmap=Perl:+.t"
 
+# ============================================================================
 # subversion
+# ============================================================================
 alias 7up="svn update --ignore-externals"
 alias 7log="svn log --diff --diff-cmd=svn-diff -l5"
 alias 7lg="svn log -l100 | svn-short_log | less"
@@ -43,6 +45,21 @@ alias 7lg="svn log -l100 | svn-short_log | less"
 	svn diff "${@}" | colordiff | less -R
 }
 
+# ============================================================================
+# Docker
+# ============================================================================
+docker-remove-untagged () {
+	docker images --no-trunc | grep '<none>' | awk '{ print $3 }' | xargs -r docker rmi
+}
+
+docker-remove-dead () {
+	docker ps --filter status=dead --filter status=exited -aq | xargs docker rm -v
+}
+
+alias docker-clean="docker-remove-untagged; docker-remove-dead"
+
+# ============================================================================
 # Candidates:
+# ============================================================================
 # alias cx="cpanm --installdeps --skip-satisfied ."
 # alias cx="cpanm --installdeps --skip-satisfied --with-develop ."
