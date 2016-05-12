@@ -131,7 +131,7 @@ fi
 # ============================================================================
 # CPANM
 # ============================================================================
-export PERL_CPANM_OPT="--cascade-search --save-dists=${HOME}/.cpanm/cache --mirror=file://${HOME}/.cpanm/cache"
+export PERL_CPANM_OPT="--cascade-search --save-dists=${HOME}/.cpanm/cache --mirror=file://${HOME}/.cpanm/cache --mirror=http://www.cpan.org"
 
 # ============================================================================
 # Lazy loader
