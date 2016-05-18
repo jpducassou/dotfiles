@@ -4,6 +4,7 @@ vbell off
 altscreen on
 defutf8 on
 term xterm
+defscrollback 2048
 
 # detach on hangup
 autodetach on
