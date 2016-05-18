@@ -7,8 +7,7 @@ Installation
 See: [Vim::Debug::Manual - search.cpan.org](http://search.cpan.org/perldoc?Vim%3A%3ADebug%3A%3AManual)
 
 ```
-cpan
-install Vim::Debug
+cpanm install Vim::Debug
 vimdebug-install -d ~/.vim
 ```
 

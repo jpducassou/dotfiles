@@ -19,9 +19,6 @@ endif
 set tabstop=2
 set shiftwidth=2
 
-" turn on 4-space
-map <F8> :set tabstop=4 shiftwidth=4 expandtab<CR>
-
 " Show title in console title bar
 set title
 
@@ -58,6 +55,18 @@ set paste
 " dont use Q for Ex mode
 map Q :q
 
+" ============================================================================
+" Insert a new-line after the current line by pressing Enter.
+" Ctrl-o for inserting a line before the current line.
+" Ctrl-J split line on next character
+" ============================================================================
+nmap <CR> o<Esc>
+nmap <C-o> O<Esc>
+nnoremap <C-J> a<CR><Esc>k
+
+" ============================================================================
+" F2 - F5
+" ============================================================================
 " Toggle line numbers on/off
 map <F2> :set number!<CR>
 
@@ -77,6 +86,12 @@ map <F3> :call ToggleParen()<CR>
 
 " Toggle display tabs & spaces on/off
 map <F4> :set list!<CR>
+
+" ============================================================================
+" Toggle indentation style
+" ============================================================================
+" turn on 4-space
+map <F8> :set tabstop=4 shiftwidth=4 expandtab<CR>
 
 " ============================================================================
 " Indentation
