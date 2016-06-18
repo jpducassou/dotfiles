@@ -28,3 +28,6 @@
 [submodule "root/.vim/bundle/vim-surround"]
 	path = root/.vim/bundle/vim-surround
 	url = https://github.com/tpope/vim-surround
+[submodule "root/.vim/bundle/tcomment"]
+	path = root/.vim/bundle/tcomment
+	url = https://github.com/tomtom/tcomment_vim
