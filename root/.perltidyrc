@@ -8,7 +8,6 @@
 --maximum-line-length=160
 --entab-leading-whitespace=4     # entab result
 --tabs                           # one leading tab character to be inserted for each level of indentation
---default-tabsize=4
 
 #---------- Code Indentation Control -----------
 --continuation-indentation=4     # Continuation Indentation
