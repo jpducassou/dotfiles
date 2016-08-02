@@ -34,3 +34,6 @@
 [submodule "root/.vim/bundle/presenting"]
 	path = root/.vim/bundle/presenting
 	url = https://github.com/sotte/presenting.vim.git
+[submodule "root/.vim/bundle/Dockerfile"]
+	path = root/.vim/bundle/Dockerfile
+	url = https://github.com/ekalinin/Dockerfile.vim
