@@ -145,6 +145,9 @@ autocmd BufNewFile,BufRead *.conf if empty(&syntax) | set filetype=apache | endi
 " ============================================================================
 " Programming
 " ============================================================================
+" Allow navigation in snake_case identifiers
+set iskeyword-=_
+
 " show line numbers
 autocmd FileType c,cpp,perl,php,java set number
 
