@@ -37,12 +37,12 @@ alias perltags="ctags --exclude=blib --extra=q --languages=Perl --langmap=Perl:+
 # ============================================================================
 # subversion
 # ============================================================================
-alias 7up="svn update --ignore-externals"
-alias 7log="svn log --diff -r HEAD:{`date --iso-8601 --date \"2 days ago\"`} | colordiff | less -R"
-alias 7lg="svn log -q -v   -r HEAD:{`date --iso-8601 --date \"2 days ago\"`} | less"
-alias 7show="svn diff -c"
-alias 7base="svn log -r0:HEAD --stop-on-copy --limit 1 | grep -Po \"^r\d+\""
-alias 7branch='svn diff -`svn log -r0:HEAD --stop-on-copy --limit 1 | grep -Po "^r\d+"`:HEAD'
+alias 7up='svn update --ignore-externals'
+alias 7log='svn log --diff -r HEAD:{$(date --iso-8601 --date "2 days ago")} | colordiff | less -R'
+alias 7lg='svn log -q -v   -r HEAD:{$(date --iso-8601 --date "2 days ago")} | less'
+alias 7show='svn diff -c'
+alias 7base='svn log -r0:HEAD --stop-on-copy --limit 1 | grep -Po "^r\d+"'
+alias 7branch='svn diff -$(svn log -r0:HEAD --stop-on-copy --limit 1 | grep -Po "^r\d+"):HEAD'
 # alias 7diff="svn diff | colordiff | less -R"
 7diff () {
 	svn diff "${@}" | colordiff | less -R
