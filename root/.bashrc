@@ -62,6 +62,9 @@ if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
 		: ${C_LINE:='\[\e[1;33m\]'}
 		PS1="$C_LINE[\u at $C_HOST\h $C_PATH\w$C_LINE]\n\$$C_RESET "
 	fi
+
+	unset C_LINE C_ROOT C_RESET C_HOST C_PATH
+
 fi
 
 # If this is an xterm set the title
