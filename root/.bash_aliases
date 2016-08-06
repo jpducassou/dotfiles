@@ -43,6 +43,7 @@ alias 7lg='svn log -q -v   -r HEAD:{$(date --iso-8601 --date "2 days ago")} | le
 alias 7show='svn diff -c'
 alias 7base='svn log -r0:HEAD --stop-on-copy --limit 1 | grep -Po "^r\d+"'
 alias 7branch='svn diff -$(svn log -r0:HEAD --stop-on-copy --limit 1 | grep -Po "^r\d+"):HEAD'
+alias 7cr='svn diff -$(svn log -r0:HEAD --stop-on-copy --limit 1 | grep -Po "^r\d+"):HEAD --diff-cmd=diff -x -U100000'
 alias 7ci="svn st | grep '^[MAD]' | awk '{print \$2}' | xargs svn ci"
 # alias 7diff="svn diff | colordiff | less -R"
 7diff () {
