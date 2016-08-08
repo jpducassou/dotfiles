@@ -37,9 +37,10 @@ alias perltags="ctags --exclude=blib --extra=q --languages=Perl --langmap=Perl:+
 # ============================================================================
 # subversion
 # ============================================================================
+alias 7st='svn status --ignore-externals | grep -v '\''^X'\'' | sed -e '\''s/^\?.*$/[1;34m\0[m/'\'' -e '\''s/^!.*$/[1;31m\0[m/'\'' -e '\''s/^A.*$/[1;32m\0[m/'\'' -e '\''s/^M.*$/[1;33m\0[m/'\'' -e '\''s/^D.*$/[0;31m\0[m/'\'
 alias 7up='svn update --ignore-externals'
 alias 7log='svn log --diff -r HEAD:{$(date --iso-8601 --date "2 days ago")} | colordiff | less -R'
-alias 7lg='svn log -q -v   -r HEAD:{$(date --iso-8601 --date "2 days ago")} | less'
+alias 7lg='svn log -q -v   -r HEAD:{$(date --iso-8601 --date "2 days ago")} | sed -e '\''s/^-\+$/[1;32m\0[m/'\'' -e '\''s/^r[0-9]\+.\+$/[1;31m\0[m/'\'
 alias 7show='svn diff -c'
 alias 7base='svn log -r0:HEAD --stop-on-copy --limit 1 | grep -Po "^r\d+"'
 alias 7branch='svn diff -$(svn log -r0:HEAD --stop-on-copy --limit 1 | grep -Po "^r\d+"):HEAD'
