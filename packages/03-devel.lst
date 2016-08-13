@@ -1,9 +1,5 @@
-git-core
-git-gui
-git-doc
+patch
+git
 git-man
 poedit
 colordiff
-discount
-pandoc
-texlive
