@@ -5,4 +5,5 @@
 --exclude=.git
 --exclude=*.min.js
 --exclude=*.sql
+--langmap=c++:+.cu
 -f .tags
