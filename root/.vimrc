@@ -173,6 +173,9 @@ colorscheme molokai
 " ============================================================================
 " Visual aid
 " ============================================================================
+" Make tabs, trailing whitespace, and non-breaking look nicer
+exec "set listchars=tab:\uBB\uBB,nbsp:~"
+
 " Make the 81st column stand out
 if v:version >= 702
 	highlight ColorColumn ctermbg=magenta
@@ -184,4 +187,5 @@ highlight ExtraWhitespace ctermbg=red guibg=red
 
 " Show trailing whitepace and spaces before a tab:
 autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/ containedin=ALL
+
 
