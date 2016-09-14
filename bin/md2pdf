@@ -1,9 +1,9 @@
 #!/bin/bash
 
-INPUT="${1}"
-OUTPUT="${INPUT%.*}.pdf"
+input="${1}"
+output="${input%.*}.pdf"
 
-pandoc \
+pandoc "${input}" \
 	--standalone \
 	--from markdown_github \
 	--to latex \
@@ -11,5 +11,5 @@ pandoc \
 	--variable fontsize:12pt \
 	--variable geometry:margin=3cm \
 	--variable papersize:A4 \
-	--output "${OUTPUT}" "${INPUT}"
+	--output "${output}"
 
