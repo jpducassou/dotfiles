@@ -1,0 +1,15 @@
+#!/bin/bash
+
+INPUT="${1}"
+OUTPUT="${INPUT%.*}.pdf"
+
+pandoc \
+	--standalone \
+	--from markdown_github \
+	--to latex \
+	--highlight-style tango \
+	--variable fontsize:12pt \
+	--variable geometry:margin=3cm \
+	--variable papersize:A4 \
+	--output "${OUTPUT}" "${INPUT}"
+
