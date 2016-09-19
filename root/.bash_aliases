@@ -34,6 +34,10 @@ alias mirror="wget --mirror --no-parent --page-requisites --adjust-extension --c
 alias mvndoc="mvn dependency:resolve -Dclassifier=javadoc"
 alias perltags="ctags --exclude=blib --extra=q --languages=Perl"
 
+xmldiff() {
+	vimdiff <(xmllint --format "${1}") <(xmllint --format "${2}")
+}
+
 # ============================================================================
 # subversion
 # ============================================================================
