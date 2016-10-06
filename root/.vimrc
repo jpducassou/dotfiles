@@ -55,6 +55,12 @@ set paste
 " dont use Q for Ex mode
 map Q :q
 
+" dragvisuals config
+vmap  <expr>  <C-S-h>  DVB_Drag('left')
+vmap  <expr>  <C-S-l>  DVB_Drag('right')
+vmap  <expr>  <C-S-j>  DVB_Drag('down')
+vmap  <expr>  <C-S-k>  DVB_Drag('up')
+
 " ============================================================================
 " Insert a new-line after the current line by pressing Enter.
 " Ctrl-o for inserting a line before the current line.
