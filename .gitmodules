@@ -1,42 +1,55 @@
 [submodule "root/.vim/bundle/markdown"]
 	path = root/.vim/bundle/markdown
 	url = https://github.com/tpope/vim-markdown
+	branch = master
 [submodule "root/.vim/bundle/nerdtree"]
 	path = root/.vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree
+	branch = master
 [submodule "root/.vim/bundle/molokai"]
 	path = root/.vim/bundle/molokai
 	url = https://github.com/tomasr/molokai
+	branch = master
 [submodule "root/.vim/bundle/vim-less"]
 	path = root/.vim/bundle/vim-less
 	url = https://github.com/groenewege/vim-less.git
+	branch = master
 [submodule "root/.vim/bundle/perlomni"]
 	path = root/.vim/bundle/perlomni
 	url = https://github.com/c9s/perlomni.vim.git
+	branch = master
 [submodule "root/.vim/bundle/vim-airline"]
 	path = root/.vim/bundle/vim-airline
 	url = https://github.com/bling/vim-airline
+	branch = master
 [submodule "root/.vim/bundle/vim-perl"]
 	path = root/.vim/bundle/vim-perl
 	url = https://github.com/vim-perl/vim-perl
+	branch = master
 [submodule "root/.vim/bundle/eyapp"]
 	path = root/.vim/bundle/eyapp
 	url = https://github.com/vim-scripts/eyapp.git
+	branch = master
 [submodule "root/.vim/bundle/planuml"]
 	path = root/.vim/bundle/planuml
 	url = https://github.com/aklt/plantuml-syntax
+	branch = master
 [submodule "root/.vim/bundle/vim-surround"]
 	path = root/.vim/bundle/vim-surround
 	url = https://github.com/tpope/vim-surround
+	branch = master
 [submodule "root/.vim/bundle/tcomment"]
 	path = root/.vim/bundle/tcomment
 	url = https://github.com/tomtom/tcomment_vim
+	branch = master
 [submodule "root/.vim/bundle/presenting"]
 	path = root/.vim/bundle/presenting
 	url = https://github.com/sotte/presenting.vim.git
+	branch = master
 [submodule "root/.vim/bundle/Dockerfile"]
 	path = root/.vim/bundle/Dockerfile
 	url = https://github.com/ekalinin/Dockerfile.vim
+	branch = master
 [submodule "root/.vim/bundle/vim-airline-themes"]
 	path = root/.vim/bundle/vim-airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes
