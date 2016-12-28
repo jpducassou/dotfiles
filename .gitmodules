@@ -37,3 +37,7 @@
 [submodule "root/.vim/bundle/Dockerfile"]
 	path = root/.vim/bundle/Dockerfile
 	url = https://github.com/ekalinin/Dockerfile.vim
+[submodule "root/.vim/bundle/vim-airline-themes"]
+	path = root/.vim/bundle/vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes
+	branch = master
