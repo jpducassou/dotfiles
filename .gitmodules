@@ -5,7 +5,6 @@
 [submodule "root/.vim/bundle/nerdtree"]
 	path = root/.vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree
-	branch = master
 [submodule "root/.vim/bundle/molokai"]
 	path = root/.vim/bundle/molokai
 	url = https://github.com/tomasr/molokai
