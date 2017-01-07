@@ -1,0 +1,3 @@
+#!/bin/sh
+
+DISPLAY= java -jar ~/opt/plantuml/plantuml.jar -tpng $@
