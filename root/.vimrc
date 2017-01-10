@@ -158,7 +158,7 @@ autocmd Syntax c,cpp,vim,xml,html,xhtml setlocal foldmethod=syntax
 autocmd Syntax c,cpp,vim,xml,html,xhtml setlocal foldnestmax=1
 autocmd Syntax c,cpp,vim,xml,html,xhtml,perl normal zR
 
-nmap <F5> :<C-U>make %:r<CR>
+nmap <F5> :<C-U>make %<CR>
 
 " Ctrl + space turns on omni completion
 inoremap <C-@> <C-x><C-o>
