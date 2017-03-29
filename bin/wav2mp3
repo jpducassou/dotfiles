@@ -1,0 +1,4 @@
+#!/bin/sh
+
+ls *.wav | sed 's/\(.*\).wav/avconv -i "\1.wav" -qscale:a 0 "\1.mp3"/' | sh
+
