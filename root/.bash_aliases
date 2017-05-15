@@ -49,8 +49,8 @@ alias 7show='svn diff -c'
 alias 7base='svn log -r0:HEAD --stop-on-copy --limit 1 | grep -Po "^r\d+"'
 alias 7branch='svn diff -$(svn log -r0:HEAD --stop-on-copy --limit 1 | grep -Po "^r\d+"):HEAD'
 alias 7cr='svn diff -$(svn log -r0:HEAD --stop-on-copy --limit 1 | grep -Po "^r\d+"):HEAD --diff-cmd=diff -x -U100000'
-alias 7ci="svn st | grep '^[MAD]' | awk '{print \$2}' | xargs svn ci"
-alias 7re="svn st | grep '^[MD]'  | awk '{print \$2}' | xargs svn revert"
+alias 7ci="svn status | grep '^[MAD]' | awk '{print \$2}' | svn ci --targets -"
+alias 7re="svn status | grep '^[MD]'  | awk '{print \$2}' | xargs svn revert"
 # alias 7diff="svn diff | colordiff | less -R"
 7diff () {
 	svn diff "${@}" | colordiff | less -R
