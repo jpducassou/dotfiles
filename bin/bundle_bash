@@ -12,7 +12,7 @@ fi
 TEMPLATE=$(awk '/^__TEMPLATE__/ {print NR + 1; exit 0; }' $0)
 
 tail -n+${TEMPLATE} ${0} > "${OUTPUT}"
-tar -cvzf - "${DIRECTORY}" >> "${OUTPUT}"
+tar --exclude .git --exclude .svn -cvzf - "${DIRECTORY}" >> "${OUTPUT}"
 chmod +x "${OUTPUT}"
 
 echo "done."
