@@ -68,6 +68,7 @@ docker-remove-dead () {
 }
 
 alias docker-clean="docker-remove-untagged; docker-remove-dead"
+alias docker-sen="docker run -v /var/run/docker.sock:/run/docker.sock -ti -e TERM tomastomecek/sen"
 
 # ============================================================================
 # Candidates:
