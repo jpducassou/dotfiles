@@ -70,6 +70,15 @@ docker-remove-dead () {
 alias docker-clean="docker-remove-untagged; docker-remove-dead"
 alias docker-sen="docker run -v /var/run/docker.sock:/run/docker.sock -ti -e TERM tomastomecek/sen"
 
+# stop all containers:
+alias docker-killall='docker kill $(docker ps -q)'
+
+# remove all containers
+alias docker-purge='docker rm $(docker ps -a -q)'
+
+# remove all docker images
+alias docker-purge-images='docker rmi $(docker images -q)'
+
 # ============================================================================
 # Candidates:
 # ============================================================================
