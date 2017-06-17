@@ -33,6 +33,7 @@ alias mysql="mysql --pager=uberpager"
 alias mirror="wget --mirror --no-parent --page-requisites --adjust-extension --convert-links"
 alias mvndoc="mvn dependency:resolve -Dclassifier=javadoc"
 alias perltags="ctags --exclude=blib --extra=q --languages=Perl"
+alias ff="firefox -private-window 2>/dev/null &"
 
 xmldiff() {
 	vimdiff <(xmllint --format "${1}") <(xmllint --format "${2}")
