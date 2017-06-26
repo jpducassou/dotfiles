@@ -34,6 +34,7 @@ alias mirror="wget --mirror --no-parent --page-requisites --adjust-extension --c
 alias mvndoc="mvn dependency:resolve -Dclassifier=javadoc"
 alias perltags="ctags --exclude=blib --extra=q --languages=Perl"
 alias ff="firefox -private-window 2>/dev/null &"
+alias u='aptitude update && aptitude autoclean && aptitude'
 
 xmldiff() {
 	vimdiff <(xmllint --format "${1}") <(xmllint --format "${2}")
