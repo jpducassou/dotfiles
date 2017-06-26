@@ -168,6 +168,16 @@ inoremap <C-@> <C-x><C-o>
 set tags=./.tags,.tags;$HOME
 
 " ============================================================================
+" Templates for new files
+" ============================================================================
+augroup New_File_Setup
+	autocmd!
+	autocmd BufNewFile  *  -1r !vim_file_template <afile>
+	autocmd BufNewFile  *  :silent call search('^[ \t]*[#"].*implementation[ \t]\+here')
+	autocmd BufNewFile  *  :redraw
+augroup END
+
+" ============================================================================
 " Load plugin bunbles with pathogen
 " ============================================================================
 execute pathogen#infect()

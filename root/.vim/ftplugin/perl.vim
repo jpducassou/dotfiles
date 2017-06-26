@@ -21,7 +21,7 @@ set iskeyword+=:
 set iskeyword-=,
 
 " Match angle brackets...
-set matchpairs+=<:>,«:»,｢:｣
+set matchpairs+=<:>,«:»
 
 " Template toolkit 2 config
 " au BufNewFile,BufRead *.tmpl.html setf tt2html

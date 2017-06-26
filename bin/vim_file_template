@@ -1,0 +1,94 @@
+#! /usr/bin/env perl
+use 5.010;
+use warnings;
+
+# Adjust this to change where the template files live, and what they're called
+# With this default setup template files are:
+#
+#   ~/.vim_templates/template.pl
+#   ~/.vim_templates/template.pm
+#   ~/.vim_templates/template.t
+#   etc.
+#
+# and the config file is:
+#
+#   ~/.vim_templates/INFO
+#
+my $TEMPLATE_DIR = "$ENV{HOME}/.vim_templates/";
+
+# These are the placeholder names the templater can fill in...
+# In the template they should be specified
+# as: <FILENAME>, <MODULE NAME>, <AUTHOR>, etc.
+#
+my %config = ( -f "$TEMPLATE_DIR/INFO" ) ? do( "$TEMPLATE_DIR/INFO" ) : ();
+
+my %INFO = (
+    'FILEPATH'    => $ARGV[0] || "PATH",
+    'FILENAME'    => $ARGV[0] || "NAME",
+    'MODULE NAME' => $ARGV[0] || "MODULE::NAME",
+    'RT NAME'     => $ARGV[0] || "MODULE-NAME",
+    'AUTHOR'      => 'AUTHOR NAME',
+    'EMAIL'       => 'AUTHORID@cpan.org',
+    'YEAR'        => 1900 + (localtime)[5],
+    'TIMESTAMP'   => `date`,
+    %config
+);
+
+# How to recognize a suffix...
+my $SUFFIX = qr{( [.] [^.]+ ) \Z}x;
+
+# Various clean-ups so the info looks pretty in the files...
+for ($INFO{'FILEPATH'}) {
+    s{^.*/lib/}{}g;
+    s{^lib/}{}g;
+}
+
+for ($INFO{'FILENAME'}) {
+    s{^.*/}{}g;
+}
+
+$INFO{'FILEROOT'} = $INFO{'FILENAME'};
+$INFO{'FILEROOT'} =~ s/\.[^.]+$//;
+
+for ($INFO{'MODULE NAME'}) {
+    s{$SUFFIX}{};
+    s{/}{::}g;
+    s{^.*::lib::}{}g;
+    s{^lib::}{}g;
+}
+
+for ($INFO{'MODULE NAME'}) {
+    s{$SUFFIX}{};
+    s{/}{::}g;
+    s{^.*::lib::}{}g;
+    s{^lib::}{}g;
+}
+
+for ($INFO{'RT NAME'}) {
+    s{$SUFFIX}{};
+    s{/}{-}g;
+    s{^.*-lib-}{}g;
+    s{^lib-}{}g;
+    tr/A-Z/a-z/;
+}
+
+# Extract the suffix from the filename, to determine which template is required...
+my ($type) = $INFO{FILENAME} =~ m{$SUFFIX}
+    or say ''
+    and exit;
+
+# A very simple templating too...
+sub filled_in {
+    my ($str) = @_;
+    my $placeholder = join '|', map { "\Q$_\E" } reverse sort keys %INFO;
+    $str =~ s/<($placeholder)>/$INFO{$1}/g;
+    return $str;
+}
+
+# Grab the file and fill in the necessary info...
+print filled_in do {
+    local (@ARGV, $/) = glob("$TEMPLATE_DIR/*$type");
+    @ARGV
+        ? readline // ""
+        : ""
+};
