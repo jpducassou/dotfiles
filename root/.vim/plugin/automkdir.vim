@@ -25,6 +25,10 @@ endfunction
 
 function! EnsureDirExists ()
     let required_dir = expand("%:h")
+    if (required_dir == "") " For vim 7.0
+        return
+    endif
+
     if !isdirectory(required_dir)
         call AskQuit("Parent directory '" . required_dir . "' doesn't exist.",
              \       "&Create it\nor &Quit?", 2)
