@@ -1,0 +1,82 @@
+#!/usr/bin/env perl
+
+use strict;
+use Getopt::Long;
+use Term::ANSIColor;
+
+$SIG{'INT'} = sub {die "Ctrl+C pressed!\n"};
+
+my $options = {
+	tests => [],
+	monitor => [],
+};
+
+GetOptions(
+	'tests=s@' => \$options->{tests},
+	'watch=s@' => \$options->{monitor},
+);
+
+my @monitor = (@{$options->{tests}},@{$options->{monitor}});
+
+unless (@{$options->{tests}}) {
+	print "SYNOPSIS\n";
+	print "$0 --test x.t --test a.t --watch A.pm\n";
+	print "\nOptions:\n";
+	print "--test / --t add test file to run\n";
+	print "--watch / --w add file to watch\n";
+
+	die("You did not provide any tests files to monitor");
+} else {
+	@monitor = (@{$options->{tests}},@{$options->{monitor}});
+
+	print "Will monitor " . join(', ', @monitor) ."\n";
+}
+
+my $lastTimeStamp = {};
+my $currentTimeStamp = {};
+my $history = {};
+my $summary = {};
+my $lastOk = {};
+
+while (1) {
+	$currentTimeStamp->{$_} = (stat($_))[9] foreach (@monitor);
+
+	my $changes = 0;
+
+	foreach (@monitor) {
+		$changes ||= $lastTimeStamp->{$_} ne $currentTimeStamp->{$_};
+		$lastTimeStamp->{$_} = $currentTimeStamp->{$_};
+	}
+
+	if ($changes) {
+		foreach (@{$options->{tests}}) {
+			print '*' x 40 . "> $_ <" . '*' x 40 . "\n";
+			$summary->{$_} = system("perl",$_) or 0;
+			#$summary->{$_} = system("prove",$_) && system("prove",'-v',$_) or 0;
+			# Save cutdown histogram...
+			$history->{$_} = [] unless ref $history->{$_} eq 'ARRAY';
+			if ($summary->{$_}) {
+				push @{$history->{$_}}, color('red') . "X" . color('reset');
+			} else {
+				push @{$history->{$_}}, color('green') . "O" . color('reset');
+				$lastOk->{$_} = time;
+			}
+			splice(@{$history->{$_}},1,1) while (scalar @{$history->{$_}} > 80);
+		}
+		print '=' x 40 . "> SUMMARY <" . '=' x 40 . "\n";
+		foreach (@{$options->{tests}}) {
+			print "$_ last ok " . &prettyLapse($lastOk->{$_}) . ': '. join('', @{$history->{$_}}) . "\n";
+			print color('reset');
+		}
+		print '=' x 40 . "> SUMMARY <" . '=' x 40 . "\n";
+	}
+	sleep 1;
+}
+
+sub prettyLapse {
+	my ($nonLeapSeconds) = @_;
+	my $now = time;
+
+	return $nonLeapSeconds?sprintf("%02dh %02dm %02ds",($now-$nonLeapSeconds)/(60*60) % 24, ($now-$nonLeapSeconds)/60 % 60, ($now-$nonLeapSeconds) % 60):'never';
+}
+
