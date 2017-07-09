@@ -18,10 +18,13 @@ bind '.' next
 attrcolor b ".I"
 
 # Set 256 on screen
-termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+termcapinfo xterm* 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
 # Co#256 - enable 256 colors in terminal
 # AB - set a background
 # AF - set a foreground
+termcapinfo xterm* 'ti@:te@'
+# ti   Begin program that uses cursor motion
+# te   End program that uses cursor motion
 defbce "on"
 
 # Statusline
