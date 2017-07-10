@@ -39,7 +39,7 @@ set ls=2
 set magic
 
 " airline
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 let g:airline_left_sep  = ''
 let g:airline_right_sep = ''
 
@@ -81,13 +81,13 @@ map <F2> :set number!<CR>
 :hi MatchParen ctermbg=blue guibg=lightblue
 let g:MatchParen = 0
 function! ToggleParen()
-    if g:MatchParen == 1
-        let g:MatchParen = 0
-        NoMatchParen
-    else
-        let g:MatchParen = 1
-        DoMatchParen
-    endif
+	if g:MatchParen == 1
+		let g:MatchParen = 0
+		NoMatchParen
+	else
+		let g:MatchParen = 1
+		DoMatchParen
+	endif
 endfunction
 map <F3> :call ToggleParen()<CR>
 
@@ -194,12 +194,12 @@ let perl_sub_pat = '^\s*\%(sub\|func\|method\|package\)\s\+\k\+'
 let vim_sub_pat  = '^\s*fu\%[nction!]\s\+\k\+'
 
 augroup FoldSub
-    autocmd!
-    autocmd BufEnter * nmap <silent> <expr>  zp  FS_FoldAroundTarget(perl_sub_pat,{'context':1})
-    autocmd BufEnter * nmap <silent> <expr>  za  FS_FoldAroundTarget(perl_sub_pat.'\zs\\|^\s*#.*',{'context':0, 'folds':'invisible'})
-    autocmd BufEnter *.vim,.vimrc nmap <silent> <expr>  zp  FS_FoldAroundTarget(vim_sub_pat,{'context':1})
-    autocmd BufEnter *.vim,.vimrc nmap <silent> <expr>  za  FS_FoldAroundTarget(vim_sub_pat.'\\|^\s*".*',{'context':0, 'folds':'invisible'})
-    autocmd BufEnter * nmap <silent> <expr>             zv  FS_FoldAroundTarget(vim_sub_pat.'\\|^\s*".*',{'context':0, 'folds':'invisible'})
+	autocmd!
+	autocmd BufEnter * nmap <silent> <expr>  zp  FS_FoldAroundTarget(perl_sub_pat,{'context':1})
+	autocmd BufEnter * nmap <silent> <expr>  za  FS_FoldAroundTarget(perl_sub_pat.'\zs\\|^\s*#.*',{'context':0, 'folds':'invisible'})
+	autocmd BufEnter *.vim,.vimrc nmap <silent> <expr>  zp  FS_FoldAroundTarget(vim_sub_pat,{'context':1})
+	autocmd BufEnter *.vim,.vimrc nmap <silent> <expr>  za  FS_FoldAroundTarget(vim_sub_pat.'\\|^\s*".*',{'context':0, 'folds':'invisible'})
+	autocmd BufEnter * nmap <silent> <expr>             zv  FS_FoldAroundTarget(vim_sub_pat.'\\|^\s*".*',{'context':0, 'folds':'invisible'})
 augroup END
 
 " Show only 'use' statements
