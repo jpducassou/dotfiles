@@ -59,9 +59,9 @@ In no event shall the author be held liable for any damages arising from the use
 sub main {
 
 	GetOptions(
-		'help|h'	   => sub { pod2usage(0); },
+		'help|h'     => sub { pod2usage(0); },
 		'verbose|v+' => \$VERBOSE,
-		'debug|d'	   => sub { $VERBOSE = 1; $DEBUG = 1; }
+		'debug|d'    => sub { $VERBOSE = 1; $DEBUG = 1; }
 	) or pod2usage(2);
 
 	# implementation here
