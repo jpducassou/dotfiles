@@ -167,6 +167,10 @@ inoremap <C-@> <C-x><C-o>
 " ctags
 set tags=./.tags,.tags;$HOME
 
+" Automatically open, but do not go (if there are errors) to the quickfix
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
+
 " ============================================================================
 " Templates for new files
 " ============================================================================
