@@ -27,6 +27,8 @@ set noerrorbells
 set novisualbell
 set t_vb=
 set tm=500
+
+" No wrapping of lines
 set nowrap
 
 " do not keep a backup file
@@ -47,7 +49,7 @@ let g:airline_right_sep = ''
 let g:airline_theme = 'lucius'
 
 " NoMatchParen
-au vimEnter * NoMatchParen
+" au vimEnter * NoMatchParen
 
 " Vim paste mode to avoid destruction of pasted text
 " set pastetoggle=<F2>
@@ -103,6 +105,10 @@ map <F8> :set tabstop=4 shiftwidth=4 expandtab<CR>
 " ============================================================================
 " Indentation
 " ============================================================================
+" Enable smartindend
+set autoindent
+set smartindent
+
 " Retain visual selection after < or >
 vnoremap > >gv
 vnoremap < <gv
