@@ -1,0 +1,8 @@
+sessionname valhala
+
+# Load general config
+source ~/.screenrc
+
+screen -t sec 2 bash
+screen -t doc 3 bash
+

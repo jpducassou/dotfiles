@@ -8,7 +8,6 @@
 if [ "$PS1" != "" -a "${SCREEN_STARTED:-x}" = x -a "${SSH_TTY:-x}" != x ]
 then
   export SCREEN_STARTED=1
-  # screen -RR && exit 0
   screen -d -R && exit 0
   # normally, execution of this rc script ends here...
   echo "Screen failed! continuing with normal bash startup"

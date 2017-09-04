@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Attach to a running session or open a new session with the specified name
+
+session_name="${1}"
+rc_file="${HOME}/.screen/${session_name}.screenrc"
+
+if [ ! -f "${rc_file}" ]; then
+	echo "screen rc file ${rc_file} no found!" >&2
+	exit 1
+fi
+
+exec screen -c "${rc_file}" -S "${session_name}" -d -R "${@:2}"
+
