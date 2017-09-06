@@ -165,17 +165,20 @@ autocmd Syntax c,cpp,vim,xml,html,xhtml setlocal foldmethod=syntax
 autocmd Syntax c,cpp,vim,xml,html,xhtml setlocal foldnestmax=1
 autocmd Syntax c,cpp,vim,xml,html,xhtml,perl normal zR
 
+" Compile or run test when <F5> is pressed
 nmap <F5> :<C-U>make %<CR>
+
+" Automatically open, but do not go (if there are errors) to the quickfix
+augroup OpenQuickfixWindowAfterMake
+	autocmd QuickFixCmdPost [^l]* nested cwindow
+	autocmd QuickFixCmdPost    l* nested lwindow
+augroup END
 
 " Ctrl + space turns on omni completion
 inoremap <C-@> <C-x><C-o>
 
 " ctags
 set tags=./.tags,.tags;$HOME
-
-" Automatically open, but do not go (if there are errors) to the quickfix
-autocmd QuickFixCmdPost [^l]* nested cwindow
-autocmd QuickFixCmdPost    l* nested lwindow
 
 " ============================================================================
 " Templates for new files
