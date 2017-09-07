@@ -1,2 +1,4 @@
-compiler xmllint
-" autocmd FileType xml set equalprg=xmllint\ --format\ -
+" ============================================================================
+" XML
+" ============================================================================
+set equalprg=xmllint\ --format\ -
