@@ -74,7 +74,7 @@ nmap <C-o> O<Esc>
 nnoremap <C-J> a<CR><Esc>k
 
 " ============================================================================
-" F2 - F5
+" F2 - F4
 " ============================================================================
 " Toggle line numbers on/off
 map <F2> :set number!<CR>
@@ -95,12 +95,6 @@ map <F3> :call ToggleParen()<CR>
 
 " Toggle display tabs & spaces on/off
 map <F4> :set list!<CR>
-
-" ============================================================================
-" Toggle indentation style
-" ============================================================================
-" turn on 4-space
-map <F8> :set tabstop=4 shiftwidth=4 expandtab<CR>
 
 " ============================================================================
 " Indentation
@@ -165,6 +159,15 @@ autocmd Syntax c,cpp,vim,xml,html,xhtml setlocal foldmethod=syntax
 autocmd Syntax c,cpp,vim,xml,html,xhtml setlocal foldnestmax=1
 autocmd Syntax c,cpp,vim,xml,html,xhtml,perl normal zR
 
+" Ctrl + space turns on omni completion
+inoremap <C-@> <C-x><C-o>
+
+" ctags
+set tags=./.tags,.tags;$HOME
+
+" ============================================================================
+" F5 - F8
+" ============================================================================
 " Compile or run test when <F5> is pressed
 nmap <F5> :<C-U>make %<CR>
 
@@ -174,11 +177,14 @@ augroup OpenQuickfixWindowAfterMake
 	autocmd QuickFixCmdPost    l* nested lwindow
 augroup END
 
-" Ctrl + space turns on omni completion
-inoremap <C-@> <C-x><C-o>
+" Execute the script whatever that means
+nmap <F6> :!%:p<CR>
 
-" ctags
-set tags=./.tags,.tags;$HOME
+" Lint the whole file
+nmap <F7> gg=G
+
+" turn on 4-space
+map <F8> :set tabstop=4 shiftwidth=4 expandtab<CR>
 
 " ============================================================================
 " Templates for new files
