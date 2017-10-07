@@ -1,6 +1,6 @@
 [user]
 	name  = Jean Pierre Ducassou
-	email = "(none)"
+	useConfigOnly = true
 
 [core]
 	compression = 9
