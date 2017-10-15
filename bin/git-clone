@@ -1,0 +1,118 @@
+#!/bin/bash
+
+# ============================================================================
+# Log auxiliary functions
+# ============================================================================
+escape="\033["
+
+# Colors
+green="32"
+yellow="33"
+red="31"
+
+function info() {
+	local message="${1}"
+	_log "INFO" "${green}" "${message}"
+}
+
+function warn() {
+	local message="${1}"
+	_log "WARN" "${yellow}" "${message}"
+}
+
+function error() {
+	local message="${1}"
+	_log "ERROR" "${red}" "${message}"
+}
+
+# USAGE: log "info" "message"
+function log() {
+	local level="${1}"
+	local message="${2}"
+
+	${level} "${message}"
+
+}
+
+# USAGE: _log "info" "32" "message"
+function _log() {
+	local level="${1}"
+	local color=""
+	local reset=""
+	if [ -t 2 ]; then
+		color="${escape}0;${2}m"
+		reset="${escape}0m"
+	fi
+	local message="${3}"
+
+	>&2 echo -e "${color}[${level}]${reset}\t${message}"
+
+}
+
+# ============================================================================
+# Aux functions
+# ============================================================================
+function _get_host() {
+	# Extract host from url
+	local url="${1}"
+	local user=
+	local host=
+	local proto="$(echo ${url} | grep :// | sed -e's,^\(.*://\).*,\1,g')"
+	if [ "$proto" = "https://" ]
+	then
+		# extract the protocol
+		proto="$(echo ${url} | grep :// | sed -e's,^\(.*://\).*,\1,g')"
+		# remove the protocol -- updated
+		url=$(echo ${url} | sed -e s,$proto,,g)
+		# extract the user (if any)
+		user="$(echo $url | grep @ | cut -d@ -f1)"
+		# extract the host -- updated
+		host=$(echo $url | sed -e s,$user@,,g | cut -d/ -f1)
+	else
+		# remove the protocol
+		url="$(echo ${url/$proto/})"
+		# extract the user (if any)
+		user="$(echo $url | grep @ | cut -d@ -f1)"
+		# extract the host
+		host="$(echo ${url/$user@/} | cut -d/ -f1 | cut -d: -f1)"
+	fi
+	echo "${host}"
+}
+
+# ============================================================================
+# Main
+# ============================================================================
+url="${1}"
+path="${2}"
+
+host=$(_get_host "${url}")
+if [ -z "${path}" ]; then
+	path=$(basename "${url}" | sed 's/\.git$//')
+fi
+
+# Load config based on host
+user_name=$(git config --global user.name)
+user_email=$(git config --global user.email)
+
+config_file="${HOME}/.gitids"
+info "Trying to load ${config_file} ..."
+if [ -f "${config_file}" ]; then
+	source "${config_file}" "${host}"
+fi
+
+if [[ -z "${user_name}" ]]; then
+	error "No user name set. Aborting ..."
+	exit 1
+fi
+
+if [[ -z "${user_email}" ]]; then
+	error "No user email set. Aborting ..."
+	exit 1
+fi
+
+info "Cloning repo ..."
+git clone \
+  --config user.name="${user_name}" \
+  --config user.email="${user_email}" \
+	"${url}" "${path}"
+
