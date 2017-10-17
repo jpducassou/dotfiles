@@ -57,6 +57,9 @@ alias 7re="svn status | grep '^[MD]'  | awk '{print \$2}' | xargs svn revert"
 7diff () {
 	svn diff "${@}" | colordiff | less -R
 }
+7add () {
+	svn status --no-ignore ${@} | grep '^?' | awk '{print $2}' | xargs svn add --no-ignore
+}
 
 # ============================================================================
 # Docker
