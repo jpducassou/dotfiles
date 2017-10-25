@@ -100,6 +100,11 @@ if [ -f "${config_file}" ]; then
 	source "${config_file}" "${host}"
 fi
 
+# $ cat "${HOME}/.gitids"
+# case "${1}" in
+#   *github.com* ) user_name="John Doe"; user_email="john.doe@example.com";;
+# esac
+
 if [[ -z "${user_name}" ]]; then
 	error "No user name set. Aborting ..."
 	exit 1
