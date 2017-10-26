@@ -1,0 +1,23 @@
+# ============================================================================
+# Docker
+# ============================================================================
+docker-remove-untagged () {
+	docker images --no-trunc | grep '<none>' | awk '{ print $3 }' | xargs -r docker rmi
+}
+
+docker-remove-dead () {
+	docker ps --filter status=dead --filter status=exited -aq | xargs docker rm -v
+}
+
+alias docker-clean="docker-remove-untagged; docker-remove-dead"
+alias docker-sen="docker run -v /var/run/docker.sock:/run/docker.sock -ti -e TERM tomastomecek/sen"
+
+# stop all containers:
+alias docker-killall='docker kill $(docker ps -q)'
+
+# remove all containers
+alias docker-purge='docker rm $(docker ps -a -q)'
+
+# remove all docker images
+alias docker-purge-images='docker rmi $(docker images -q)'
+
