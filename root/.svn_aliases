@@ -10,14 +10,19 @@ alias 7branch='svn diff -$(svn log -r0:HEAD --stop-on-copy --limit 1 | grep -Po 
 alias 7cr='svn diff -$(svn log -r0:HEAD --stop-on-copy --limit 1 | grep -Po "^r\d+"):HEAD --diff-cmd=diff -x -U100000'
 alias 7ci="svn status --no-ignore | grep '^[MAD]' | awk '{print \$2}' | svn ci --targets -"
 alias 7re="svn status --no-ignore | grep '^[MD]'  | awk '{print \$2}' | xargs svn revert"
-# alias 7diff="svn diff | colordiff | less -R"
+alias 7ext='svn propget svn:externals -R .'
 
+# alias 7diff="svn diff | colordiff | less -R"
 function 7diff () {
 	svn diff "${@}" | colordiff | less -R
 }
 
 function 7add () {
 	svn status --no-ignore ${@} | grep '^?' | awk '{print $2}' | xargs svn add --no-ignore
+}
+
+function 7revert () {
+	svn merge -c -${1} .
 }
 
 function filter_status () {
