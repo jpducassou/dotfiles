@@ -8,16 +8,19 @@ alias 7show='svn diff -c'
 alias 7base='svn log -r0:HEAD --stop-on-copy --limit 1 | grep -Po "^r\d+"'
 alias 7branch='svn diff -$(svn log -r0:HEAD --stop-on-copy --limit 1 | grep -Po "^r\d+"):HEAD'
 alias 7cr='svn diff -$(svn log -r0:HEAD --stop-on-copy --limit 1 | grep -Po "^r\d+"):HEAD --diff-cmd=diff -x -U100000'
-alias 7ci="svn status | grep '^[MAD]' | awk '{print \$2}' | svn ci --targets -"
-alias 7re="svn status | grep '^[MD]'  | awk '{print \$2}' | xargs svn revert"
+alias 7ci="svn status --no-ignore | grep '^[MAD]' | awk '{print \$2}' | svn ci --targets -"
+alias 7re="svn status --no-ignore | grep '^[MD]'  | awk '{print \$2}' | xargs svn revert"
 # alias 7diff="svn diff | colordiff | less -R"
-7diff () {
+
+function 7diff () {
 	svn diff "${@}" | colordiff | less -R
 }
-7add () {
+
+function 7add () {
 	svn status --no-ignore ${@} | grep '^?' | awk '{print $2}' | xargs svn add --no-ignore
 }
-status_filter() {
+
+function filter_status () {
 	sed \
 		-e 's/^\?.*$/[1;34m\0[m/' \
 		-e 's/^!.*$/[1;31m\0[m/'  \
@@ -26,5 +29,9 @@ status_filter() {
 		-e 's/^D.*$/[0;31m\0[m/'
 }
 
-alias 7st='svn status --ignore-externals | grep -v '\''^X'\'' | status_filter()'
+function filter_external () {
+	grep -v '^X'
+}
+
+alias 7st='svn status --ignore-externals | filter_external() | filter_status()'
 
