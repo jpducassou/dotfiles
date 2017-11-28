@@ -20,6 +20,7 @@ alias g="grep --color=auto"
 alias pt="perltidy -i=2 -et=2 -ce -wls=\"= + - / * > <\" -wrs=\"= + - / * > <\" "
 alias valgrind="valgrind -v --leak-check=full --track-origins=yes --log-file=/tmp/valgrind.out"
 alias pd="perldoc -MPod::Text::Color::Delight"
+alias t="tree -Cf | less -R"
 alias httpdump="curl --head --location"
 if [ $(which memstat &> /dev/null) ]; then
 	alias memcstat="watch 'memstat  --servers=127.0.0.1:11211'"
