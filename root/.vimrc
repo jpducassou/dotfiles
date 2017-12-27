@@ -73,11 +73,23 @@ nmap <CR> o<Esc>
 nmap <C-o> O<Esc>
 nnoremap <C-J> a<CR><Esc>k
 
+" Numbering by default
+set number
+if v:version >= 703
+	set relativenumber
+endif
+
 " ============================================================================
 " F2 - F4
 " ============================================================================
 " Toggle line numbers on/off
-map <F2> :set number!<CR>
+function! ToggleNumber()
+	set number!
+	if v:version >= 703
+		set relativenumber!
+	endif
+endfunction
+map <F2> :call ToggleNumber()<CR>
 
 " Toggle paren match
 :hi MatchParen ctermbg=blue guibg=lightblue
