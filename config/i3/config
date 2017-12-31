@@ -127,8 +127,9 @@ bindsym $mod+Shift+9 move container to workspace $workspace9
 
 # workspace assignments
 # Execute xprop to find out which class an application has
-assign [class="Firefox"]   $workspace1
-assign [class="Audacious"] $workspace9
+assign [class="Firefox"]             $workspace1
+assign [class="X-terminal-emulator"] $workspace2
+assign [class="Audacious"]           $workspace9
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
