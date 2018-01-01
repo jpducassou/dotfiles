@@ -51,10 +51,6 @@ let g:airline_theme = 'lucius'
 " NoMatchParen
 " au vimEnter * NoMatchParen
 
-" Vim paste mode to avoid destruction of pasted text
-" set pastetoggle=<F2>
-set paste
-
 " dont use Q for Ex mode
 map Q :q
 
@@ -235,6 +231,20 @@ augroup END
 
 " Show only 'use' statements
 nmap <silent> <expr>  zu  FS_FoldAroundTarget('^\s*use\s\+\S.*;',{'context':1})
+
+" ============================================================================
+" Automatically toggle paste mode when pasting from clipboard
+" ============================================================================
+function! XTermPasteBegin()
+	set pastetoggle=<Esc>[201~
+	set paste
+	return ""
+endfunction
+
+let &t_SI .= "\<Esc>[?2004h"
+let &t_EI .= "\<Esc>[?2004l"
+
+inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
 
 " ============================================================================
 " Load plugin bunbles with pathogen
