@@ -1,0 +1,109 @@
+#!/usr/bin/env perl
+
+# ============================================================================
+use strict;
+use warnings;
+use utf8;
+
+# ============================================================================
+use Data::Dumper;
+use Try::Tiny;
+use Getopt::Long;
+use Pod::Usage;
+
+# ============================================================================
+our $VERSION = '0.1';
+my $VERBOSE = 0;
+my $DEBUG   = 0;
+
+# ============================================================================
+main(@ARGV) unless caller();
+
+# ============================================================================
+
+=pod
+
+=head1 NAME
+
+dumpbundle
+
+=head1 SYNOPSIS
+
+dumpbundle --help
+
+dumpbundle cabundle.pem
+
+=head1 DESCRIPTION
+
+Script for splitting multi-cert input into individual certs
+
+v0.0.1         Nick Burch <nick@tirian.magd.ox.ac.uk>
+v0.0.2         Tom Yates <tyates@gatekeeper.ltd.uk>
+
+Taken from https://serverfault.com/questions/590870/how-to-view-all-ssl-certificates-in-a-bundle
+
+=head1 OPTIONS
+
+=item B<help, h>
+
+Print a brief help message and exits.
+
+=head1 AUTHOR
+
+Jean Pierre Ducassou Silva
+
+=head1 LICENSE
+
+This program is free software; you can redistribute it and/or modify it
+under the terms of the Artistic License.
+
+See http://dev.perl.org/licenses/artistic.html for more information.
+
+=head1 NO WARRANTY
+
+This software is provided "as-is," without any express or implied warranty.
+In no event shall the author be held liable for any damages arising from the use of the software.
+
+=cut
+
+# ============================================================================
+sub main {
+
+	GetOptions(
+		'help|h'     => sub { pod2usage(0); },
+		'verbose|v+' => \$VERBOSE,
+		'debug|d' => sub { $VERBOSE = 1; $DEBUG = 1; }) or pod2usage(2);
+
+	dumpbundle($ARGV[0]);
+	return;
+
+}
+
+sub dumpbundle {
+
+	my ($filename) = @_;
+
+	unless ($filename) {
+		die('You must specify a cert file.');
+	}
+
+	open INP, '<', $filename or die("Unable to load '$filename'");
+
+	my $thisfile = '';
+
+	while (<INP>) {
+		$thisfile .= $_;
+		if ($_ =~ /^\-+END(\s\w+)?\sCERTIFICATE\-+$/) {
+			print "Found a complete certificate:\n";
+			print `echo \'$thisfile\' | openssl x509 -noout -text`;
+			$thisfile = "";
+		}
+	}
+
+	close INP;
+
+}
+
+# ============================================================================
+1;
+
