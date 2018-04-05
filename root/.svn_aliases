@@ -38,5 +38,5 @@ function filter_external () {
 	grep -v '^X'
 }
 
-alias 7st='svn status --ignore-externals | filter_external | filter_status'
+alias 7st='svn status --no-ignore --ignore-externals | filter_external | filter_status'
 
