@@ -5,8 +5,11 @@
 #  * Add wget and curl backends
 #  * Add random user agent
 #  * Add long options o comment on the short
-#  * Default output file name
 
 USER_AGENT='Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:59.0) Gecko/20100101 Firefox/59.0'
-aria2c -U "${USER_AGENT}" -c -x 15 -s 16 -k 1M -m 120 -o "${2}" "${1}"
+
+url="${1}"
+output_filename="${2:-${url##*/}}"
+
+aria2c -U "${USER_AGENT}" -c -x 15 -s 16 -k 1M -m 120 -o "${output_filename}" "${url}"
 
