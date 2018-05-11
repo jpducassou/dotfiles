@@ -246,6 +246,9 @@ let &t_EI .= "\<Esc>[?2004l"
 
 inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
 
+" Anyways set paste mode by default
+set paste
+
 " ============================================================================
 " Load plugin bunbles with pathogen
 " ============================================================================
