@@ -233,20 +233,8 @@ augroup END
 nmap <silent> <expr>  zu  FS_FoldAroundTarget('^\s*use\s\+\S.*;',{'context':1})
 
 " ============================================================================
-" Automatically toggle paste mode when pasting from clipboard
+" Set paste mode
 " ============================================================================
-function! XTermPasteBegin()
-	set pastetoggle=<Esc>[201~
-	set paste
-	return ""
-endfunction
-
-let &t_SI .= "\<Esc>[?2004h"
-let &t_EI .= "\<Esc>[?2004l"
-
-inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
-
-" Anyways set paste mode by default
 set paste
 
 " ============================================================================
