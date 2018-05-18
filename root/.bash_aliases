@@ -41,6 +41,25 @@ xmldiff() {
 	vimdiff <(xmllint --format "${1}") <(xmllint --format "${2}")
 }
 
+f() {
+
+	local name="${1}"
+	local starting_point="${2:-.}"
+
+	local files=$(find "${starting_point}" -type f -readable -iname "${name}" | head -n 5)
+
+	if [ "${files}" == "" ]; then
+		return
+	fi
+
+	echo "${files}"
+
+	if [ $(echo "${files}" | wc -l)  == "1" ] ; then
+		vim "${files}"
+	fi
+
+}
+
 # ============================================================================
 # Candidates:
 # ============================================================================
