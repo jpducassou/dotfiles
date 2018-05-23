@@ -1,0 +1,81 @@
+#!/bin/bash
+
+# ============================================================================
+# Log auxiliary functions
+# ============================================================================
+escape="\033["
+
+# Colors
+green="32"
+yellow="33"
+red="31"
+
+function info() {
+	local message="${1}"
+	_log "INFO" "${green}" "${message}"
+}
+
+function warn() {
+	local message="${1}"
+	_log "WARN" "${yellow}" "${message}"
+}
+
+function error() {
+	local message="${1}"
+	_log "ERROR" "${red}" "${message}"
+}
+
+# USAGE: log "info" "message"
+function log() {
+	local level="${1}"
+	local message="${2}"
+
+	${level} "${message}"
+
+}
+
+# USAGE: _log "info" "32" "message"
+function _log() {
+	local level="${1}"
+	local color=""
+	local reset=""
+	if [ -t 2 ]; then
+		color="${escape}0;${2}m"
+		reset="${escape}0m"
+	fi
+	local message="${3}"
+
+	>&2 echo -e "${color}[${level}]${reset}\t${message}"
+
+}
+
+function require() {
+	local program="${1}"
+	which "${program}" > /dev/null
+	if [ $? -ne 0 ]; then
+		error "Program '${program}' not found! Install and retry."
+		exit 1
+	fi
+}
+
+# ============================================================================
+# Main
+# ============================================================================
+
+original_file="${1}"
+label_text="${2}"
+
+require "iconv"
+require "enscript"
+require "ps2pdf"
+require "pdftk"
+
+# NOTE: enscript does not support utf-8
+echo "~color{1 0 0}  ${label_text}" \
+	| iconv -f "utf-8" -t "iso-8859-1" \
+	| enscript -q -e~ -B -f "Courier-Bold16" -i 36 --word-wrap --margin "::0:" -o- \
+	| ps2pdf - \
+	| pdftk "${original_file}" stamp - output "annotated-${original_file}"
+
+info "done. Generated: 'annotated-${original_file}'."
+
