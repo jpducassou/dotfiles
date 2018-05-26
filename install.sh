@@ -46,7 +46,7 @@ function linkall() {
 			if [ ! "${PWD}/${src_path}" == "${link}" ]; then
 				echo "${warn} Must delete '${dst_path}'."
 			else
-				[ "${verbose}" -eq 1 ] && echo "${info} '${dst_dir}/${file_name}' OK."
+				[ ${verbose} -eq 1 ] && echo "${info} '${dst_dir}/${file_name}' OK."
 			fi
 		else
 			ln -s "${PWD}/${src_path}" "${dst_path}"
