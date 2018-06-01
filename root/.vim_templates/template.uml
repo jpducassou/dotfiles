@@ -1,0 +1,19 @@
+@startuml
+
+skinparam componentStyle uml2
+skinparam monochrome true
+skinparam shadowing false
+skinparam dpi 300
+
+skinparam CaptionFontSize 10
+skinparam CaptionFontColor blue
+
+left to right direction
+
+title <FILENAME>
+
+' content here
+
+caption <AUTHOR>
+
+@enduml
