@@ -1,0 +1,115 @@
+
+% ============================================================================
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+% ============================================================================
+
+\documentclass[12pt]{article} % Default font size is 12pt, it can be changed here
+\setcounter{secnumdepth}{0}
+\usepackage{geometry} % Required to change the page size to A4
+\geometry{a4paper} % Set the page size to be A4 as opposed to the default US Letter
+
+\usepackage{graphicx} % Required for including pictures
+
+\usepackage{float} % Allows putting an [H] in \begin{figure} to specify the exact location of the figure
+\usepackage{wrapfig} % Allows in-line images such as the example fish picture
+
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+
+\usepackage{color,soul}
+
+\usepackage[shortlabels]{enumitem}
+
+\usepackage{hyperref}
+
+\usepackage{changepage}
+
+\usepackage{anysize}
+
+\linespread{1.2} % Line spacing
+
+% Uncomment to remove all indentation from paragraphs
+%\setlength\parindent{0pt}
+
+% Specifies the directory where pictures are stored
+\graphicspath{{./Pictures/}}
+
+% Para escribir en español
+\usepackage[utf8x]{inputenc}
+\usepackage[spanish]{babel}
+
+% Function for verbatim text
+\usepackage{verbatim}
+
+\usepackage{dirtytalk}
+\usepackage{tcolorbox}
+
+\begin{document}
+
+% ============================================================================
+%	TITLE PAGE
+% ============================================================================
+
+\begin{titlepage}
+
+% Defines a new command for the horizontal lines, change thickness here
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+% Center everything on the page
+\center
+
+\textsc{\LARGE University}\\[1.5cm] % Name of your university/college
+\textsc{\Large major}\\[0.5cm] % Major heading such as course name
+\textsc{\large minor}\\[0.5cm] % Minor heading such as course title
+
+\HRule \\[0.4cm]
+{ \huge \bfseries <FILENAME>}\\[0.4cm] % Title of your document
+\HRule \\[1.5cm]
+
+\large
+\emph{Autor:}\\
+<AUTHOR>
+
+~
+
+% Date, change the \today to a set date if you want to be precise
+{\large \today}\\[3cm]
+
+% Include a department/university logo - this will require the graphicx package
+%\includegraphics{Logo}\\[1cm]
+
+\vfill % Fill the rest of the page with whitespace
+
+\end{titlepage}
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+\renewcommand\labelitemi{\textbullet}
+
+\tableofcontents % Include a table of contents
+
+\newpage % Begins the essay on a new page instead of on the same page as the table of contents
+
+% ============================================================================
+%	INTRODUCTION
+% ============================================================================
+
+\section{Part 1}
+
+\newpage
+
+\section{Part 2}
+
+\subsection{Part 2.1}
+\subsubsection{Part 2.1.1}
+
+% ============================================================================
+%	BIBLIOGRAPHY
+% ============================================================================
+%\renewcommand\refname{Bibliografía}
+%\begin{thebibliography}{99} % Bibliography - this is intentionally simple in this template
+%\end{thebibliography}
+
+% ============================================================================
+\end{document}
