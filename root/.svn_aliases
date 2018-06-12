@@ -38,12 +38,16 @@ function filter_external() {
 	grep -v '^X'
 }
 
+function 7days() {
+	date --iso-8601 --date "${1:-7} days ago"
+}
+
 # ============================================================================
 # Aliases
 # ============================================================================
 alias 7up='svn update --ignore-externals'
-alias 7log='svn log --diff -r HEAD:{$(date --iso-8601 --date "3 days ago")} | colordiff | less -R'
-alias 7lg='svn log -q -v   -r HEAD:{$(date --iso-8601 --date "3 days ago")}'
+alias 7log='svn log --diff -r HEAD:{$(7days 3)} | color_page'
+alias 7lg='svn log -q -v   -r HEAD:{$(7days 3)}'
 alias 7show='svn diff -c'
 alias 7branch='svn diff -$(7base):HEAD | color_page'
 alias 7cr='svn diff -$(7base):HEAD --diff-cmd=diff -x -U100000 | color_page'
