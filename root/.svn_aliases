@@ -12,27 +12,27 @@ alias 7ci="svn status --no-ignore | grep '^[MAD]' | awk '{print \$2}' | svn ci -
 alias 7re="svn status --no-ignore | grep '^[MD]'  | awk '{print \$2}' | xargs svn revert"
 alias 7ext='svn propget svn:externals -R .'
 
-function xdiff () {
+function xdiff() {
 	! type -P colordiff >/dev/null && diff || colordiff
 }
 
-function page  () {
+function page() {
 	[[ ! -t 1 ]] && cat || xdiff | less -R
 }
 
-function 7diff () {
+function 7diff() {
 	svn diff "${@}" | page
 }
 
-function 7add () {
+function 7add() {
 	svn status --no-ignore ${@} | grep '^?' | awk '{print $2}' | xargs svn add --no-ignore
 }
 
-function 7revert () {
+function 7revert() {
 	svn merge -c -${1} .
 }
 
-function colorize_status () {
+function colorize_status() {
 	sed \
 		-e 's/^\?.*$/[1;34m\0[m/' \
 		-e 's/^!.*$/[1;31m\0[m/'  \
@@ -41,7 +41,7 @@ function colorize_status () {
 		-e 's/^D.*$/[0;31m\0[m/'
 }
 
-function filter_external () {
+function filter_external() {
 	grep -v '^X'
 }
 
