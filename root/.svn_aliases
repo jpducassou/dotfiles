@@ -25,7 +25,7 @@ function 7revert () {
 	svn merge -c -${1} .
 }
 
-function filter_status () {
+function colorize_status () {
 	sed \
 		-e 's/^\?.*$/[1;34m\0[m/' \
 		-e 's/^!.*$/[1;31m\0[m/'  \
@@ -38,5 +38,5 @@ function filter_external () {
 	grep -v '^X'
 }
 
-alias 7st='svn status --no-ignore --ignore-externals | filter_external | filter_status'
+alias 7st='svn status --no-ignore --ignore-externals | filter_external | colorize_status'
 
