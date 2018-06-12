@@ -12,9 +12,16 @@ alias 7ci="svn status --no-ignore | grep '^[MAD]' | awk '{print \$2}' | svn ci -
 alias 7re="svn status --no-ignore | grep '^[MD]'  | awk '{print \$2}' | xargs svn revert"
 alias 7ext='svn propget svn:externals -R .'
 
-# alias 7diff="svn diff | colordiff | less -R"
+function xdiff () {
+	! type -P colordiff >/dev/null && diff || colordiff
+}
+
+function page  () {
+	[[ ! -t 1 ]] && cat || xdiff | less -R
+}
+
 function 7diff () {
-	svn diff "${@}" | colordiff | less -R
+	svn diff "${@}" | page
 }
 
 function 7add () {
