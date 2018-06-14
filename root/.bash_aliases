@@ -46,7 +46,7 @@ f() {
 	local name="${1}"
 	local starting_point="${2:-.}"
 
-	local files=$(find "${starting_point}" -type f -readable -iname "${name}" | head -n 5)
+	local files=$(find "${starting_point}" -type f -iname "${name}*" | head -n 5)
 
 	if [ "${files}" == "" ]; then
 		return
