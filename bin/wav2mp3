@@ -1,4 +1,17 @@
-#!/bin/sh
+#!/bin/bash
 
-ls *.wav | sed 's/\(.*\).wav/avconv -i "\1.wav" -qscale:a 0 "\1.mp3"/' | sh
+function filter() {
+	local input="${1}"
+	local output="${input%.*}.mp3"
+
+	avconv -i "${input}" -qscale:a 0 "${output}"
+}
+
+if [ $# -eq 0 ]; then
+	for file in *.wav; do
+		filter "${file}"
+	done
+else
+	filter "${1}"
+fi
 
