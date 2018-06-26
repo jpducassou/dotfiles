@@ -46,6 +46,21 @@ function 7show() {
 	svn diff -c "${1}" | color_page
 }
 
+function 7hist() {
+	# 7hist - history of file
+	# Bendin on Stack Overflow: http://stackoverflow.com/questions/282802
+	# current url or path of file
+	local file="${1}"
+	svn log -q "${file}" | grep -E -e '^r[[:digit:]]+' -o | cut -c2- | sort -nr | {
+		while read r; do
+			echo
+			svn log  -r"${r}" "${file}@HEAD"
+			svn diff -c"${r}" "${file}@HEAD"
+			echo
+		done
+	}
+}
+
 # ============================================================================
 # Aliases
 # ============================================================================
