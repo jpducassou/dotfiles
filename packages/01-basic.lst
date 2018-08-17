@@ -11,9 +11,6 @@ less
 tree
 screen
 htop
-nmon
 curl
 wget
 aria2
-dnsutils
-nethogs

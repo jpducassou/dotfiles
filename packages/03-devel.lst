@@ -1,5 +1,6 @@
+build-essential
+make
 patch
 git
 git-man
-poedit
 colordiff
