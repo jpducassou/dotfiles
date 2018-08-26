@@ -130,6 +130,16 @@ if [ -n "${PERLBREW_ROOT}" ] && [ -f "${PERLBREW_ROOT}/etc/bashrc" ]; then
 fi
 
 # ============================================================================
+# Ruby
+# ============================================================================
+RENV_PATH="${HOME}/.rbenv"
+if [ -d "${RENV_PATH}" ]; then
+	PATH="${RENV_PATH}/bin:${PATH}"
+	eval "$(rbenv init -)"
+	PATH="${RENV_PATH}/plugins/ruby-build/bin:${PATH}"
+fi
+
+# ============================================================================
 # CPANM
 # ============================================================================
 export PERL_CPANM_OPT="--cascade-search --save-dists=${HOME}/.cpanm/cache --mirror=file://${HOME}/.cpanm/cache --mirror=http://www.cpan.org"
