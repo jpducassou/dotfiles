@@ -155,7 +155,12 @@ lazy_source () {
 # NVM - node version manager
 # ============================================================================
 export NVM_DIR="${HOME}/.nvm"
-lazy_source nvm "${NVM_DIR}/nvm.sh"
+if [ -d "${NVM_DIR}" ]; then
+	lazy_source nvm "${NVM_DIR}/nvm.sh"
+	if [ -s "${NVM_DIR}/bash_completion" ]; then
+		. "${NVM_DIR}/bash_completion"
+	fi
+fi
 
 # ============================================================================
 # MySQL
