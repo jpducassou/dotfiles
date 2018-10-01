@@ -28,11 +28,14 @@
 	ci = commit
 	br = branch
 
+	p = pull --ff-only
+
 	# git remote verbose
 	re = remote -v
 
 	# Pull and push in a single command
-	pp = !git pull && git push
+	pp = !git pull --ff-only && git push
+	px = !git pull --rebase --autostash && git push
 
 	# Show diff uncollapsed
 	xx = difftool -y --tool=vimdiff -U99999
