@@ -4,3 +4,5 @@ patch
 git
 git-man
 colordiff
+jq
+xmllint
