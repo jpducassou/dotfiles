@@ -4,7 +4,7 @@ FORMAT='%ad:%s'
 
 for repo in `find . -name '.git' -type d -prune`; do
 	pushd "$repo" > /dev/null
-	git log --author="$GIT_AUTHOR_NAME" --after="1 week ago" --date=short --pretty=format:"$FORMAT" | while read line; do echo "$repo:$line"; done
+	git log --author="${GIT_AUTHOR_NAME}" --after="1 week ago" --date=short --pretty=format:"${FORMAT}" | while read line; do echo "${repo}:${line}"; done
 	popd > /dev/null
 done
 
