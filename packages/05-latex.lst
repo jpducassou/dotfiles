@@ -1,2 +1,9 @@
-texlive-full
+texlive
+texlive-lang-spanish
+texlive-science
+texlive-pictures
+texlive-xetex
+texlive-bibtex-extra
+biber
+latexmk
 pandoc
