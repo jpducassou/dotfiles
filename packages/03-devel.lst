@@ -6,3 +6,4 @@ git-man
 colordiff
 jq
 xmllint
+entr
