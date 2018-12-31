@@ -32,13 +32,17 @@ main(@ARGV) unless caller();
 
 =head1 OPTIONS
 
+=over
+
 =item B<help, h>
 
 Print a brief help message and exits.
 
+=back
+
 =head1 AUTHOR
 
-<AUTHOR> - <EMAIL>
+<AUTHOR> - L<<EMAIL>>
 
 =head1 LICENSE
 

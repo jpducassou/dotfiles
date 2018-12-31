@@ -26,7 +26,7 @@ use Try::Tiny;
 
 =head1 AUTHOR
 
-<AUTHOR> - <EMAIL>
+<AUTHOR> - L<<EMAIL>>
 
 =head1 LICENSE
 
