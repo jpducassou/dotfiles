@@ -52,7 +52,7 @@ let g:airline_theme = 'lucius'
 " au vimEnter * NoMatchParen
 
 " dont use Q for Ex mode
-map Q :q
+map Q :q<CR>
 
 " dragvisuals config
 vmap  <expr>  <C-S-h>  DVB_Drag('left')
