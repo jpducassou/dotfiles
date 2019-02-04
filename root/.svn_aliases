@@ -69,8 +69,8 @@ alias 7log='svn log --diff -r HEAD:{$(7days 3)} | color_page'
 alias 7lg='svn log -q -v   -r HEAD:{$(7days 3)}'
 alias 7branch='svn diff -$(7base):HEAD | color_page'
 alias 7cr='svn diff -$(7base):HEAD --diff-cmd=diff -x -U100000 | color_page'
-alias 7ci="svn status --no-ignore | grep '^[MAD]' | awk '{print \$2}' | svn ci --targets -"
-alias 7re="svn status --no-ignore | grep '^[MD]'  | awk '{print \$2}' | xargs svn revert"
+alias 7ci="svn status --no-ignore --ignore-externals --non-interactive | grep '^[MAD]' | awk '{print \$2}' | svn commit --targets -"
+alias 7re="svn status --no-ignore --ignore-externals --non-interactive | grep '^[MD]'  | awk '{print \$2}' | xargs svn revert"
 alias 7ext='svn propget svn:externals -R .'
 alias 7st='svn status --no-ignore --ignore-externals | filter_external | colorize_status'
 
