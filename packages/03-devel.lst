@@ -1,9 +1,17 @@
 build-essential
 make
 patch
+# Version control
 git
 git-man
-colordiff
+# Formatting
 jq
-xmllint
+libxml2-utils
+colordiff
+# basic library headers
+libssl-dev
+libgd-dev
+libxml2-dev
+libxslt1-dev
+# Misc
 entr
