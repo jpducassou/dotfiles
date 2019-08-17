@@ -12,7 +12,7 @@ if [ -f "${1}" ] ; then
 		*.gz)         gunzip -vk   "${1}"         ;;
 		*.zip)        unzip        "${1}"         ;;
 		*.7z)         7z     x     "${1}"         ;;
-		*.xz)         unxz         "${1}"         ;;
+		*.xz)         unxz --keep  "${1}"         ;;
 		*) echo "'${1}' unknow extension to extract!" ;;
 	esac
 else
