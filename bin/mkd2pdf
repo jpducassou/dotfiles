@@ -1,0 +1,70 @@
+#!/bin/bash
+
+# ============================================================================
+# Log auxiliary functions
+# ============================================================================
+escape="\033["
+
+# Colors
+green="32"
+yellow="33"
+red="31"
+
+function info() {
+	local message="${1}"
+	_log "INFO" "${green}" "${message}"
+}
+
+function warn() {
+	local message="${1}"
+	_log "WARN" "${yellow}" "${message}"
+}
+
+function error() {
+	local message="${1}"
+	_log "ERROR" "${red}" "${message}"
+}
+
+# USAGE: log "info" "message"
+function log() {
+	local level="${1}"
+	local message="${2}"
+
+	${level} "${message}"
+
+}
+
+# USAGE: _log "info" "32" "message"
+function _log() {
+	local level="${1}"
+	local color=""
+	local reset=""
+	if [ -t 2 ]; then
+		color="${escape}0;${2}m"
+		reset="${escape}0m"
+	fi
+	local message="${3}"
+
+	>&2 echo -e "${color}[${level}]${reset}\t${message}"
+
+}
+
+# ============================================================================
+# Main
+# ============================================================================
+# Markdown to pdf script
+# To list highlighting styles:
+# $ pandoc --list-highlight-styles
+# To list supported languages:
+# $ pandoc --list-highlight-languages
+# See also: https://jdhao.github.io/2019/05/30/markdown2pdf_pandoc/
+
+input="${1}"
+output="${input/.md/.pdf}"
+set -x
+pandoc -f markdown \
+	--latex-engine=xelatex \
+	--highlight-style zenburn \
+	-V colorlinks \
+	"${input}" -o "${output}"
+
