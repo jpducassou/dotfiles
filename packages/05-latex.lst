@@ -5,5 +5,4 @@ texlive-pictures
 texlive-xetex
 texlive-bibtex-extra
 biber
-latexmk
 pandoc
