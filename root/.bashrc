@@ -147,6 +147,8 @@ export PERL_CPANM_OPT="--cascade-search --save-dists=${HOME}/.cpanm/cache --mirr
 # ============================================================================
 # Lazy loader
 # ============================================================================
+# Usage:
+# lazy_source <command> <path>
 lazy_source () {
 	eval "${1} () { [ -s ${2} ] && . ${2} && ${1} \$@; }"
 }
@@ -156,7 +158,8 @@ lazy_source () {
 # ============================================================================
 export NVM_DIR="${HOME}/.nvm"
 if [ -d "${NVM_DIR}" ]; then
-	lazy_source nvm "${NVM_DIR}/nvm.sh"
+	# lazy_source nvm "${NVM_DIR}/nvm.sh"
+	. "${NVM_DIR}/nvm.sh"
 	if [ -s "${NVM_DIR}/bash_completion" ]; then
 		. "${NVM_DIR}/bash_completion"
 	fi
