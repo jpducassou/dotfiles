@@ -143,8 +143,13 @@ if [ -z "${PERLBREW_ROOT}" ] && [ -d "/opt/perlbrew" ]; then
 	export PERLBREW_ROOT="/opt/perlbrew"
 fi
 
-if [ -n "${PERLBREW_ROOT}" ] && [ -f "${PERLBREW_ROOT}/etc/bashrc" ]; then
+export PERLBREW_BINARIES=('perlbrew' 'perl' 'cpanm' 'carton')
+load_perlbrew() {
 	. "${PERLBREW_ROOT}/etc/bashrc"
+}
+
+if [ -n "${PERLBREW_ROOT}" ] && [ -f "${PERLBREW_ROOT}/etc/bashrc" ]; then
+	lazy_load "${PERLBREW_ROOT}" 'PERLBREW_BINARIES[@]' "load_perlbrew"
 fi
 
 # ============================================================================
