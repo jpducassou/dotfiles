@@ -1,8 +1,0 @@
-#!/bin/bash
-
-if [[ "$TERM" == 'xterm' ]] && [ $(command -v grcat) ]; then
-	grcat "$HOME/.grc/conf.mysql"
-else
-	cat
-fi
-
