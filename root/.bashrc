@@ -156,11 +156,15 @@ fi
 # Ruby
 # ============================================================================
 RENV_PATH="${HOME}/.rbenv"
-if [ -d "${RENV_PATH}" ]; then
+RUBY_BINARIES=('ruby' 'gem' 'bundle' 'rake' 'rails' 'rspec' 'rubocop')
+
+load_ruby() {
 	PATH="${RENV_PATH}/bin:${PATH}"
 	eval "$(rbenv init -)"
 	PATH="${RENV_PATH}/plugins/ruby-build/bin:${PATH}"
-fi
+}
+
+lazy_load "${RENV_PATH}" 'RUBY_BINARIES[@]' "load_ruby"
 
 # ============================================================================
 # CPANM
