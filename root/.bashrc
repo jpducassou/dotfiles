@@ -148,22 +148,34 @@ export PERL_CPANM_OPT="--cascade-search --save-dists=${HOME}/.cpanm/cache --mirr
 # Lazy loader
 # ============================================================================
 # Usage:
-# lazy_source <command> <path>
-lazy_source () {
-	eval "${1} () { [ -s ${2} ] && . ${2} && ${1} \$@; }"
+# lazy_load <path> <binaries> <callback>
+lazy_load() {
+	local directory="${1}"
+	local -a binaries=("${!2}")
+	local callback="${3}"
+
+	if [ -d "${directory}" ]; then
+		for binary in "${binaries[@]}"; do
+			eval "${binary} () { for function in ${binaries[@]}; do unset -f \${function}; done; ${callback}; ${binary} \$@; }"
+		done
+	fi
+
 }
 
 # ============================================================================
 # NVM - node version manager
 # ============================================================================
 export NVM_DIR="${HOME}/.nvm"
-if [ -d "${NVM_DIR}" ]; then
-	# lazy_source nvm "${NVM_DIR}/nvm.sh"
+export NVM_BINARIES=('nvm' 'npm' 'node')
+
+load_nvm() {
 	. "${NVM_DIR}/nvm.sh"
 	if [ -s "${NVM_DIR}/bash_completion" ]; then
 		. "${NVM_DIR}/bash_completion"
 	fi
-fi
+}
+
+lazy_load "${NVM_DIR}" 'NVM_BINARIES[@]' "load_nvm"
 
 # ============================================================================
 # MySQL
