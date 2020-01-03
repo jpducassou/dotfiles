@@ -107,6 +107,24 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 # ============================================================================
+# Lazy loader
+# ============================================================================
+# Usage:
+# lazy_load <path> <binaries> <callback>
+lazy_load() {
+	local directory="${1}"
+	local -a binaries=("${!2}")
+	local callback="${3}"
+
+	if [ -d "${directory}" ]; then
+		for binary in "${binaries[@]}"; do
+			eval "${binary} () { for function in ${binaries[@]}; do unset -f \${function}; done; ${callback}; ${binary} \$@; }"
+		done
+	fi
+
+}
+
+# ============================================================================
 # Vagrant
 # ============================================================================
 VAGRANT_PATH=/opt/vagrant/bin
@@ -143,24 +161,6 @@ fi
 # CPANM
 # ============================================================================
 export PERL_CPANM_OPT="--cascade-search --save-dists=${HOME}/.cpanm/cache --mirror=file://${HOME}/.cpanm/cache --mirror=http://www.cpan.org"
-
-# ============================================================================
-# Lazy loader
-# ============================================================================
-# Usage:
-# lazy_load <path> <binaries> <callback>
-lazy_load() {
-	local directory="${1}"
-	local -a binaries=("${!2}")
-	local callback="${3}"
-
-	if [ -d "${directory}" ]; then
-		for binary in "${binaries[@]}"; do
-			eval "${binary} () { for function in ${binaries[@]}; do unset -f \${function}; done; ${callback}; ${binary} \$@; }"
-		done
-	fi
-
-}
 
 # ============================================================================
 # NVM - node version manager
