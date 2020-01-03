@@ -107,65 +107,6 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 # ============================================================================
-# Vagrant
-# ============================================================================
-VAGRANT_PATH=/opt/vagrant/bin
-if [ -d "${VAGRANT_PATH}" ]; then
-	PATH="${VAGRANT_PATH}:${PATH}"
-fi
-
-# ============================================================================
-# Perlbrew
-# ============================================================================
-if [ -z "${PERLBREW_ROOT}" ] && [ -d "${HOME}/perl5/perlbrew" ]; then
-	export PERLBREW_ROOT="${HOME}/perl5/perlbrew"
-fi
-
-if [ -z "${PERLBREW_ROOT}" ] && [ -d "/opt/perlbrew" ]; then
-	export PERLBREW_ROOT="/opt/perlbrew"
-fi
-
-if [ -n "${PERLBREW_ROOT}" ] && [ -f "${PERLBREW_ROOT}/etc/bashrc" ]; then
-	. "${PERLBREW_ROOT}/etc/bashrc"
-fi
-
-# ============================================================================
-# Ruby
-# ============================================================================
-RENV_PATH="${HOME}/.rbenv"
-if [ -d "${RENV_PATH}" ]; then
-	PATH="${RENV_PATH}/bin:${PATH}"
-	eval "$(rbenv init -)"
-	PATH="${RENV_PATH}/plugins/ruby-build/bin:${PATH}"
-fi
-
-# ============================================================================
-# CPANM
-# ============================================================================
-export PERL_CPANM_OPT="--cascade-search --save-dists=${HOME}/.cpanm/cache --mirror=file://${HOME}/.cpanm/cache --mirror=http://www.cpan.org"
-
-# ============================================================================
-# Lazy loader
-# ============================================================================
-# Usage:
-# lazy_source <command> <path>
-lazy_source () {
-	eval "${1} () { [ -s ${2} ] && . ${2} && ${1} \$@; }"
-}
-
-# ============================================================================
-# NVM - node version manager
-# ============================================================================
-export NVM_DIR="${HOME}/.nvm"
-if [ -d "${NVM_DIR}" ]; then
-	# lazy_source nvm "${NVM_DIR}/nvm.sh"
-	. "${NVM_DIR}/nvm.sh"
-	if [ -s "${NVM_DIR}/bash_completion" ]; then
-		. "${NVM_DIR}/bash_completion"
-	fi
-fi
-
-# ============================================================================
 # MySQL
 # ============================================================================
 export MYSQL_PS1="[\u@\h] \d> "
