@@ -68,7 +68,7 @@ export PERL_CPANM_OPT="--cascade-search --save-dists=${HOME}/.cpanm/cache --mirr
 # NVM - node version manager
 # ============================================================================
 export NVM_DIR="${HOME}/.nvm"
-export NVM_BINARIES=('nvm' 'npm' 'node')
+export NVM_BINARIES=('nvm' 'npm' 'node' 'npx')
 
 load_nvm() {
 	. "${NVM_DIR}/nvm.sh"
