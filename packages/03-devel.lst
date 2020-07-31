@@ -7,6 +7,7 @@ git-man
 # Formatting
 jq
 libxml2-utils
+xmlstarlet
 colordiff
 # basic library headers
 libssl-dev
