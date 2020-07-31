@@ -1,7 +1,2 @@
 # <FILENAME>
 
-
-## Credits
-
-<AUTHOR>
-
