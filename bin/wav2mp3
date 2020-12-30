@@ -1,11 +1,38 @@
 #!/bin/bash
 
+# ============================================================================
+# Shell script to convert single or multiple files from wav to mp3
+# ============================================================================
+
+# function filter
+# Gets single wav file path and converts to mp3.
 function filter() {
 	local input="${1}"
 	local output="${input%.*}.mp3"
 
 	avconv -i "${input}" -qscale:a 0 "${output}"
 }
+
+# function require
+# Checks if program is available and if not it aborts execution.
+function require() {
+	local program="${1}"
+	local package="${2}"
+
+	which "${program}" > /dev/null
+	if [ $? -ne 0 ]; then
+		echo "Program '${program}' not found! Install and retry."
+		if [ ! -z "${package}" ]; then
+			echo "Try installing '${package}' package."
+		fi
+		exit 1
+	fi
+}
+
+# ============================================================================
+# Main
+# ============================================================================
+require 'avconv' 'libav-tools'
 
 if [ $# -eq 0 ]; then
 	for file in *.wav; do
