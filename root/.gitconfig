@@ -90,3 +90,5 @@
 	insteadOf = "bb://"
 	pushInsteadOf = "bb://"
 
+[fetch]
+	prune = true
