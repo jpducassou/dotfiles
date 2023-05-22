@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 """<FILENAME>
 
@@ -7,27 +7,62 @@
 
 import os
 import sys
+import time
 import argparse
+import logging
 
-def main(arguments):
+def main(args):
 
     parser = argparse.ArgumentParser(
-        description     = __doc__,
-        formatter_class = argparse.RawDescriptionHelpFormatter)
-    parser.add_argument('-v', '--verbose', action = 'store_true', help = 'Makes this script verbose during its operation')
-    parser.add_argument('destination_host', help = 'Destination host')
+        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
+    )
+    parser.add_argument(
+        "-v",
+        "--verbose",
+        action="store_true",
+        help="Makes this script verbose during its operation",
+    )
+    parser.add_argument(
+        "-l",
+        "--logfile",
+        dest="logfile",
+        default=None,
+        help="log file path. Stdout will be used otherwise.",
+    )
 
-    args = parser.parse_args(arguments)
+    config = parser.parse_args(args)
 
+    if config.logfile:
+        logging.basicConfig(
+            level=logging.INFO,
+            filename=config.logfile,
+            format="%(levelname)s :: %(message)s",
+        )
+    else:
+        logging.basicConfig(level=logging.INFO, format="%(levelname)s :: %(message)s")
+
+    logging.info("Process started.")
+    start_time = time.time()
+
+    status = 0
     try:
-        bazinga(args.destination_host)
+        process(config)
     except Exception as e:
-        print('Error: ' + str(e))
-        return -1
-    return 0
+        logging.error(
+            f"Error: Caught exception of type {type(e)} with message: {str(e)}"
+        )
+        status = -1
 
-def bazinga(destination_host):
-    # # implementation here
+    end_time = time.time()
+    elapsed_time = end_time - start_time
+    logging.info(f"Execution time: {elapsed_time:.2f} seconds")
+    logging.info("Process finished.")
+
+    return status
+
+def process(config):
+    # implementation here
+    logging.info("Processing ...")
 
 if __name__ == '__main__':
     sys.exit(main(sys.argv[1:]))
