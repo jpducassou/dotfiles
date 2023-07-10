@@ -77,7 +77,7 @@
 
 	meld  = difftool -y -d --tool=meld
 
-	tags = for-each-ref --sort=committerdate --format '%(committerdate:short): %(refname:short)' refs/tags
+	tags = for-each-ref --sort=creatordate --format '%(creatordate:short): %(refname:short)' refs/tags
 
 [push]
 	default = current
