@@ -2,11 +2,16 @@
 
 input="${1}"
 output="${input%.*}.pdf"
+title="$(basename ${input%.*})"
+
+echo "title: ${title}"
 
 pandoc "${input}" \
 	--standalone \
-	--from markdown_github \
-	--to latex \
+	--from gfm \
+	--pdf-engine=weasyprint \
+	--metadata pagetitle="${title}" \
+	--css="${HOME}/dotfiles/bin/github-pandoc.css" \
 	--highlight-style tango \
 	--variable fontsize:12pt \
 	--variable geometry:margin=3cm \

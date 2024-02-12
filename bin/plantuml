@@ -1,3 +1,8 @@
 #!/bin/sh
 
-DISPLAY= java -jar ~/opt/plantuml/plantuml.jar -tpng $@
+input="${1}"
+output="${input%.*}.png"
+
+DISPLAY= java -jar ~/opt/plantuml/plantuml.jar -nometadata -tpng "${input}"
+xdg-open "${output}" &
+

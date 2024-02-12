@@ -3,11 +3,13 @@
 basedir="$(dirname "${0}")"
 input="${1}"
 output="${input%.*}.html"
+title="$(basename ${input%.*})"
 
 pandoc "${input}" \
 	--standalone \
-	--from markdown_github \
+	--from gfm \
 	--to html \
+	--metadata pagetitle="${title}" \
 	--output "${output}" \
 	--css "${basedir}/github-pandoc.css"
 
