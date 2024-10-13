@@ -11,6 +11,7 @@ if [ -f "${1}" ] ; then
 		*.rar)        unrar  x -o- "${1}"         ;;
 		*.gz)         gunzip -vk   "${1}"         ;;
 		*.zip)        unzip        "${1}"         ;;
+		*.jar)        unzip        "${1}"         ;;
 		*.7z)         7z     x     "${1}"         ;;
 		*.xz)         unxz --keep  "${1}"         ;;
 		*) echo "'${1}' unknow extension to extract!" ;;
