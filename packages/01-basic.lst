@@ -13,3 +13,4 @@ htop
 curl
 wget
 aria2
+net-tools
