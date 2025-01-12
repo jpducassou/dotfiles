@@ -71,9 +71,6 @@ nnoremap <C-J> a<CR><Esc>k
 
 " Numbering by default
 set number
-if v:version >= 703
-	set relativenumber
-endif
 
 " ============================================================================
 " F2 - F4
@@ -81,9 +78,6 @@ endif
 " Toggle line numbers on/off
 function! ToggleNumber()
 	set number!
-	if v:version >= 703
-		set relativenumber!
-	endif
 endfunction
 map <F2> :call ToggleNumber()<CR>
 
