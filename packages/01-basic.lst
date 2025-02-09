@@ -5,6 +5,7 @@ unzip
 pv
 dos2unix
 tofrodos
+mtools
 silversearcher-ag
 less
 tree
