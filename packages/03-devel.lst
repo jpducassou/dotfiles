@@ -9,10 +9,3 @@ jq
 libxml2-utils
 xmlstarlet
 colordiff
-# basic library headers
-libssl-dev
-libgd-dev
-libxml2-dev
-libxslt1-dev
-# Misc
-entr
