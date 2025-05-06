@@ -29,7 +29,6 @@ else
 fi
 alias agl="ag --pager 'less -R'"
 alias pp_json="python -mjson.tool"
-alias mysql="mysql --pager=uberpager"
 alias mirror="wget --mirror --no-parent --page-requisites --adjust-extension --convert-links"
 alias mvndoc="mvn dependency:resolve -Dclassifier=javadoc"
 alias perltags="ctags --exclude=blib --extra=q --languages=Perl"
