@@ -37,8 +37,7 @@ function linkall() {
 
 	mkdir -p "${HOME}/${dst_dir}"
 
-	for src_path in $(find "${src_dir}" -mindepth 1 -maxdepth 1)
-	do
+	for src_path in $(find "${src_dir}" -mindepth 1 -maxdepth 1); do
 		local file_name=$(basename "${src_path}")
 		local dst_path="${HOME}/${dst_dir}/${file_name}"
 		if [ -e "${dst_path}" ]; then
@@ -58,11 +57,13 @@ function linkall() {
 		fi
 	done
 
-	for src_path in $(find "${HOME}/${dst_dir}" -mindepth 1 -maxdepth 1 -type l -xtype l)
-	do
-		local file_name=$(basename "${src_path}")
-		echo "${info} deleting broken link '${file_name}'"
-		rm "${HOME}/${dst_dir}/${file_name}"
+	# Eliminar symlinks rotos en la carpeta ${HOME}/${dst_dir}
+	for src_path in $(find "${HOME}/${dst_dir}" -mindepth 1 -maxdepth 1 -type l); do
+		if [ ! -e "${src_path}" ]; then
+			local file_name=$(basename "${src_path}")
+			echo "${info} deleting broken link '${file_name}'"
+			rm "${HOME}/${dst_dir}/${file_name}"
+		fi
 	done
 
 }
