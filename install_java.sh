@@ -25,6 +25,16 @@ fi
 export PATH="${HOME}/.jenv/bin:${PATH}"
 eval "$(jenv init -)"
 
+if ! grep -sq 'jenv' "${HOME}/.bash_post"; then
+	cat <<- 'EOF' >> "${HOME}/.bash_post"
+	# ============================================================================
+	# jenv
+	# ============================================================================
+	export PATH="${HOME}/.jenv/bin:${PATH}"
+	eval "$(jenv init -)"
+	EOF
+fi
+
 echo "[info] Addding Java SDK 17 to jenv ..."
 jenv add "${JAVA_17_DIR}"
 
