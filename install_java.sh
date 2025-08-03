@@ -26,6 +26,7 @@ export PATH="${HOME}/.jenv/bin:${PATH}"
 eval "$(jenv init -)"
 
 if ! grep -sq 'jenv' "${HOME}/.bash_post"; then
+	echo "[info] Adding jenv configuration to .bash_post"
 	cat <<- 'EOF' >> "${HOME}/.bash_post"
 	# ============================================================================
 	# jenv
