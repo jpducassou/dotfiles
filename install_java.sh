@@ -8,6 +8,18 @@ if [ ! -d "${HOME}/.sdkman" ]; then
 fi
 source "${HOME}/.sdkman/bin/sdkman-init.sh"
 
+if ! grep -sq 'sdkman' "${HOME}/.bash_post"; then
+	echo "[info] Adding sdkman configuration to .bash_post"
+	cat <<- 'EOF' >> "${HOME}/.bash_post"
+	# ============================================================================
+	# sdkman
+	# ============================================================================
+	if [ -f "${HOME}/.sdkman/bin/sdkman-init.sh" ]; then
+		. "${HOME}/.sdkman/bin/sdkman-init.sh"
+	fi
+	EOF
+fi
+
 echo "[info] Installing Java SDK 17 with SDKMAN ..."
 sdk install java '17.0.16-amzn'
 JAVA_17_DIR=$(sdk home java '17.0.16-amzn')
