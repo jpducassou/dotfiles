@@ -21,12 +21,12 @@ if ! grep -sq 'nvm' "${HOME}/.bash_post"; then
 	EOF
 fi
 
-echo "[info] Installing nodejs 22 with nvm ..."
-nvm install 22
+echo "[info] Installing nodejs lts/jod  = 22 with nvm ..."
+nvm install lts/jod
 
-echo "[info] Installing nodejs 20 with nvm ..."
-nvm install 20
+echo "[info] Installing nodejs lts/iron = 20 with nvm ..."
+nvm install lts/iron
 
 echo "[info] setting nodejs 22 as default ..."
-nvm alias default 22
+nvm alias default lts/jod
 
