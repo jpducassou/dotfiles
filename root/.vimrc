@@ -191,6 +191,7 @@ map <F8> :set tabstop=4 shiftwidth=4 expandtab<CR>
 " ============================================================================
 " Templates for new files
 " ============================================================================
+" vim_file_template is a script that should be in the $PATH (~/bin)
 augroup New_File_Setup
 	autocmd!
 	autocmd BufNewFile  *  -1r !vim_file_template <afile>
