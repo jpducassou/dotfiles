@@ -22,6 +22,9 @@
 [mergetool]
 	keepBackup = false
 
+[init]
+	defaultBranch = master
+
 [alias]
 	co = checkout
 	st = status
