@@ -5,6 +5,11 @@ default: true
 MD004:
   style: "sublist"
 
+# MD012/no-multiple-blanks
+MD012:
+  # Consecutive blank lines
+  maximum: 2
+
 # MD024/no-duplicate-heading
 MD024:
   allow_different_nesting: true
