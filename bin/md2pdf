@@ -9,7 +9,6 @@ echo "title: ${title}"
 pandoc "${input}" \
 	--standalone \
 	--from gfm \
-	--pdf-engine=weasyprint \
 	--metadata pagetitle="${title}" \
 	--css="${HOME}/dotfiles/bin/github-pandoc.css" \
 	--highlight-style tango \
