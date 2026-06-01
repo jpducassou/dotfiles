@@ -21,7 +21,10 @@ if ! grep -sq 'nvm' "${HOME}/.bash_post"; then
 	EOF
 fi
 
-echo "[info] Installing nodejs lts/jod  = 22 with nvm ..."
+echo "[info] Installing nodejs lts/krypton = 24 with nvm ..."
+nvm install lts/krypton
+
+echo "[info] Installing nodejs lts/jod = 22 with nvm ..."
 nvm install lts/jod
 
 echo "[info] Installing nodejs lts/iron = 20 with nvm ..."
