@@ -53,17 +53,36 @@ jenv enable-plugin gradle
 # ============================================================================
 # SDKs installation
 # ============================================================================
-install_java_sdk() {
-	local version="$1"
-	echo "[info] Installing Java SDK ${version} with SDKMAN ..."
-	sdk install java "${version}"
-	echo "[info] Adding Java SDK ${version} to jenv ..."
-	jenv add "$(sdk home java "${version}")"
+install_latest_java_sdk() {
+	local major="$1"
+	local vendor="${2:-amzn}"
+
+	local latest
+	latest=$(sdk list java \
+		| grep -oE "[0-9]+\.[0-9]+\.[0-9]+-${vendor}" \
+		| grep "^${major}\." \
+		| sort -V | tail -1)
+
+	if [ -z "${latest}" ]; then
+		echo "[error] No version found for Java ${major} (${vendor})"
+		return 1
+	fi
+
+	if [ -d "${HOME}/.sdkman/candidates/java/${latest}" ]; then
+		echo "[info] Java SDK ${latest} is already up to date."
+		return 0
+	fi
+
+	echo "[info] Installing Java SDK ${latest} with SDKMAN ..."
+	sdk install java "${latest}"
+
+	echo "[info] Adding Java SDK ${latest} to jenv ..."
+	jenv add "$(sdk home java "${latest}")" 2>/dev/null || true
 }
 
-install_java_sdk '17.0.16-amzn'
-install_java_sdk '21.0.8-amzn'
-install_java_sdk '25.0.3-amzn'
+install_latest_java_sdk 17
+install_latest_java_sdk 21
+install_latest_java_sdk 25
 
 # ============================================================================
 # Set default
