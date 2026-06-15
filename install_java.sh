@@ -53,26 +53,17 @@ jenv enable-plugin gradle
 # ============================================================================
 # SDKs installation
 # ============================================================================
-echo "[info] Installing Java SDK 17 with SDKMAN ..."
-sdk install java '17.0.16-amzn'
-JAVA_17_DIR=$(sdk home java '17.0.16-amzn')
+install_java_sdk() {
+	local version="$1"
+	echo "[info] Installing Java SDK ${version} with SDKMAN ..."
+	sdk install java "${version}"
+	echo "[info] Adding Java SDK ${version} to jenv ..."
+	jenv add "$(sdk home java "${version}")"
+}
 
-echo "[info] Addding Java SDK 17 to jenv ..."
-jenv add "${JAVA_17_DIR}"
-
-echo "[info] Installing Java SDK 21 with SDKMAN ..."
-sdk install java '21.0.8-amzn'
-JAVA_21_DIR=$(sdk home java '21.0.8-amzn')
-
-echo "[info] Addding Java SDK 21 to jenv ..."
-jenv add "${JAVA_21_DIR}"
-
-echo "[info] Installing Java SDK 25 with SDKMAN ..."
-sdk install java '25.0.3-amzn'
-JAVA_25_DIR=$(sdk home java '25.0.3-amzn')
-
-echo "[info] Addding Java SDK 25 to jenv ..."
-jenv add "${JAVA_25_DIR}"
+install_java_sdk '17.0.16-amzn'
+install_java_sdk '21.0.8-amzn'
+install_java_sdk '25.0.3-amzn'
 
 # ============================================================================
 # Set default
