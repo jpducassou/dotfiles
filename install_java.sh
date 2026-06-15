@@ -28,6 +28,10 @@ echo "[info] Installing Java SDK 21 with SDKMAN ..."
 sdk install java '21.0.8-amzn'
 JAVA_21_DIR=$(sdk home java '21.0.8-amzn')
 
+echo "[info] Installing Java SDK 25 with SDKMAN ..."
+sdk install java '25.0.3-amzn'
+JAVA_25_DIR=$(sdk home java '25.0.3-amzn')
+
 if [ ! -d "${HOME}/.jenv" ]; then
 	echo "[info] Installing jenv ..."
 	git clone https://github.com/jenv/jenv.git ~/.jenv
@@ -53,6 +57,9 @@ jenv add "${JAVA_17_DIR}"
 
 echo "[info] Addding Java SDK 21 to jenv ..."
 jenv add "${JAVA_21_DIR}"
+
+echo "[info] Addding Java SDK 25 to jenv ..."
+jenv add "${JAVA_25_DIR}"
 
 echo "[info] Adding gradle plugin to jenv ..."
 jenv enable-plugin export
