@@ -2,6 +2,9 @@
 
 set -e
 
+# ============================================================================
+# SDKMAN installation
+# ============================================================================
 if [ ! -d "${HOME}/.sdkman" ]; then
 	echo "[info] Installing SDKMAN ..."
 	curl -s 'https://get.sdkman.io?ci=true&rcupdate=false' | bash
@@ -20,18 +23,9 @@ if ! grep -sq 'sdkman' "${HOME}/.bash_post"; then
 	EOF
 fi
 
-echo "[info] Installing Java SDK 17 with SDKMAN ..."
-sdk install java '17.0.16-amzn'
-JAVA_17_DIR=$(sdk home java '17.0.16-amzn')
-
-echo "[info] Installing Java SDK 21 with SDKMAN ..."
-sdk install java '21.0.8-amzn'
-JAVA_21_DIR=$(sdk home java '21.0.8-amzn')
-
-echo "[info] Installing Java SDK 25 with SDKMAN ..."
-sdk install java '25.0.3-amzn'
-JAVA_25_DIR=$(sdk home java '25.0.3-amzn')
-
+# ============================================================================
+# jenv installation
+# ============================================================================
 if [ ! -d "${HOME}/.jenv" ]; then
 	echo "[info] Installing jenv ..."
 	git clone https://github.com/jenv/jenv.git ~/.jenv
@@ -52,22 +46,43 @@ if ! grep -sq 'jenv' "${HOME}/.bash_post"; then
 	EOF
 fi
 
-echo "[info] Addding Java SDK 17 to jenv ..."
-jenv add "${JAVA_17_DIR}"
-
-echo "[info] Addding Java SDK 21 to jenv ..."
-jenv add "${JAVA_21_DIR}"
-
-echo "[info] Addding Java SDK 25 to jenv ..."
-jenv add "${JAVA_25_DIR}"
-
 echo "[info] Adding gradle plugin to jenv ..."
 jenv enable-plugin export
 jenv enable-plugin gradle
 
+# ============================================================================
+# SDKs installation
+# ============================================================================
+echo "[info] Installing Java SDK 17 with SDKMAN ..."
+sdk install java '17.0.16-amzn'
+JAVA_17_DIR=$(sdk home java '17.0.16-amzn')
+
+echo "[info] Addding Java SDK 17 to jenv ..."
+jenv add "${JAVA_17_DIR}"
+
+echo "[info] Installing Java SDK 21 with SDKMAN ..."
+sdk install java '21.0.8-amzn'
+JAVA_21_DIR=$(sdk home java '21.0.8-amzn')
+
+echo "[info] Addding Java SDK 21 to jenv ..."
+jenv add "${JAVA_21_DIR}"
+
+echo "[info] Installing Java SDK 25 with SDKMAN ..."
+sdk install java '25.0.3-amzn'
+JAVA_25_DIR=$(sdk home java '25.0.3-amzn')
+
+echo "[info] Addding Java SDK 25 to jenv ..."
+jenv add "${JAVA_25_DIR}"
+
+# ============================================================================
+# Set default
+# ============================================================================
 echo "[info] setting Java SDK 21 as default ..."
 jenv global 21
 
+# ============================================================================
+# THE END
+# ============================================================================
 echo ""
 echo "[info] Done."
 echo "[info] Use 'jenv global <version>' or 'jenv local <version>' to change sdk."
