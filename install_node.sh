@@ -2,12 +2,17 @@
 
 set -e
 
-if [ ! -d "${HOME}/.nvm" ]; then
+# ============================================================================
+# nvm installation
+# ============================================================================
+export NVM_DIR="${HOME}/.nvm"
+
+if [ ! -d "${NVM_DIR}" ]; then
 	echo "[info] Installing nvm ..."
+	mkdir "${NVM_DIR}"
 	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 fi
 
-export NVM_DIR="${HOME}/.nvm"
 source "${NVM_DIR}/nvm.sh"
 
 if ! grep -sq 'nvm' "${HOME}/.bash_post"; then
@@ -21,15 +26,21 @@ if ! grep -sq 'nvm' "${HOME}/.bash_post"; then
 	EOF
 fi
 
+# ============================================================================
+# SDKs installation
+# ============================================================================
 echo "[info] Installing nodejs lts/krypton = 24 with nvm ..."
 nvm install lts/krypton
 
 echo "[info] Installing nodejs lts/jod = 22 with nvm ..."
 nvm install lts/jod
 
-echo "[info] Installing nodejs lts/iron = 20 with nvm ..."
-nvm install lts/iron
+echo "[info] setting nodejs 24 as default ..."
+nvm alias default lts/krypton
 
-echo "[info] setting nodejs 22 as default ..."
-nvm alias default lts/jod
+# ============================================================================
+# THE END
+# ============================================================================
+echo ""
+echo "[info] Done."
 
