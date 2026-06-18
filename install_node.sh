@@ -39,6 +39,37 @@ echo "[info] setting nodejs 24 as default ..."
 nvm alias default lts/krypton
 
 # ============================================================================
+# pnpm installation
+# ============================================================================
+export PNPM_HOME="${HOME}/.pnpm"
+export PATH="${PNPM_HOME}:${PATH}"
+
+if ! command -v pnpm >/dev/null 2>&1; then
+	echo "[info] Installing pnpm ..."
+	curl -fsSL https://get.pnpm.io/install.sh | env PNPM_HOME="${PNPM_HOME}" SHELL="$(command -v bash)" sh -
+fi
+
+if ! grep -sq 'PNPM_HOME' "${HOME}/.bash_post"; then
+  echo "[info] Adding pnpm configuration to .bash_post"
+  cat <<- 'EOF' >> "${HOME}/.bash_post"
+	# ============================================================================
+	# pnpm
+	# ============================================================================
+	export PNPM_HOME="${HOME}/.pnpm"
+	case ":${PATH}:" in
+		*":${PNPM_HOME}:"*) ;;
+		*) export PATH="${PNPM_HOME}:${PATH}" ;;
+	esac
+	EOF
+fi
+
+# ============================================================================
+# Global packages installation
+# ============================================================================
+echo "[info] Installing markdownlint globally with pnpm ..."
+pnpm add --global markdownlint-cli
+
+# ============================================================================
 # THE END
 # ============================================================================
 echo ""
