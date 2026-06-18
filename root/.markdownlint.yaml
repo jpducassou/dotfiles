@@ -10,6 +10,11 @@ MD012:
   # Consecutive blank lines
   maximum: 2
 
+# MD013/line-length : enforce 80 cols on prose, but exempt tables
+MD013:
+  line_length: 80
+  tables: false
+
 # MD024/no-duplicate-heading
 MD024:
   allow_different_nesting: true
