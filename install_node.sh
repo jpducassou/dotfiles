@@ -42,7 +42,7 @@ nvm alias default lts/krypton
 # pnpm installation
 # ============================================================================
 export PNPM_HOME="${HOME}/.pnpm"
-export PATH="${PNPM_HOME}:${PATH}"
+export PATH="${PNPM_HOME}/bin:${PATH}"
 
 if ! command -v pnpm >/dev/null 2>&1; then
 	echo "[info] Installing pnpm ..."
@@ -57,8 +57,8 @@ if ! grep -sq 'PNPM_HOME' "${HOME}/.bash_post"; then
 	# ============================================================================
 	export PNPM_HOME="${HOME}/.pnpm"
 	case ":${PATH}:" in
-		*":${PNPM_HOME}:"*) ;;
-		*) export PATH="${PNPM_HOME}:${PATH}" ;;
+		*":${PNPM_HOME}/bin:"*) ;;
+		*) export PATH="${PNPM_HOME}/bin:${PATH}" ;;
 	esac
 	EOF
 fi
