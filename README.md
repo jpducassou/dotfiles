@@ -12,7 +12,7 @@ This repo host my custom config files for linux.
 ## Setup
 
 ``` bash
-git clone git://github.com/jpducassou/dotfiles
+git clone https://github.com/jpducassou/dotfiles ~/dotfiles
 cd ~/dotfiles
 ./install.sh
 ```
