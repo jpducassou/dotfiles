@@ -6,13 +6,17 @@
 cd "$(dirname "$(readlink -f "${0}")")" || exit 1
 dotfiles_dir="$(pwd)"
 verbose=0
-while getopts "v" options; do
+while getopts "hv" options; do
 	case "${options}" in
+		h)
+			echo "usage: ${0} [-hv]"
+			exit 0
+		;;
 		v)
 			verbose=1
 		;;
 		*)
-			echo "usage: ${0} [-v]" >&2
+			echo "usage: ${0} [-hv]" >&2
 			exit 1
 		;;
 	esac
