@@ -11,5 +11,10 @@ if [ "$#" == "0" ]; then
 	exit 1
 fi
 
-grep -vh '#' $@ | xargs aptitude install -y
+if [ "$(id -u)" -ne 0 ]; then
+	echo 'This script must be run as root.' >&2
+	exit 1
+fi
+
+grep -vhE '^[[:space:]]*(#|$)' "$@" | xargs -r apt-get install -y
 
