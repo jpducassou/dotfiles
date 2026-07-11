@@ -67,10 +67,12 @@ if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
 
 fi
 
-# If this is an xterm set the title
-if [[ "${TERM}" == 'xterm' ]]; then
-	PS1="\[\e]0;\u@\h: \w\a\]${PS1}"
-fi
+# If this is a title-capable terminal, set the title
+case "${TERM}" in
+	xterm*|rxvt*|tmux*|screen*)
+		PS1="\[\e]0;\u@\h: \w\a\]${PS1}"
+	;;
+esac
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
