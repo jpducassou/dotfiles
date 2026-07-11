@@ -3,12 +3,17 @@
 # ============================================================================
 # Dotfiles install script
 # ============================================================================
-PWD=$(pwd)
+cd "$(dirname "$(readlink -f "${0}")")" || exit 1
+dotfiles_dir="$(pwd)"
 verbose=0
 while getopts "v" options; do
 	case "${options}" in
 		v)
 			verbose=1
+		;;
+		*)
+			echo "usage: ${0} [-v]" >&2
+			exit 1
 		;;
 	esac
 done
@@ -16,7 +21,7 @@ done
 # ============================================================================
 # Color setup
 # ============================================================================
-if test -t 1 && test -n $(tput colors); then
+if test -t 1 && test -n "$(tput colors 2>/dev/null)"; then
 	normal="$(tput sgr0)"
 	red="$(tput setaf 1)"
 	green="$(tput setaf 2)"
@@ -37,34 +42,37 @@ function linkall() {
 
 	mkdir -p "${HOME}/${dst_dir}"
 
-	for src_path in $(find "${src_dir}" -mindepth 1 -maxdepth 1); do
-		local file_name=$(basename "${src_path}")
+	while IFS= read -r -d '' src_path; do
+		local file_name
+		file_name=$(basename "${src_path}")
 		local dst_path="${HOME}/${dst_dir}/${file_name}"
 		if [ -e "${dst_path}" ]; then
-			local link=$(readlink "${dst_path}")
-			if [ ! "${PWD}/${src_path}" == "${link}" ]; then
+			local link
+			link=$(readlink "${dst_path}")
+			if [ ! "${dotfiles_dir}/${src_path}" == "${link}" ]; then
 				echo "${warn} Must delete '${dst_path}'."
 			else
 				[ ${verbose} -eq 1 ] && echo "${info} '${dst_dir}/${file_name}' OK."
 			fi
 		else
-			ln -s "${PWD}/${src_path}" "${dst_path}"
+			ln -s "${dotfiles_dir}/${src_path}" "${dst_path}"
 			if [ $? -ne 0 ]; then
-				echo "${error} linking '${PWD}/${src_path}' -> '${dst_path}'"
+				echo "${error} linking '${dotfiles_dir}/${src_path}' -> '${dst_path}'"
 			else
-				echo "${info} linking '${PWD}/${src_path}' -> '${dst_path}'"
+				echo "${info} linking '${dotfiles_dir}/${src_path}' -> '${dst_path}'"
 			fi
 		fi
-	done
+	done < <(find "${src_dir}" -mindepth 1 -maxdepth 1 -print0)
 
 	# Eliminar symlinks rotos en la carpeta ${HOME}/${dst_dir}
-	for src_path in $(find "${HOME}/${dst_dir}" -mindepth 1 -maxdepth 1 -type l); do
+	while IFS= read -r -d '' src_path; do
 		if [ ! -e "${src_path}" ]; then
-			local file_name=$(basename "${src_path}")
+			local file_name
+			file_name=$(basename "${src_path}")
 			echo "${info} deleting broken link '${file_name}'"
 			rm "${HOME}/${dst_dir}/${file_name}"
 		fi
-	done
+	done < <(find "${HOME}/${dst_dir}" -mindepth 1 -maxdepth 1 -type l -print0)
 
 }
 
@@ -74,7 +82,8 @@ function linkall() {
 function install_hooks() {
 
 	local hook_names=(post-checkout post-merge)
-	local script_name=$(basename "${0}")
+	local script_name
+	script_name=$(basename "${0}")
 	local script_path="../../${script_name}"
 
 	for hook_name in "${hook_names[@]}"; do
