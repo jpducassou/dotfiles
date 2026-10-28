@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -euo pipefail
+
 # This script extracts files changed between two commits specified.
 # If some files were deleted a .deleted listing them is created.
 
@@ -10,13 +12,13 @@ YELLOW="\033[33m"
 GREEN="\033[32m"
 RESET="\033[39m"
 
-range=$1
+range=${1:-}
 if [ -z "$range" ]; then
 	echo -e "${BOLD}${RED}You must specify a '<since>..<until>' argument.${RESET}${_BOLD}"
 	exit 1
 fi
 
-if [ -z "$2" ]; then
+if [ -z "${2:-}" ]; then
 	target="$( pwd )/.deployments"
 else
 	target=$( echo "$2" | sed -e 's#/\+$##g' )
@@ -24,7 +26,7 @@ fi
 
 if [ -d "$target" ]; then
 	echo -ne "Do you wish to remove '$target' first? [Y/n] "
-	read prompt
+	read -r prompt || prompt=""
 	if [ -z "$prompt" ] || [ "$prompt" == "Y" ] || [ "$prompt" == "y" ]; then
 		echo -e " ${YELLOW}Purging '$target'...${RESET}"
 		if [ -d "$target" ]; then
@@ -66,7 +68,7 @@ for command in $LOG; do
 			exit 4
 		;;
 	esac
-	let "index++"
+	index=$((index + 1))
 	echo -ne "\r${YELLOW}Processing ${length} files...${RESET} $( echo "scale=2; ( $index / $length ) * 100.00" | bc )%"
 done
 echo

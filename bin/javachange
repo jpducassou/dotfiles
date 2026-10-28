@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -euo pipefail
+
 # ============================================================================
 # Log auxiliary functions
 # ============================================================================
@@ -52,7 +54,7 @@ function _log() {
 # ============================================================================
 # Main
 # ============================================================================
-java_version=$(update-java-alternatives --list | grep "java-1.${1}" | cut -d ' ' -f 1)
+java_version=$(update-java-alternatives --list | grep "java-1.${1:-}" | cut -d ' ' -f 1 || true)
 if [ -n "${java_version}" ]; then
  info "Changing java version to '${java_version}' ..."
  update-java-alternatives --set "${java_version}"

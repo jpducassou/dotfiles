@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -euo pipefail
+
 # ============================================================================
 # Shell script to convert single or multiple files from wav to mp3
 # ============================================================================
@@ -17,12 +19,11 @@ function filter() {
 # Checks if program is available and if not it aborts execution.
 function require() {
 	local program="${1}"
-	local package="${2}"
+	local package="${2:-}"
 
-	which "${program}" > /dev/null
-	if [ $? -ne 0 ]; then
+	if ! which "${program}" > /dev/null; then
 		echo "Program '${program}' not found! Install and retry."
-		if [ ! -z "${package}" ]; then
+		if [ -n "${package}" ]; then
 			echo "Try installing '${package}' package."
 		fi
 		exit 1

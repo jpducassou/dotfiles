@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -euo pipefail
+
 # ============================================================================
 # Software packages install script
 # ============================================================================
@@ -16,5 +18,5 @@ if [ "$(id -u)" -ne 0 ]; then
 	exit 1
 fi
 
-grep -vhE '^[[:space:]]*(#|$)' "$@" | xargs -r apt-get install -y
+{ grep -vhE '^[[:space:]]*(#|$)' "$@" || true; } | xargs -r apt-get install -y
 

@@ -1,8 +1,11 @@
 #!/bin/bash
 
+set -euo pipefail
+
 requests=10
 concurrency=5
-url="${1}"
+url="${1:?Usage: stress.sh <url>}"
+pidlist=""
 
 for i in $(seq 1 ${concurrency}); do
 	echo "thread ${i} ..."
@@ -13,7 +16,7 @@ done
 FAIL=0
 for job in $pidlist; do
 	echo $job
-	wait $job || let "FAIL += 1"
+	wait $job || FAIL=$((FAIL + 1))
 done
 
 # Verify if any failed

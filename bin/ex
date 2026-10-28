@@ -1,6 +1,8 @@
 #!/bin/bash
 
-if [ -f "${1}" ] ; then
+set -euo pipefail
+
+if [ -f "${1:-}" ] ; then
 	case "${1}" in
 		*.a)          ar  -xv      "${1}"         ;;
 		*.tgz)        tar -xvzf    "${1}"         ;;
@@ -17,6 +19,6 @@ if [ -f "${1}" ] ; then
 		*) echo "'${1}' unknow extension to extract!" ;;
 	esac
 else
-	echo "'${1}' is not a valid file"
+	echo "'${1:-}' is not a valid file"
 fi
 

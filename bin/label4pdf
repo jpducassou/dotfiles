@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -euo pipefail
+
 # ============================================================================
 # Log auxiliary functions
 # ============================================================================
@@ -51,8 +53,7 @@ function _log() {
 
 function require() {
 	local program="${1}"
-	which "${program}" > /dev/null
-	if [ $? -ne 0 ]; then
+	if ! which "${program}" > /dev/null; then
 		error "Program '${program}' not found! Install and retry."
 		exit 1
 	fi
@@ -61,11 +62,6 @@ function require() {
 # ============================================================================
 # Main
 # ============================================================================
-
-set -o errexit
-set -o pipefail
-set -o nounset
-# set -o xtrace
 
 original_file="${1}"
 label_text="${2}"

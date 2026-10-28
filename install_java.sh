@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -euo pipefail
 
 # ============================================================================
 # SDKMAN installation
@@ -9,7 +9,9 @@ if [ ! -d "${HOME}/.sdkman" ]; then
 	echo "[info] Installing SDKMAN ..."
 	curl -s 'https://get.sdkman.io?ci=true&rcupdate=false' | bash
 fi
+set +u # sdkman is not nounset-safe
 source "${HOME}/.sdkman/bin/sdkman-init.sh"
+set -u
 
 if ! grep -sq 'sdkman' "${HOME}/.bash_post"; then
 	echo "[info] Adding sdkman configuration to .bash_post"
@@ -61,7 +63,7 @@ install_latest_java_sdk() {
 	latest=$(sdk list java \
 		| grep -oE "[0-9]+\.[0-9]+\.[0-9]+-${vendor}" \
 		| grep "^${major}\." \
-		| sort -V | tail -1)
+		| sort -V | tail -1 || true)
 
 	if [ -z "${latest}" ]; then
 		echo "[error] No version found for Java ${major} (${vendor})"
@@ -80,9 +82,11 @@ install_latest_java_sdk() {
 	jenv add "$(sdk home java "${latest}")" 2>/dev/null || true
 }
 
+set +u # sdkman is not nounset-safe
 install_latest_java_sdk 17
 install_latest_java_sdk 21
 install_latest_java_sdk 25
+set -u
 
 # ============================================================================
 # Set default

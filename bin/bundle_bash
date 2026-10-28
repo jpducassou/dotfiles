@@ -1,6 +1,8 @@
 #!/bin/bash
 
-DIRECTORY="${1}"
+set -euo pipefail
+
+DIRECTORY="${1:-}"
 OUTPUT=${2:-"./installer.sh"}
 
 if [ -z "${DIRECTORY}" ]; then

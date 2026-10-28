@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -euo pipefail
 
 # ============================================================================
 # nvm installation
@@ -13,6 +13,7 @@ if [ ! -d "${NVM_DIR}" ]; then
 	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 fi
 
+set +u # nvm is not nounset-safe
 source "${NVM_DIR}/nvm.sh"
 
 if ! grep -sq 'nvm' "${HOME}/.bash_post"; then
@@ -37,6 +38,7 @@ nvm install lts/jod
 
 echo "[info] setting nodejs 24 as default ..."
 nvm alias default lts/krypton
+set -u
 
 # ============================================================================
 # pnpm installation
