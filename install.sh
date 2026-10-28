@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -euo pipefail
+
 # ============================================================================
 # Dotfiles install script
 # ============================================================================
@@ -33,6 +35,10 @@ if test -t 1 && test -n "$(tput colors 2>/dev/null)"; then
 	info="${green}[INFO]${normal}"
 	warn="${yellow}[WARN]${normal}"
 	error="${red}[ERROR]${normal}"
+else
+	info="[INFO]"
+	warn="[WARN]"
+	error="[ERROR]"
 fi
 
 # ============================================================================
@@ -52,18 +58,19 @@ function linkall() {
 		local dst_path="${HOME}/${dst_dir}/${file_name}"
 		if [ -e "${dst_path}" ]; then
 			local link
-			link=$(readlink "${dst_path}")
+			link=$(readlink "${dst_path}" || true)
 			if [ ! "${dotfiles_dir}/${src_path}" == "${link}" ]; then
 				echo "${warn} Must delete '${dst_path}'."
 			else
-				[ ${verbose} -eq 1 ] && echo "${info} '${dst_dir}/${file_name}' OK."
+				if [ ${verbose} -eq 1 ]; then
+					echo "${info} '${dst_dir}/${file_name}' OK."
+				fi
 			fi
 		else
-			ln -s "${dotfiles_dir}/${src_path}" "${dst_path}"
-			if [ $? -ne 0 ]; then
-				echo "${error} linking '${dotfiles_dir}/${src_path}' -> '${dst_path}'"
-			else
+			if ln -s "${dotfiles_dir}/${src_path}" "${dst_path}"; then
 				echo "${info} linking '${dotfiles_dir}/${src_path}' -> '${dst_path}'"
+			else
+				echo "${error} linking '${dotfiles_dir}/${src_path}' -> '${dst_path}'"
 			fi
 		fi
 	done < <(find "${src_dir}" -mindepth 1 -maxdepth 1 -print0)
@@ -93,11 +100,10 @@ function install_hooks() {
 	for hook_name in "${hook_names[@]}"; do
 		local hook_path=".git/hooks/${hook_name}"
 		if [ ! -h "${hook_path}" ]; then
-			ln -s "${script_path}" "${hook_path}"
-			if [ $? -ne 0 ]; then
-				echo "${error} linking '${hook_path}' -> '${0}'"
-			else
+			if ln -s "${script_path}" "${hook_path}"; then
 				echo "${info} linking '${hook_path}' -> '${0}'"
+			else
+				echo "${error} linking '${hook_path}' -> '${0}'"
 			fi
 		fi
 	done

@@ -1,9 +1,11 @@
 #!/bin/bash
 
+set -euo pipefail
+
 # This script uses maven archetypes to create a jar project
 # Gets the full namespace as parameter like: com.mycompany.myproject
 
-namespace="$1"
+namespace="${1:-}"
 
 if [ -z "$namespace" ]; then
 	echo "namespace not supplied!";

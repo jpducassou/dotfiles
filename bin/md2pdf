@@ -1,6 +1,8 @@
 #!/bin/bash
 
-input="${1}"
+set -euo pipefail
+
+input="${1:?Usage: md2pdf <file.md>}"
 output="${input%.*}.pdf"
 title="$(basename ${input%.*})"
 

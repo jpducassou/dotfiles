@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -euo pipefail
 
 BASH_POST="${HOME}/.bash_post"
 
