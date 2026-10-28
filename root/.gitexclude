@@ -31,3 +31,7 @@ nb-configuration.xml
 # Ctags file
 .tags
 
+# Claude code files
+**/.claude/settings.local.json
+**/.claude/.cc-writes/
+
